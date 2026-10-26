@@ -28,41 +28,110 @@ function Accent() {
 export default function HomePage() {
   return (
     <>
-      <PageSection className="overflow-hidden bg-mist py-12 sm:py-16 lg:py-24">
-        <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
-          <div className="home-rise">
-            <p className="font-display text-sm font-medium tracking-wide text-brand-teal">
-              {site.name}
-            </p>
-            <h1 className="mt-4 max-w-xl text-5xl font-medium tracking-tight sm:text-6xl">
-              {homePage.headline}
+      <section className="relative overflow-hidden bg-paper">
+        <div className="relative mx-auto grid max-w-6xl items-center px-4 sm:px-6 lg:grid-cols-2 lg:gap-8 lg:px-8">
+          <div className="relative flex flex-col items-center py-12 text-center sm:py-16 lg:items-start lg:py-20 lg:text-left">
+            <div
+              aria-hidden="true"
+              className="home-dots pointer-events-none absolute top-10 right-0 hidden h-24 w-28 opacity-50 lg:block"
+            />
+            <h1 className="home-rise relative">
+              <span className="block font-serif text-2xl leading-none tracking-tight text-brand-teal sm:text-3xl">
+                More than a
+              </span>
+              <span className="mt-2 block whitespace-nowrap text-5xl font-medium leading-[0.9] tracking-[-0.035em] sm:text-6xl lg:text-[4.75rem]">
+                day of
+              </span>
+              <span className="block whitespace-nowrap text-5xl font-medium leading-[0.9] tracking-[-0.035em] sm:text-6xl lg:text-[4.75rem]">
+                games<span className="text-brand-orange">.</span>
+              </span>
             </h1>
-            <p className="mt-5 max-w-xl text-lg leading-relaxed">{homePage.lede}</p>
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <ButtonLink href={enquiryLink.href}>{enquiryLink.label}</ButtonLink>
-              <ButtonLink href="/packages" variant="secondary">
-                View packages
+            <span
+              className="home-draw mx-auto mt-6 block h-1 w-14 bg-brand-orange lg:mx-0"
+              aria-hidden="true"
+            />
+            <p className="home-rise mx-auto mt-5 max-w-md font-serif text-xl leading-relaxed sm:text-2xl lg:mx-0">
+              {homePage.lede}
+            </p>
+            <div
+              className="home-rise mt-8 flex flex-nowrap items-center justify-center gap-3 sm:gap-4 lg:justify-start"
+              style={{ animationDelay: "80ms" }}
+            >
+              <ButtonLink href={enquiryLink.href} size="large">
+                {enquiryLink.label}
               </ButtonLink>
+              <Link
+                href="/packages"
+                className="group inline-flex min-h-12 items-center gap-2 font-display text-base font-medium text-brand-navy hover:text-brand-teal"
+              >
+                View packages
+                <ArrowRight
+                  aria-hidden="true"
+                  className="size-4 motion-safe:transition-transform motion-safe:duration-300 group-hover:translate-x-1"
+                />
+              </Link>
             </div>
           </div>
           {heroPhoto ? (
-            <div className="home-rise relative min-w-0" style={{ animationDelay: "140ms" }}>
+            <div
+              className="home-rise relative min-w-0 px-0 pt-2 pb-2 lg:py-16"
+              style={{ animationDelay: "140ms" }}
+            >
               <div
-                className="absolute -bottom-3 -right-3 hidden h-[92%] w-[92%] rounded-3xl bg-brand-orange sm:block"
                 aria-hidden="true"
+                className="pointer-events-none absolute -left-10 top-6 hidden h-52 w-52 rounded-full border border-brand-teal/30 lg:block"
               />
-              <div className="relative overflow-hidden rounded-3xl shadow-soft">
-                <GalleryImage
-                  image={heroPhoto}
-                  priority
-                  sizes="(min-width: 1024px) 50vw, 100vw"
-                  className="home-settle aspect-[4/3] h-auto w-full object-cover"
+              <div
+                aria-hidden="true"
+                className="pointer-events-none absolute -right-6 -bottom-6 hidden h-40 w-40 rounded-full border border-brand-teal/25 lg:block"
+              />
+              <div className="relative lg:pt-6 lg:pl-6">
+                <div
+                  aria-hidden="true"
+                  className="pointer-events-none absolute top-0 left-0 hidden h-[calc(100%-1.5rem)] w-[calc(100%-1.5rem)] rounded-[1.75rem] border border-brand-teal/50 lg:block"
                 />
+                <span
+                  aria-hidden="true"
+                  className="absolute -right-1.5 -bottom-1.5 z-10 hidden size-3.5 bg-brand-orange sm:block"
+                />
+                <div className="relative overflow-hidden rounded-3xl bg-mist shadow-soft ring-1 ring-brand-navy/10">
+                  <GalleryImage
+                    image={heroPhoto}
+                    priority
+                    sizes="(min-width: 1024px) 48vw, 100vw"
+                    className="home-settle aspect-[16/10] h-auto w-full object-cover object-[center_60%]"
+                  />
+                </div>
               </div>
             </div>
           ) : null}
         </div>
-      </PageSection>
+        <svg
+          aria-hidden="true"
+          viewBox="0 0 1440 140"
+          preserveAspectRatio="none"
+          className="relative block h-20 w-full sm:h-28"
+        >
+          <path
+            d="M0 72C220 128 460 18 740 58C1020 98 1240 16 1440 68V140H0Z"
+            className="fill-brand-teal/10"
+          />
+          <path
+            d="M0 80C220 122 480 34 760 66C1040 98 1240 36 1440 74"
+            fill="none"
+            strokeWidth="3"
+            vectorEffect="non-scaling-stroke"
+            className="stroke-brand-orange"
+          />
+          <path
+            d="M0 98C240 46 520 124 800 82C1080 40 1260 104 1440 78"
+            fill="none"
+            strokeWidth="1.5"
+            vectorEffect="non-scaling-stroke"
+            className="stroke-brand-teal/45"
+          />
+        </svg>
+      </section>
 
       <PageSection labelledBy="audiences-heading" className="py-12 sm:py-14">
         <div className="home-rise">

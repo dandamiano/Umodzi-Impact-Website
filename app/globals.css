@@ -81,6 +81,24 @@
   }
 }
 
+@keyframes home-draw {
+  from {
+    transform: scaleX(0);
+  }
+
+  to {
+    transform: scaleX(1);
+  }
+}
+
+.home-dots {
+  background-image: radial-gradient(
+    color-mix(in srgb, var(--color-brand-navy) 32%, transparent) 1.15px,
+    transparent 1.15px
+  );
+  background-size: 15px 15px;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .home-rise {
     animation: home-rise 0.75s cubic-bezier(0.22, 1, 0.36, 1) both;
@@ -88,5 +106,10 @@
 
   .home-settle {
     animation: home-settle 1.2s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  .home-draw {
+    transform-origin: left center;
+    animation: home-draw 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
   }
 }

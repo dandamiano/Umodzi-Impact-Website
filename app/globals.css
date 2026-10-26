@@ -1,20 +1,20 @@
 @import "tailwindcss";
 
 /*
-  Design tokens. Brand swatches are measured from Branding Guideline.jpg
-  and recorded in lib/brand.ts. Change both files together.
+  Design tokens. Roles and hex values are recorded in lib/brand.ts
+  and color-usage-guide.html. Change both token files together.
   Mist is a neutral surface derived from the teal. It is not a brand swatch.
-  Orange is about 2.6:1 on white, so it is an accent bar only, not small text.
+  Orange is about 2.5:1 on white, so it is an accent bar only, not text.
 */
 @theme {
-  --color-brand-orange: #f08804;
-  --color-brand-teal: #245468;
-  --color-brand-navy: #304070;
-  --color-brand-green: #386830;
+  --color-brand-orange: #f18b05;
+  --color-brand-teal: #26546b;
+  --color-brand-navy: #314172;
+  --color-brand-green: #396831;
   --color-paper: #ffffff;
   --color-mist: #f4f7f8;
   --font-sans: Arial, "Helvetica Neue", Helvetica, sans-serif;
-  --shadow-soft: 0 12px 32px rgb(48 64 112 / 0.08);
+  --shadow-soft: 0 12px 32px rgb(49 65 114 / 0.08);
 }
 
 @theme inline {

@@ -6,10 +6,16 @@ import { CallToAction } from "@/components/ui/CallToAction";
 import { ButtonLink } from "@/components/ui/Button";
 import { GalleryImage } from "@/components/ui/GalleryImage";
 import { PackageCard } from "@/components/ui/PackageCard";
+import { PackagePathway } from "@/components/ui/PackagePathway";
 import { PageSection } from "@/components/ui/PageSection";
+import { PhotographFeature } from "@/components/ui/PhotographFeature";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { audienceBackgroundPhoto, audienceItems } from "@/data/audiences";
-import { featuredPhotos, heroPhoto } from "@/data/gallery";
+import {
+  featuredPhotograph,
+  featuredPhotographSupports,
+  heroPhoto,
+} from "@/data/gallery";
 import { packages } from "@/data/packages";
 import { services } from "@/data/services";
 import { values } from "@/data/values";
@@ -151,70 +157,52 @@ export default function HomePage() {
             title="Packages"
             lede={homePage.packagesLede}
           />
+          <PackagePathway
+            items={packages}
+            basePath="/packages"
+            className="home-rise"
+          />
         </div>
-        <ul className="mt-10 grid gap-6 lg:grid-cols-2">
+        <ul className="mt-10 grid items-stretch gap-6 lg:grid-cols-2">
           {packages.map((item, index) => (
             <li
               key={item.id}
-              className="home-rise"
+              className={cn(
+                "home-rise scroll-mt-28",
+                item.tier === "featured" && "lg:relative lg:z-10",
+              )}
               style={{ animationDelay: `${index * 90}ms` }}
             >
               <PackageCard
+                id={item.id}
                 name={item.name}
+                step={item.step}
                 duration={item.duration}
+                outcome={item.outcome}
                 summary={item.summary}
                 idealFor={item.idealFor}
                 inclusions={item.inclusions}
-                enquiry={enquiryLink}
+                tier={item.tier}
+                badge={item.badge}
                 variant="preview"
-                className="rounded-2xl border-t-4 border-t-brand-orange motion-safe:transition motion-safe:duration-300 hover:-translate-y-1 hover:shadow-soft"
+                className="motion-safe:transition motion-safe:duration-300 hover:-translate-y-1 hover:shadow-soft"
               />
             </li>
           ))}
         </ul>
-        <ButtonLink href="/packages" variant="secondary" className="mt-8">
-          Package details
+        <ButtonLink href="/packages" variant="primary" className="mt-8">
+          Compare packages
         </ButtonLink>
       </PageSection>
 
-      <PageSection labelledBy="photographs-heading">
-        <div className="home-rise">
-          <Accent />
-          <SectionHeading
-            id="photographs-heading"
-            title="Photographs"
-            lede={homePage.photographsLede}
-          />
-        </div>
-        <ul className="mt-10 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
-          {featuredPhotos.map((photo, index) => (
-            <li
-              key={photo.src}
-              className={cn(
-                "home-rise group overflow-hidden rounded-2xl bg-mist",
-                index === 0 && "sm:col-span-2 lg:row-span-2",
-              )}
-              style={{ animationDelay: `${index * 70}ms` }}
-            >
-              <GalleryImage
-                image={photo}
-                sizes={
-                  index === 0
-                    ? "(min-width: 1024px) 66vw, 100vw"
-                    : "(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-                }
-                className={cn(
-                  "h-full w-full object-cover motion-safe:transition motion-safe:duration-500 group-hover:scale-105",
-                  index === 0 ? "aspect-[4/3] lg:aspect-auto lg:min-h-full" : "aspect-[4/3]",
-                )}
-              />
-            </li>
-          ))}
-        </ul>
-        <ButtonLink href="/gallery" variant="secondary" className="mt-8">
-          View gallery
-        </ButtonLink>
-      </PageSection>
+      <PhotographFeature
+        titleId="photographs-heading"
+        title="Photographs"
+        lede={homePage.photographsLede}
+        lead={featuredPhotograph}
+        supports={featuredPhotographSupports}
+        cta={{ href: "/gallery", label: "View gallery" }}
+      />
 
       <PageSection className="bg-mist" labelledBy="services-heading">
         <div className="home-rise">

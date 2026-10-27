@@ -1,4 +1,4 @@
-import type { GalleryItem } from "@/types/content";
+import type { FeaturedPhoto, GalleryItem } from "@/types/content";
 
 /**
  * Web-sized photographs from public/photos.
@@ -589,20 +589,25 @@ export const galleryItems: readonly GalleryItem[] = [
   },
 ];
 
-const featuredFiles = [
-  "/photos/IMG_2510.jpg",
-  "/photos/IMG_2545.jpg",
-  "/photos/IMG_9289.jpg",
-  "/photos/IMG_9465.jpg",
-  "/photos/IMG_9493.jpg",
-  "/photos/IMG_9645.jpg",
-] as const;
-
 export const heroPhoto = galleryItems.find(
   (item) => item.src === "/photos/IMG_9447.jpg",
 );
 
-export const featuredPhotos = featuredFiles.flatMap((src) => {
+function featuredFrom(
+  src: string,
+  caption: string,
+): FeaturedPhoto | undefined {
   const item = galleryItems.find((photo) => photo.src === src);
-  return item ? [item] : [];
-});
+  return item ? { ...item, caption } : undefined;
+}
+
+export const featuredPhotograph = featuredFrom(
+  "/photos/IMG_9289.jpg",
+  "In the circle",
+);
+
+export const featuredPhotographSupports = [
+  featuredFrom("/photos/IMG_2510.jpg", "Trust outdoors"),
+  featuredFrom("/photos/IMG_2545.jpg", "Problem-solving together"),
+  featuredFrom("/photos/IMG_9493.jpg", "Facilitated reflection"),
+].filter((photo): photo is FeaturedPhoto => Boolean(photo));

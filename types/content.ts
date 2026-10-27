@@ -25,15 +25,22 @@ export type PublishedPricing = {
 
 export type PackagePricing = UnpublishedPricing | PublishedPricing;
 
+export type PackageTier = "light" | "standard" | "featured" | "executive";
+
 export type PackageOffering = {
   id: string;
   name: string;
+  step: number;
   duration: string;
+  outcome: string;
   summary?: string;
   idealFor?: string;
   inclusionsLead?: string;
   inclusions: readonly string[];
   pricing: PackagePricing;
+  tier: PackageTier;
+  badge?: string;
+  enquiryLabel: string;
 };
 
 export type Value = {
@@ -64,4 +71,9 @@ export type GalleryItem = {
   alt: string;
   width: number;
   height: number;
+};
+
+/** Homepage editorial feature frame — caption is marketing copy, separate from alt. */
+export type FeaturedPhoto = GalleryItem & {
+  caption: string;
 };

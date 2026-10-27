@@ -1,4 +1,5 @@
-import type { PackageOffering } from "@/types/content";
+import { galleryItems } from "@/data/gallery";
+import type { GalleryItem, PackageOffering } from "@/types/content";
 
 /**
  * Indicative prices are stored with approved: false.
@@ -8,7 +9,9 @@ export const packages: readonly PackageOffering[] = [
   {
     id: "connect",
     name: "Connect",
-    duration: "Approximately 2–3 hours",
+    step: 1,
+    duration: "2–3 hours",
+    outcome: "Trust and first-team chemistry",
     summary:
       "A fun and engaging introductory team-building experience designed to help teams connect, communicate, build trust, and enjoy working together.",
     idealFor: "Small businesses, NGOs, schools, and teams looking to strengthen relationships.",
@@ -19,6 +22,8 @@ export const packages: readonly PackageOffering[] = [
       "Team challenges",
       "Guided reflection",
     ],
+    tier: "light",
+    enquiryLabel: "Enquire about Connect",
     pricing: {
       approved: false,
       perPerson: "MWK 10,000",
@@ -28,7 +33,9 @@ export const packages: readonly PackageOffering[] = [
   {
     id: "collaborate",
     name: "Collaborate",
-    duration: "Approximately 4–5 hours",
+    step: 2,
+    duration: "4–5 hours",
+    outcome: "Stronger collaboration and healthy dynamics",
     summary:
       "A deeper team-building experience focused on collaboration, problem-solving, leadership, and healthy team dynamics.",
     idealFor: "Corporate departments, organisations, NGOs, and established teams.",
@@ -41,6 +48,8 @@ export const packages: readonly PackageOffering[] = [
       "Facilitation",
       "Certificates",
     ],
+    tier: "standard",
+    enquiryLabel: "Enquire about Collaborate",
     pricing: {
       approved: false,
       perPerson: "MWK 30,000",
@@ -50,7 +59,9 @@ export const packages: readonly PackageOffering[] = [
   {
     id: "transform",
     name: "Transform",
-    duration: "Approximately 8 hours",
+    step: 3,
+    duration: "Full day · 8 hours",
+    outcome: "Leadership, strategy, and lasting alignment",
     summary:
       "A full-day immersive team experience designed to strengthen teamwork, leadership, strategic thinking, and organisational alignment.",
     idealFor:
@@ -65,6 +76,9 @@ export const packages: readonly PackageOffering[] = [
       "Awards",
       "A final report",
     ],
+    tier: "featured",
+    badge: "Most immersive",
+    enquiryLabel: "Plan Transform",
     pricing: {
       approved: false,
       perPerson: "MWK 50,000",
@@ -74,7 +88,9 @@ export const packages: readonly PackageOffering[] = [
   {
     id: "executive-leadership-forum",
     name: "Executive Leadership Forum",
-    duration: "A customised 1–2 day retreat",
+    step: 4,
+    duration: "1–2 day retreat",
+    outcome: "Board-level clarity and organisational performance",
     summary:
       "A customised retreat designed to strengthen leadership, strategic alignment, team dynamics, and organisational performance.",
     idealFor: "CEOs, senior management, boards, and leadership teams.",
@@ -86,6 +102,8 @@ export const packages: readonly PackageOffering[] = [
       "Facilitation",
       "Action planning",
     ],
+    tier: "executive",
+    enquiryLabel: "Book a forum",
     pricing: {
       approved: false,
       starting: "MWK 2,500,000",
@@ -93,3 +111,6 @@ export const packages: readonly PackageOffering[] = [
     },
   },
 ];
+
+export const packagesBackgroundPhoto: GalleryItem | undefined =
+  galleryItems.find((photo) => photo.src === "/photos/IMG_9645.jpg");

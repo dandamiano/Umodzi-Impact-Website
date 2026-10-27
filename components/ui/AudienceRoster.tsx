@@ -124,8 +124,6 @@ export function AudienceRoster({
           <div className="absolute inset-0 bg-brand-teal/20" />
           {/* Readable left rail; open photo on the right */}
           <div className="absolute inset-0 bg-gradient-to-r from-mist/85 via-mist/35 to-transparent sm:from-mist/80 sm:via-mist/25" />
-          {/* Handoff into Packages (bg-mist) */}
-          {/* <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-mist via-mist/70 to-transparent sm:h-36" /> */}
         </div>
       ) : (
         <div aria-hidden="true" className="absolute inset-0 -z-10 bg-mist" />

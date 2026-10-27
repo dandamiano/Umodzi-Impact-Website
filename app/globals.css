@@ -99,6 +99,17 @@
   background-size: 15px 15px;
 }
 
+.package-pathway-rail {
+  scroll-snap-type: x mandatory;
+  scroll-padding-inline: 0.25rem;
+}
+
+@media (min-width: 640px) {
+  .package-pathway-rail {
+    scroll-snap-type: none;
+  }
+}
+
 @keyframes audience-orb {
   from {
     transform: scale(0.92);
@@ -120,6 +131,30 @@
   to {
     transform: none;
     opacity: 1;
+  }
+}
+
+@keyframes photo-feature-stage {
+  from {
+    opacity: 0;
+    transform: scale(1.045);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes photo-feature-caption {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
   }
 }
 
@@ -151,5 +186,14 @@
 
   .audience-parallax {
     transform: translate3d(0, 0, 0) scale(1.18);
+  }
+
+  .photo-feature-stage {
+    animation: photo-feature-stage 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  .photo-feature-caption {
+    animation: photo-feature-caption 0.45s cubic-bezier(0.22, 1, 0.36, 1) 0.08s
+      both;
   }
 }

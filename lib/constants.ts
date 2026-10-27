@@ -17,11 +17,13 @@ export const homePage = {
   lede: "Umodzi Impact is a Malawi-based professional team-building service provider.",
   audienceTitle: "Who the work is for",
   audienceLede: "Built for teams of many kinds.",
-  packagesLede: "Four ways to spend time together, from a short session to a leadership retreat.",
+  packagesLede:
+    "A clear pathway from a short session to a leadership retreat—choose the depth your team needs.",
   servicesLede: "Book a complete retreat, or choose the parts you need.",
   approach:
     "Meaningful team building goes beyond games. We combine connection, collaboration, fun, reflection, and purposeful learning to create experiences that teams can carry beyond the event.",
-  photographsLede: "Scenes from team experiences.",
+  photographsLede:
+    "Moments of connection, collaboration, and outdoor learning from experiences across Malawi.",
 } as const;
 
 export const audiences = [

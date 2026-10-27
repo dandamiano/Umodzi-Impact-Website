@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
+import { AudienceRoster } from "@/components/ui/AudienceRoster";
 import { CallToAction } from "@/components/ui/CallToAction";
 import { ButtonLink } from "@/components/ui/Button";
 import { GalleryImage } from "@/components/ui/GalleryImage";
 import { PackageCard } from "@/components/ui/PackageCard";
 import { PageSection } from "@/components/ui/PageSection";
 import { SectionHeading } from "@/components/ui/SectionHeading";
+import { audienceBackgroundPhoto, audienceItems } from "@/data/audiences";
 import { featuredPhotos, heroPhoto } from "@/data/gallery";
 import { packages } from "@/data/packages";
 import { services } from "@/data/services";
@@ -133,25 +135,13 @@ export default function HomePage() {
         </svg>
       </section>
 
-      <PageSection labelledBy="audiences-heading" className="py-12 sm:py-14">
-        <div className="home-rise">
-          <Accent />
-          <SectionHeading id="audiences-heading" title={homePage.audienceTitle} />
-        </div>
-        <ul className="mt-8 flex flex-wrap gap-3">
-          {homePage.audiences.map((audience, index) => (
-            <li
-              key={audience}
-              className="home-rise"
-              style={{ animationDelay: `${80 + index * 60}ms` }}
-            >
-              <span className="inline-flex min-h-11 items-center rounded-full border border-brand-navy/15 bg-mist px-4 text-sm font-medium">
-                {audience}
-              </span>
-            </li>
-          ))}
-        </ul>
-      </PageSection>
+      <AudienceRoster
+        titleId="audiences-heading"
+        title={homePage.audienceTitle}
+        lede={homePage.audienceLede}
+        items={audienceItems}
+        backgroundPhoto={audienceBackgroundPhoto}
+      />
 
       <PageSection className="bg-mist" labelledBy="packages-heading">
         <div className="home-rise">

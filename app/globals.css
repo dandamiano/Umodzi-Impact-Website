@@ -99,6 +99,30 @@
   background-size: 15px 15px;
 }
 
+@keyframes audience-orb {
+  from {
+    transform: scale(0.92);
+    opacity: 0;
+  }
+
+  to {
+    transform: none;
+    opacity: 1;
+  }
+}
+
+@keyframes audience-icon-pop {
+  from {
+    transform: scale(0.7);
+    opacity: 0;
+  }
+
+  to {
+    transform: none;
+    opacity: 1;
+  }
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .home-rise {
     animation: home-rise 0.75s cubic-bezier(0.22, 1, 0.36, 1) both;
@@ -111,5 +135,21 @@
   .home-draw {
     transform-origin: left center;
     animation: home-draw 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  .audience-orb {
+    animation: audience-orb 1s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  .audience-orb-delay {
+    animation: audience-orb 1.15s cubic-bezier(0.22, 1, 0.36, 1) 0.12s both;
+  }
+
+  .audience-item .audience-icon {
+    animation: audience-icon-pop 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  .audience-parallax {
+    transform: translate3d(0, 0, 0) scale(1.18);
   }
 }

@@ -19,7 +19,8 @@ export const homePage = {
   audienceLede: "Built for teams of many kinds.",
   packagesLede:
     "A clear pathway from a short session to a leadership retreat—choose the depth your team needs.",
-  servicesLede: "Book a complete retreat, or choose the parts you need.",
+  servicesLede:
+    "Assemble a full retreat, or take only the modules your programme needs.",
   approach:
     "Meaningful team building goes beyond games. We combine connection, collaboration, fun, reflection, and purposeful learning to create experiences that teams can carry beyond the event.",
   photographsLede:

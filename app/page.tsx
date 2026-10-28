@@ -10,6 +10,9 @@ import { PackagePathway } from "@/components/ui/PackagePathway";
 import { PageSection } from "@/components/ui/PageSection";
 import { PhotographFeature } from "@/components/ui/PhotographFeature";
 import { SectionHeading } from "@/components/ui/SectionHeading";
+import { ApproachMethod } from "@/components/ui/ApproachMethod";
+import { ServiceIndex } from "@/components/ui/ServiceIndex";
+import { approachPillars } from "@/data/approach";
 import { audienceBackgroundPhoto, audienceItems } from "@/data/audiences";
 import {
   featuredPhotograph,
@@ -17,8 +20,7 @@ import {
   heroPhoto,
 } from "@/data/gallery";
 import { packages } from "@/data/packages";
-import { services } from "@/data/services";
-import { values } from "@/data/values";
+import { homepageServiceGroups } from "@/data/services";
 import { enquiryLink } from "@/lib/enquiry";
 import { homePage, site } from "@/lib/constants";
 import { cn } from "@/lib/utils";
@@ -26,8 +28,6 @@ import { cn } from "@/lib/utils";
 export const metadata: Metadata = {
   description: site.description,
 };
-
-const homepageServices = services.filter((service) => !service.needsConfirmation);
 
 function Accent() {
   return <span className="mb-4 block h-1 w-12 bg-brand-orange" aria-hidden="true" />;
@@ -205,53 +205,21 @@ export default function HomePage() {
       />
 
       <PageSection className="bg-mist" labelledBy="services-heading">
-        <div className="home-rise">
-          <Accent />
-          <SectionHeading id="services-heading" title="Services" lede={homePage.servicesLede} />
-        </div>
-        <ul className="mt-8 grid gap-3 sm:grid-cols-2">
-          {homepageServices.map((service, index) => (
-            <li
-              key={service.id}
-              className="home-rise"
-              style={{ animationDelay: `${index * 40}ms` }}
-            >
-              <Link
-                href={`/services/#${service.id}`}
-                className="group flex min-h-14 items-center justify-between gap-4 rounded-xl bg-paper px-5 py-4 shadow-soft motion-safe:transition motion-safe:duration-300 hover:-translate-y-0.5 hover:text-brand-teal"
-              >
-                <span className="font-medium">{service.name}</span>
-                <ArrowRight
-                  aria-hidden="true"
-                  className="size-4 shrink-0 motion-safe:transition-transform motion-safe:duration-300 group-hover:translate-x-1"
-                />
-              </Link>
-            </li>
-          ))}
-        </ul>
+        <ServiceIndex
+          titleId="services-heading"
+          title="Services"
+          lede={homePage.servicesLede}
+          groups={homepageServiceGroups}
+        />
       </PageSection>
 
       <PageSection labelledBy="approach-heading">
-        <div className="home-rise">
-          <Accent />
-          <SectionHeading id="approach-heading" title="The approach" lede={homePage.approach} />
-        </div>
-        <ul className="mt-8 flex flex-wrap gap-3">
-          {values.map((value, index) => (
-            <li
-              key={value.name}
-              className="home-rise"
-              style={{ animationDelay: `${index * 50}ms` }}
-            >
-              <span className="inline-flex min-h-11 items-center rounded-full bg-mist px-4 font-display text-sm font-medium">
-                {value.name}
-              </span>
-            </li>
-          ))}
-        </ul>
-        <ButtonLink href="/about" variant="secondary" className="mt-8">
-          About Umodzi Impact Hub
-        </ButtonLink>
+        <ApproachMethod
+          titleId="approach-heading"
+          title="The approach"
+          lede={homePage.approach}
+          pillars={approachPillars}
+        />
       </PageSection>
 
       <CallToAction

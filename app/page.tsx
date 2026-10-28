@@ -224,9 +224,10 @@ export default function HomePage() {
 
       <CallToAction
         decorated
+        eyebrow="Let's plan it"
         title="Enquire about a team experience"
-        description="Ask about a programme for your organisation, school, or community group."
-        action={enquiryLink}
+        description="Share your goals and group size—we will help shape a programme that fits."
+        action={{ href: enquiryLink.href, label: "Start an enquiry" }}
       />
     </>
   );

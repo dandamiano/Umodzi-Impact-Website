@@ -611,3 +611,7 @@ export const featuredPhotographSupports = [
   featuredFrom("/photos/IMG_2545.jpg", "Problem-solving together"),
   featuredFrom("/photos/IMG_9493.jpg", "Facilitated reflection"),
 ].filter((photo): photo is FeaturedPhoto => Boolean(photo));
+
+export const aboutHeroPhoto = galleryItems.find(
+  (item) => item.src === "/photos/IMG_9289.jpg",
+);

@@ -33,7 +33,7 @@ export function ApproachMethod({
         </p>
         <h2
           id={titleId}
-          className="mt-3 max-w-[12ch] text-3xl font-medium tracking-tight sm:text-4xl lg:text-[2.75rem] lg:leading-[1.1]"
+          className="mt-3 max-w-[12ch] scroll-mt-28 text-3xl font-medium tracking-tight sm:text-4xl lg:text-[2.75rem] lg:leading-[1.1]"
         >
           {title}
         </h2>

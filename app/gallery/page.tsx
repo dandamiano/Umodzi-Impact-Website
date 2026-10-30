@@ -1,32 +1,37 @@
 import type { Metadata } from "next";
 import { CallToAction } from "@/components/ui/CallToAction";
-import { GalleryGrid } from "@/components/ui/GalleryGrid";
-import { PageIntro } from "@/components/ui/PageIntro";
-import { PageSection } from "@/components/ui/PageSection";
-import { galleryItems } from "@/data/gallery";
+import { GalleryScrapbook } from "@/components/ui/GalleryScrapbook";
+import {
+  galleryHeroCollage,
+  galleryItems,
+  gallerySpotlight,
+} from "@/data/gallery";
+import { galleryPage } from "@/lib/constants";
 import { enquiryLink } from "@/lib/enquiry";
 
 export const metadata: Metadata = {
   title: "Gallery",
-  description: "Photographs from Umodzi Impact Hub team experiences.",
+  description:
+    "Proof we had fun — photographs from Umodzi Impact Hub team experiences across Malawi.",
 };
 
 export default function GalleryPage() {
   return (
     <>
-      <PageSection>
-        <PageIntro
-          title="Gallery"
-          lede="Photographs from Umodzi Impact Hub team experiences."
-        />
-        <div className="mt-10">
-          <GalleryGrid images={galleryItems} />
-        </div>
-      </PageSection>
+      <GalleryScrapbook
+        collage={galleryHeroCollage}
+        spotlight={gallerySpotlight}
+        wall={galleryItems}
+      />
       <CallToAction
-        title="Enquire about a programme"
-        description="Ask about a team-building experience for your group."
-        action={enquiryLink}
+        decorated
+        eyebrow={galleryPage.ctaEyebrow}
+        title={galleryPage.ctaTitle}
+        description={galleryPage.ctaDescription}
+        action={{
+          href: enquiryLink.href,
+          label: enquiryLink.label,
+        }}
       />
     </>
   );

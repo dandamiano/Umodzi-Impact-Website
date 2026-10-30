@@ -1,21 +1,34 @@
 /**
- * Colour usage guide. Hex values are the written spec in color-usage-guide.html.
- * Replace these tokens here and in app/globals.css. Do not introduce a second palette.
+ * Colour usage — energetic / youthful team-building tone.
+ * Hex values stay brand-true (color-usage-guide.html). We change *roles and
+ * volume*, not the palette. Do not invent a fifth brand swatch.
  *
- * Royal blue 40% #314172 — primary. Navigation, headings, body text,
- * primary buttons and major sections.
- * Orange 25% #F18B05 — accent only. Highlights, rules, icons and
- * photographic offsets. Not for buttons or link text.
- * Green 20% #396831 — supporting. Values, sustainability and one feature section.
- * Teal 15% #26546B — secondary. Active navigation, focus, small labels,
- * card edges and secondary buttons.
+ * Goal: visitors should feel out-of-office energy, not a corporate brochure.
+ * Navy still anchors type; orange, green, and teal carry more play.
  *
- * Header and footer stay on white so the teal logo remains clear.
+ * Royal blue #314172 (~30–35%) — structure and readability.
+ *   Headings, body text, primary buttons, occasional deep bands.
+ *   Prefer smaller navy moments over large “serious” slabs.
+ *
+ * Orange #F18B05 (~28–32%) — energy and humour.
+ *   Ribbons, stamps, tape, squiggles, sticky accents, photo offsets,
+ *   celebration moments. Still weak contrast on white (~2.5:1): not for
+ *   long body text or primary button labels on white.
+ *
+ * Green #396831 (~18–22%) — outdoor / alive.
+ *   Playful section washes, nature cues, values, “field” moments — not
+ *   limited to one sustainability block.
+ *
+ * Teal #26546B (~15–18%) — secondary motion.
+ *   Active nav, focus rings, labels, secondary buttons, cool accents.
+ *
+ * Surfaces (derived, not brand swatches):
+ *   Paper #FFFFFF — header/footer and calm reading.
+ *   Mist #F4F7F8 — cool quiet bands.
+ *   Wash orange / green / teal — soft scrapbook fills from brand hues.
+ *
  * Logo files: teal #26546B, orange #F18A05, green #39792F.
- * Interface green follows the swatch. The green logo file is brighter.
- *
- * Contrast on white: royal blue 9.9:1, teal 8.2:1, green 6.6:1, orange 2.5:1.
- * Mist is a derived surface, not a fifth brand colour.
+ * Interface green follows the swatch; the green logo file is brighter.
  */
 export const brandColors = {
   orange: "#F18B05",
@@ -25,6 +38,9 @@ export const brandColors = {
   greenLogo: "#39792F",
   white: "#FFFFFF",
   mist: "#F4F7F8",
+  washOrange: "#FFF4E6",
+  washGreen: "#EEF5EA",
+  washTeal: "#E8F1F3",
 } as const;
 
 /**

@@ -5,6 +5,12 @@ import { withBasePath } from "@/lib/paths";
  * assetPrefix, so Image src must include the Pages subpath ourselves.
  * @see https://nextjs.org/docs/app/api-reference/config/next-config-js/basePath
  */
-export default function imageLoader({ src }: { src: string }): string {
+export default function imageLoader({
+  src,
+}: {
+  src: string;
+  width: number;
+  quality?: number;
+}): string {
   return withBasePath(src);
 }

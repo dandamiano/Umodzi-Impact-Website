@@ -27,6 +27,25 @@ export const homePage = {
     "Moments of connection, collaboration, and outdoor learning from experiences across Malawi.",
 } as const;
 
+export const galleryPage = {
+  title: "Gallery",
+  headlineLead: "Proof we",
+  headlinePunch: "had fun.",
+  lede: "Circles, challenges, high-fives, and quiet pauses—from experiences across Malawi.",
+  stamp: "Field notes",
+  spotlightTitle: "Moments worth naming",
+  spotlightLede: "Two rows at a time — more photos on bigger screens. Flip for more.",
+  wallTitle: "The rest of the scrapbook",
+  wallLede: "Two rows that flex with your screen. Flip for more team energy.",
+  wallPrev: "Back a page",
+  wallNext: "More chaos",
+  wallPageOf: "Page",
+  ctaEyebrow: "Your turn",
+  ctaTitle: "Bring this energy to your team",
+  ctaDescription:
+    "Tell us your group size and vibe—we will shape a day that feels this alive.",
+} as const;
+
 export const audiences = [
   "Organisations",
   "Companies",

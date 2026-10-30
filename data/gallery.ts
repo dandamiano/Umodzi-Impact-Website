@@ -615,3 +615,33 @@ export const featuredPhotographSupports = [
 export const aboutHeroPhoto = galleryItems.find(
   (item) => item.src === "/photos/IMG_9289.jpg",
 );
+
+/** Edge-to-edge scrapbook strip on the gallery hero. */
+export const galleryHeroCollage = [
+  "/photos/IMG_9447.jpg",
+  "/photos/IMG_2510.jpg",
+  "/photos/IMG_9289.jpg",
+  "/photos/IMG_2545.jpg",
+  "/photos/IMG_9783.jpg",
+]
+  .map((src) => galleryItems.find((photo) => photo.src === src))
+  .filter((photo): photo is GalleryItem => Boolean(photo));
+
+/**
+ * Captioned spotlight — witty labels, separate from accessibility alt text.
+ * Paginated 4 at a time (2 columns × 2 rows on every device).
+ */
+export const gallerySpotlight = [
+  featuredFrom("/photos/IMG_9289.jpg", "Circle energy"),
+  featuredFrom("/photos/IMG_2510.jpg", "Trust mode: on"),
+  featuredFrom("/photos/IMG_2545.jpg", "Puzzle brains"),
+  featuredFrom("/photos/IMG_9447.jpg", "Squad goals"),
+  featuredFrom("/photos/IMG_9493.jpg", "Pause. Notice."),
+  featuredFrom("/photos/IMG_9783.jpg", "Two thumbs. Full send."),
+  featuredFrom("/photos/IMG_2519.jpg", "Playful pose"),
+  featuredFrom("/photos/IMG_9795.jpg", "Main character energy"),
+  featuredFrom("/photos/IMG_2534.jpg", "Hands in the mix"),
+  featuredFrom("/photos/IMG_9762.jpg", "Outdoor focus"),
+  featuredFrom("/photos/IMG_2522.jpg", "Arm-in-arm"),
+  featuredFrom("/photos/IMG_2515.jpg", "Safari squad"),
+].filter((photo): photo is FeaturedPhoto => Boolean(photo));

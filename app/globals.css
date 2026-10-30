@@ -3,8 +3,9 @@
 /*
   Design tokens. Roles and hex values are recorded in lib/brand.ts
   and color-usage-guide.html. Change both token files together.
-  Mist is a neutral surface derived from the teal. It is not a brand swatch.
-  Orange is about 2.5:1 on white, so it is an accent bar only, not text.
+  Same brand hexes; usage is tuned for youthful, out-of-office energy.
+  Mist + wash-* are derived surfaces, not brand swatches.
+  Orange is about 2.5:1 on white — energy accents, not long body text.
 */
 @theme {
   --color-brand-orange: #f18b05;
@@ -13,6 +14,9 @@
   --color-brand-green: #396831;
   --color-paper: #ffffff;
   --color-mist: #f4f7f8;
+  --color-wash-orange: #fff4e6;
+  --color-wash-green: #eef5ea;
+  --color-wash-teal: #e8f1f3;
   --font-sans: Arial, "Helvetica Neue", Helvetica, sans-serif;
   --shadow-soft: 0 12px 32px rgb(49 65 114 / 0.08);
 }
@@ -242,6 +246,43 @@
   }
 }
 
+@keyframes gallery-rise {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.985);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.gallery-tape {
+  height: 0.7rem;
+  width: 2.75rem;
+  background: color-mix(in srgb, var(--color-brand-orange) 88%, white);
+  box-shadow: 0 1px 2px rgb(49 65 114 / 0.18);
+}
+
+.gallery-polaroid {
+  position: relative;
+}
+
+.gallery-stamp {
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--color-brand-orange) 35%, transparent);
+}
+
+@keyframes gallery-scribble-draw {
+  from {
+    stroke-dashoffset: 180;
+  }
+
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .home-rise {
     animation: home-rise 0.75s cubic-bezier(0.22, 1, 0.36, 1) both;
@@ -358,6 +399,20 @@
   .service-packages-bridge.is-visible .service-packages-bridge-action {
     animation: service-packages-bridge 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.12s
       both;
+  }
+
+  .gallery-rise {
+    animation: gallery-rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  .gallery-scribble path {
+    stroke-dasharray: 180;
+    animation: gallery-scribble-draw 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.35s
+      both;
+  }
+
+  .gallery-punch {
+    animation: gallery-rise 0.75s cubic-bezier(0.22, 1, 0.36, 1) 0.15s both;
   }
 }
 

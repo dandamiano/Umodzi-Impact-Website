@@ -1,10 +1,9 @@
 import type { Metadata } from "next";
 import { CallToAction } from "@/components/ui/CallToAction";
-import { PageIntro } from "@/components/ui/PageIntro";
-import { PageSection } from "@/components/ui/PageSection";
-import { ServiceList } from "@/components/ui/ServiceList";
-import { services } from "@/data/services";
+import { ServiceCatalogue } from "@/components/ui/ServiceCatalogue";
+import { serviceGroups, servicesHeroPhoto } from "@/data/services";
 import { enquiryLink } from "@/lib/enquiry";
+import { homePage } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "Services",
@@ -15,17 +14,18 @@ export const metadata: Metadata = {
 export default function ServicesPage() {
   return (
     <>
-      <PageSection>
-        <PageIntro
-          title="Services"
-          lede="Facilitation and the practical support that sits around a team-building experience."
-        />
-        <ServiceList items={services} />
-      </PageSection>
+      <ServiceCatalogue
+        title="Services"
+        lede={homePage.servicesLede}
+        groups={serviceGroups}
+        heroPhoto={servicesHeroPhoto}
+      />
       <CallToAction
+        decorated
+        eyebrow="Let's plan it"
         title="Ask about a service"
-        description="Tell us which parts of the experience you want help with."
-        action={enquiryLink}
+        description="Tell us which parts of the experience you want help with—we will shape a clear next step."
+        action={{ href: enquiryLink.href, label: "Start an enquiry" }}
       />
     </>
   );

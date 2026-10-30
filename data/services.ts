@@ -1,4 +1,5 @@
-import type { ServiceOffering } from "@/types/content";
+import { galleryItems } from "@/data/gallery";
+import type { GalleryItem, ServiceOffering } from "@/types/content";
 
 /**
  * Proposed services from the implementation guide.
@@ -28,6 +29,7 @@ export type ServiceGroup = {
   id: string;
   label: string;
   items: readonly ServiceOffering[];
+  photo?: GalleryItem;
 };
 
 const serviceById = new Map(services.map((service) => [service.id, service]));
@@ -36,32 +38,51 @@ function resolveGroup(
   id: string,
   label: string,
   serviceIds: readonly string[],
+  photoSrc?: string,
 ): ServiceGroup {
   const items = serviceIds
     .map((serviceId) => serviceById.get(serviceId))
     .filter((service): service is ServiceOffering => Boolean(service))
     .filter((service) => !service.needsConfirmation);
 
-  return { id, label, items };
+  const photo = photoSrc
+    ? galleryItems.find((item) => item.src === photoSrc)
+    : undefined;
+
+  return { id, label, items, photo };
 }
 
-/** Homepage editorial grouping — published services only. */
-export const homepageServiceGroups: readonly ServiceGroup[] = [
-  resolveGroup("design-facilitation", "Design & facilitation", [
-    "team-building",
-    "team-dynamics",
-    "leadership-retreats",
-    "customised-experiences",
-  ]),
-  resolveGroup("logistics", "Logistics", [
-    "retreat-planning",
-    "venue-sourcing",
-    "transport",
-    "catering",
-  ]),
-  resolveGroup("brand-capture", "Brand & capture", [
-    "event-branding",
-    "merchandise",
-    "photography",
-  ]),
+/** Editorial grouping — published services only (excludes needsConfirmation). */
+export const serviceGroups: readonly ServiceGroup[] = [
+  resolveGroup(
+    "design-facilitation",
+    "Design & facilitation",
+    [
+      "team-building",
+      "team-dynamics",
+      "leadership-retreats",
+      "customised-experiences",
+    ],
+    "/photos/IMG_2553.jpg",
+  ),
+  resolveGroup(
+    "logistics",
+    "Logistics",
+    ["retreat-planning", "venue-sourcing", "transport", "catering"],
+    "/photos/IMG_9457.jpg",
+  ),
+  resolveGroup(
+    "brand-capture",
+    "Brand & capture",
+    ["event-branding", "merchandise", "photography"],
+    "/photos/IMG_9769.jpg",
+  ),
 ].filter((group) => group.items.length > 0);
+
+/** Alias used by the homepage services section. */
+export const homepageServiceGroups = serviceGroups;
+
+/** Facilitation in progress — strong delivery signal for the services hero. */
+export const servicesHeroPhoto: GalleryItem | undefined = galleryItems.find(
+  (photo) => photo.src === "/photos/IMG_2536.jpg",
+);

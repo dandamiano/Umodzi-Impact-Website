@@ -53,7 +53,7 @@ export function AboutIntro({
         }}
       />
 
-      <div className="relative mx-auto flex min-h-[26rem] max-w-6xl flex-col justify-end px-4 pt-8 pb-16 sm:min-h-[30rem] sm:px-6 sm:pt-10 sm:pb-20 lg:min-h-[34rem] lg:px-8 lg:pb-24">
+      <div className="relative mx-auto flex min-h-[26rem] max-w-7xl flex-col justify-end px-4 pt-8 pb-16 sm:min-h-[30rem] sm:px-6 sm:pt-10 sm:pb-20 lg:min-h-[34rem] lg:max-w-[90rem] lg:px-10 lg:pb-24 xl:px-12">
         <div className="home-rise mb-8 text-white/55 [&_nav]:mb-0 [&_a]:text-white/55 [&_a:hover]:text-white [&_span]:text-white/55">
           <Breadcrumbs
             items={[

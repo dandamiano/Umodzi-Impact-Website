@@ -10,7 +10,8 @@ type SiteLogoProps = {
 };
 
 const imageSizes = {
-  header: "h-16 w-auto max-w-[4.75rem] sm:h-20 sm:max-w-[6rem]",
+  header:
+    "h-[4.5rem] w-auto max-w-[5.5rem] sm:h-[5.5rem] sm:max-w-[6.75rem] lg:h-24 lg:max-w-[7.25rem]",
   footer: "h-14 w-auto max-w-[4.25rem] sm:h-16 sm:max-w-[5rem]",
 } as const;
 

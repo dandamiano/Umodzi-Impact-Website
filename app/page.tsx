@@ -37,7 +37,7 @@ export default function HomePage() {
   return (
     <>
       <section className="relative overflow-hidden bg-paper">
-        <div className="relative mx-auto grid max-w-6xl items-center px-4 sm:px-6 lg:grid-cols-2 lg:gap-8 lg:px-8">
+        <div className="relative mx-auto grid max-w-7xl items-center px-4 sm:px-6 lg:max-w-[90rem] lg:grid-cols-2 lg:gap-10 lg:px-10 xl:px-12">
           <div className="relative flex flex-col items-center py-12 text-center sm:py-16 lg:items-start lg:py-20 lg:text-left">
             <div
               aria-hidden="true"

@@ -14,16 +14,23 @@ import type { NextConfig } from "next";
  * Local `next dev` / `next build` stay at the site root unless GITHUB_PAGES=true.
  */
 const pagesBasePath =
-  process.env.GITHUB_PAGES === "true" ? "/Umodzi-Impact-Website" : undefined;
+  process.env.GITHUB_PAGES === "true" ? "/Umodzi-Impact-Website" : "";
 
 const nextConfig: NextConfig = {
   output: "export",
   trailingSlash: true,
+  // Public folder URLs are not rewritten by basePath; Image + withBasePath use this.
+  env: {
+    NEXT_PUBLIC_BASE_PATH: pagesBasePath,
+  },
   ...(pagesBasePath
     ? { basePath: pagesBasePath, assetPrefix: pagesBasePath }
     : {}),
   images: {
-    unoptimized: true,
+    // Custom loader prefixes /photos and /brand for GitHub Pages (unoptimized
+    // alone skips basePath — see vercel/next.js#68498).
+    loader: "custom",
+    loaderFile: "./lib/image-loader.ts",
   },
   turbopack: {
     rules: {

@@ -94,12 +94,6 @@ export function AboutIntro({
           </div>
         </div>
       </div>
-
-      {/* Soft handoff into the light Mission section */}
-      {/* <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-x-0 bottom-0 h-20 bg-gradient-to-b from-transparent to-mist sm:h-24"
-      /> */}
     </section>
   );
 }

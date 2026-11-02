@@ -46,6 +46,40 @@ export const galleryPage = {
     "Tell us your group size and vibe—we will shape a day that feels this alive.",
 } as const;
 
+export const aboutPage = {
+  brandLabel: "Umodzi Impact",
+  stamp: "Who we are",
+  photoStamp: "Out in the field",
+  title: "About",
+  headlineLead: "We build teams.",
+  headlinePunch: "That enjoy the work.",
+  lede: "A Malawi-based team-building crew helping organisations connect, collaborate, and grow—outdoors and on purpose.",
+  heroPrimary: { href: "#mission-heading", label: "See our purpose →" },
+  heroSecondary: { href: "/contact", label: "Or start a brief" },
+  purposeStamp: "Purpose and ambition",
+  purposeTitle: "Why we show up.",
+  purposeLede: "Clear commitments—kept short so the work stays front and centre.",
+  missionStamp: "Mission",
+  visionStamp: "Vision",
+  valuesStamp: "What guides us",
+  valuesTitle: "Values we actually use.",
+  valuesLede: "The habits behind every session—from integrity to good vibes.",
+  approachStamp: "How we work",
+  approachTitle: "Beyond a day of games.",
+  approachLede:
+    "Connection, collaboration, fun, reflection, and purposeful learning—woven into every experience.",
+  approachAction: "See the approach on Home →",
+  approachSecondary: "Or peek real days",
+  closingStamp: "Work with us",
+  closingTitleLead: "Ready to shape a day",
+  closingTitlePunch: "with your crew?",
+  closingLede:
+    "Tell us your group size and vibe—we'll shape a team experience that feels this alive.",
+  closingPhotoStamp: "Your team next",
+  closingPrimary: { href: "/contact", label: "Start a brief →" },
+  closingSecondary: { href: "/packages", label: "Or explore packages" },
+} as const;
+
 export const experiencesPage = {
   brandLabel: "Umodzi Impact",
   stamp: "Field stories",

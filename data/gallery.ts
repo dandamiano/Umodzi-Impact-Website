@@ -616,6 +616,14 @@ export const aboutHeroPhoto = galleryItems.find(
   (item) => item.src === "/photos/IMG_9289.jpg",
 );
 
+export const aboutSupportPhoto = galleryItems.find(
+  (item) => item.src === "/photos/IMG_2510.jpg",
+);
+
+export const aboutClosingPhoto =
+  galleryItems.find((item) => item.src === "/photos/IMG_9447.jpg") ??
+  aboutHeroPhoto;
+
 /** Edge-to-edge scrapbook strip on the gallery hero. */
 export const galleryHeroCollage = [
   "/photos/IMG_9447.jpg",

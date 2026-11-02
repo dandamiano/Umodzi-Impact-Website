@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { Container } from "@/components/ui/Container";
+import { aboutPage } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 
 type MissionVisionProps = {
@@ -65,92 +66,84 @@ export function MissionVision({
       data-enhanced={enhanced ? "true" : "false"}
       data-visible={visible ? "true" : "false"}
       className={cn(
-        "mission-vision relative isolate overflow-hidden bg-mist py-16 sm:py-20 lg:py-24",
+        "mission-vision relative z-0 isolate -mt-px overflow-x-clip bg-mist pt-20 pb-14 sm:pt-24 sm:pb-16 lg:pb-20",
         enhanced && "is-enhanced",
         visible && "is-visible",
       )}
     >
-      <div
-        aria-hidden="true"
-        className="home-dots pointer-events-none absolute top-8 right-6 hidden h-28 w-32 opacity-30 sm:block"
-      />
-      <div
-        aria-hidden="true"
-        className="mission-vision-orb pointer-events-none absolute -right-10 top-12 size-40 rounded-full border border-brand-teal/20 sm:size-52"
-      />
-      <div
-        aria-hidden="true"
-        className="mission-vision-orb-delay pointer-events-none absolute right-16 top-28 size-24 rounded-full border border-brand-orange/30 sm:size-28"
-      />
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0">
+        <div className="home-dots absolute inset-0 opacity-[0.14]" />
+        <span className="absolute top-16 right-[14%] size-2.5 rotate-12 bg-brand-orange/50" />
+        <span className="absolute bottom-24 left-[10%] size-8 -rotate-6 rounded-full border border-brand-teal/20" />
+      </div>
 
       <Container className="relative">
-        <div className="mission-vision-lead mb-10 max-w-xl sm:mb-12">
+        <div className="mission-vision-lead mb-8 max-w-xl sm:mb-10">
           <span
-            className="mission-vision-draw mb-4 block h-1 w-12 bg-brand-orange"
+            className="gallery-stamp mb-4 inline-block rotate-[-6deg] border border-brand-orange/70 px-2.5 py-1 font-display text-[0.65rem] font-semibold tracking-[0.16em] text-brand-orange uppercase"
             aria-hidden="true"
-          />
-          <p className="font-display text-xs font-medium tracking-[0.18em] text-brand-teal uppercase">
-            Purpose and ambition
+          >
+            {aboutPage.purposeStamp}
+          </span>
+          <h2 className="font-display text-3xl font-medium tracking-tight text-brand-navy sm:text-4xl">
+            {aboutPage.purposeTitle}
+          </h2>
+          <p className="mt-3 max-w-lg font-serif text-xl leading-snug text-brand-navy/75 sm:text-2xl">
+            {aboutPage.purposeLede}
           </p>
         </div>
 
         <div className="grid gap-6 lg:grid-cols-2 lg:gap-8">
-          <article className="mission-vision-panel group relative overflow-hidden rounded-[1.5rem] border border-brand-navy/10 bg-paper p-6 shadow-soft sm:p-8">
-            <div
+          <article className="mission-vision-panel group relative overflow-hidden bg-wash-orange/85 p-6 sm:p-8">
+            <span
+              className="gallery-tape absolute -top-1 left-[22%] z-10 h-2.5 w-12 -rotate-6"
               aria-hidden="true"
-              className="pointer-events-none absolute -top-10 -right-8 size-28 rounded-full bg-brand-orange/10"
             />
-            <div
+            <span
+              className="absolute inset-x-0 top-0 h-1 bg-brand-orange"
               aria-hidden="true"
-              className="absolute inset-y-0 left-0 w-1 bg-brand-orange"
             />
-            <div className="relative pl-2">
-              <p className="font-display text-xs font-medium tracking-[0.16em] text-brand-teal uppercase">
-                <span className="tabular-nums text-brand-orange" aria-hidden="true">
-                  01
-                </span>
-                <span aria-hidden="true" className="mx-2 text-brand-navy/25">
-                  ·
-                </span>
-                Purpose
-              </p>
-              <h2
+            <div className="relative">
+              <span
+                className="gallery-stamp inline-block rotate-[-4deg] border border-brand-orange/70 px-2.5 py-1 font-display text-[0.65rem] font-semibold tracking-[0.16em] text-brand-orange uppercase"
+                aria-hidden="true"
+              >
+                {aboutPage.missionStamp}
+              </span>
+              <h3
                 id={missionId}
-                className="mt-3 font-display text-2xl font-medium tracking-tight text-brand-navy sm:text-3xl"
+                className="mt-4 scroll-mt-28 font-display text-2xl font-medium tracking-tight text-brand-navy sm:text-3xl"
               >
                 Mission
-              </h2>
+              </h3>
               <p className="mt-4 max-w-md font-serif text-xl leading-relaxed text-brand-navy sm:text-2xl">
                 {mission}
               </p>
             </div>
           </article>
 
-          <article className="mission-vision-panel mission-vision-panel-delay group relative overflow-hidden rounded-[1.5rem] border border-brand-teal/15 bg-brand-teal/[0.06] p-6 sm:p-8">
-            <div
+          <article className="mission-vision-panel mission-vision-panel-delay group relative overflow-hidden bg-wash-teal/80 p-6 sm:p-8">
+            <span
+              className="gallery-tape absolute -top-1 right-[18%] z-10 h-2.5 w-12 rotate-[8deg]"
               aria-hidden="true"
-              className="pointer-events-none absolute -bottom-12 -left-10 size-32 rounded-full bg-brand-teal/10"
             />
-            <div
+            <span
+              className="absolute inset-x-0 top-0 h-1 bg-brand-teal"
               aria-hidden="true"
-              className="absolute inset-y-0 left-0 w-1 bg-brand-teal"
             />
-            <div className="relative pl-2">
-              <p className="font-display text-xs font-medium tracking-[0.16em] text-brand-teal uppercase">
-                <span className="tabular-nums text-brand-orange" aria-hidden="true">
-                  02
-                </span>
-                <span aria-hidden="true" className="mx-2 text-brand-navy/25">
-                  ·
-                </span>
-                Ambition
-              </p>
-              <h2
+            <div className="relative">
+              <span
+                className="gallery-stamp inline-block rotate-[4deg] border border-brand-teal/50 px-2.5 py-1 font-display text-[0.65rem] font-semibold tracking-[0.16em] text-brand-teal uppercase"
+                aria-hidden="true"
+              >
+                {aboutPage.visionStamp}
+              </span>
+              <h3
                 id={visionId}
-                className="mt-3 font-display text-2xl font-medium tracking-tight text-brand-navy sm:text-3xl"
+                className="mt-4 scroll-mt-28 font-display text-2xl font-medium tracking-tight text-brand-navy sm:text-3xl"
               >
                 Vision
-              </h2>
+              </h3>
               <p className="mt-4 max-w-md font-serif text-xl leading-relaxed text-brand-navy sm:text-2xl">
                 {vision}
               </p>

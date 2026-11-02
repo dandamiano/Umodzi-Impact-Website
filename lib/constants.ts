@@ -71,6 +71,30 @@ export const experiencesPage = {
   closingPhotoStamp: "Next up: your crew",
 } as const;
 
+export const packagesPage = {
+  brandLabel: "Umodzi Impact",
+  stamp: "Pick your depth",
+  photoStamp: "Four steps. One pathway.",
+  title: "Packages",
+  headlineLead: "Short session.",
+  headlinePunch: "Or full retreat.",
+  lede: "Four experiences on one pathway—from a quick connect to a customised leadership day.",
+  heroPrimary: { href: "#pathway", label: "See the pathway →" },
+  heroSecondary: { href: "/contact", label: "Or start a brief" },
+  pathwayStamp: "The trail",
+  pathwayTitle: "Choose how deep you go.",
+  pathwayLede:
+    "Each step builds on the last. Jump in where your team is—or climb the whole trail.",
+  closingStamp: "Not sure yet?",
+  closingTitleLead: "Tell us your crew.",
+  closingTitlePunch: "We'll point the way.",
+  closingLede:
+    "Group size, vibe, and what you want unlocked—enough for us to recommend a step.",
+  closingPhotoStamp: "Your next chapter",
+  closingPrimary: { href: "/contact", label: "Start a brief →" },
+  closingSecondary: { href: "/experiences", label: "Or peek real days" },
+} as const;
+
 export const contactPage = {
   title: "Contact",
   brandLabel: "Umodzi Impact",

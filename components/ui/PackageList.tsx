@@ -21,15 +21,16 @@ export function PackageList({
   return (
     <div>
       {showPathway ? <PackagePathway items={items} trackActive /> : null}
-      <ul className="mt-10 grid items-stretch gap-6 lg:grid-cols-2">
-        {items.map((item) => (
+      <ul className="mt-10 grid items-stretch gap-6 lg:grid-cols-2 lg:gap-7">
+        {items.map((item, index) => (
           <li
             key={item.id}
             id={item.id}
             className={cn(
-              "scroll-mt-28",
+              "home-rise scroll-mt-28",
               item.tier === "featured" && "lg:relative lg:z-10",
             )}
+            style={{ animationDelay: `${80 + index * 70}ms` }}
           >
             <PackageCard
               id={item.id}

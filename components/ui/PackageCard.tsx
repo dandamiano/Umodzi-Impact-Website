@@ -28,11 +28,17 @@ type PackageCardProps = {
 };
 
 const tierShell: Record<PackageTier, string> = {
-  light: "border border-dashed border-brand-navy/25 bg-paper",
-  standard: "border border-brand-navy/15 bg-paper shadow-soft",
-  featured:
-    "border border-brand-teal/40 bg-paper shadow-soft ring-1 ring-brand-teal/20 sm:p-8",
-  executive: "border border-brand-navy bg-brand-navy text-white shadow-soft",
+  light: "bg-paper ring-1 ring-brand-navy/12",
+  standard: "bg-wash-teal/55 ring-1 ring-brand-teal/20",
+  featured: "bg-wash-orange/80 ring-1 ring-brand-orange/35 sm:p-8",
+  executive: "bg-brand-navy text-white ring-1 ring-brand-navy",
+};
+
+const tierTilt: Record<PackageTier, string> = {
+  light: "motion-safe:hover:-rotate-1",
+  standard: "motion-safe:hover:rotate-1",
+  featured: "motion-safe:hover:-rotate-1",
+  executive: "motion-safe:hover:rotate-1",
 };
 
 function ctaVariant(tier: PackageTier): "primary" | "secondary" | "inverse" {
@@ -63,7 +69,7 @@ export function PackageCard({
   const Title = as;
   const isExecutive = tier === "executive";
   const isFeatured = tier === "featured";
-  const muted = isExecutive ? "text-white/75" : "text-brand-teal";
+  const muted = isExecutive ? "text-white/75" : "text-brand-navy/65";
   const body = isExecutive ? "text-white/90" : "text-brand-navy";
   const resolvedDetails =
     detailsHref ?? (id && variant === "preview" ? `/packages#${id}` : undefined);
@@ -71,14 +77,27 @@ export function PackageCard({
   return (
     <article
       className={cn(
-        "relative flex h-full flex-col overflow-hidden rounded-2xl p-6 sm:p-7",
+        "relative flex h-full flex-col overflow-hidden p-6 sm:p-7",
+        "motion-safe:transition-transform motion-safe:duration-300",
         tierShell[tier],
+        tierTilt[tier],
         isFeatured && "lg:-translate-y-1",
         className,
       )}
     >
       <span
-        className="absolute inset-x-0 top-0 z-[1] h-1 bg-brand-orange"
+        className={cn(
+          "gallery-tape absolute -top-1 z-20 h-2.5 w-12",
+          isFeatured || isExecutive ? "left-[22%] -rotate-6" : "right-[18%] rotate-[8deg]",
+        )}
+        aria-hidden="true"
+      />
+
+      <span
+        className={cn(
+          "absolute inset-x-0 top-0 z-[1] h-1",
+          isExecutive ? "bg-brand-orange" : "bg-brand-orange/90",
+        )}
         aria-hidden="true"
       />
 
@@ -98,21 +117,28 @@ export function PackageCard({
       {isFeatured ? (
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute -right-10 -top-10 size-36 rounded-full bg-brand-teal/8"
+          className="pointer-events-none absolute -right-10 -top-10 size-36 rounded-full bg-brand-orange/15"
         />
       ) : null}
 
       <div className="relative z-[1] flex items-start justify-between gap-3">
-        <span className="font-display text-xs font-semibold tracking-[0.22em] text-brand-orange">
-          {String(step).padStart(2, "0")}
+        <span
+          className={cn(
+            "gallery-stamp inline-flex items-center border px-2 py-0.5 font-display text-[0.65rem] font-semibold tracking-[0.18em] uppercase",
+            isExecutive
+              ? "border-brand-orange/80 text-brand-orange"
+              : "border-brand-orange/70 text-brand-orange",
+          )}
+        >
+          Step {String(step).padStart(2, "0")}
         </span>
         {badge ? (
           <span
             className={cn(
-              "rounded-md px-2.5 py-1 text-[0.7rem] font-medium tracking-wide uppercase",
+              "gallery-stamp rotate-[4deg] border px-2.5 py-1 text-[0.65rem] font-semibold tracking-[0.14em] uppercase",
               isExecutive
-                ? "bg-white/10 text-white"
-                : "bg-brand-teal/10 text-brand-teal",
+                ? "border-white/35 bg-white/10 text-white"
+                : "border-brand-navy/20 bg-paper text-brand-navy",
             )}
           >
             {badge}
@@ -126,8 +152,10 @@ export function PackageCard({
 
       <p
         className={cn(
-          "relative z-[1] mt-3 inline-flex w-fit rounded-md px-2.5 py-1 text-xs font-medium",
-          isExecutive ? "bg-white/10 text-white" : "bg-brand-teal/8 text-brand-teal",
+          "relative z-[1] mt-3 inline-flex w-fit border border-dashed px-2.5 py-1 text-xs font-medium",
+          isExecutive
+            ? "border-white/30 text-white/85"
+            : "border-brand-teal/35 text-brand-teal",
         )}
       >
         {duration}
@@ -137,13 +165,19 @@ export function PackageCard({
         {outcome}
       </p>
 
-      {variant === "preview" && summary ? (
-        <p className={cn("relative z-[1] mt-3 line-clamp-3 text-sm leading-relaxed", muted)}>
+      {summary && (variant === "full" || variant === "preview") ? (
+        <p
+          className={cn(
+            "relative z-[1] mt-3 text-sm leading-relaxed",
+            variant === "preview" && "line-clamp-3",
+            muted,
+          )}
+        >
           {summary}
         </p>
       ) : null}
 
-      {variant === "preview" && idealFor ? (
+      {idealFor ? (
         <p className={cn("relative z-[1] mt-4 text-sm leading-relaxed", muted)}>
           <span className={cn("font-medium", body)}>Ideal for </span>
           {idealFor}

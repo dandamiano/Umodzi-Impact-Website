@@ -79,27 +79,27 @@ export function PackagePathway({
                 href={basePath ? `${basePath}#${item.id}` : `#${item.id}`}
                 aria-current={isActive ? "true" : undefined}
                 className={cn(
-                  "group inline-flex items-center gap-2 rounded-md outline-offset-4 motion-safe:transition-colors",
+                  "group inline-flex items-center gap-2 outline-offset-4 motion-safe:transition-colors",
                   "focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand-teal",
-                  isFeatured && !isActive && "text-brand-teal",
-                  isExecutive && !isActive && "text-brand-navy",
                   isActive && "text-brand-teal",
+                  !isActive && isFeatured && "text-brand-teal",
+                  !isActive && isExecutive && "text-brand-navy",
                 )}
               >
                 <span
                   className={cn(
-                    "flex size-8 items-center justify-center rounded-full border text-xs font-semibold tracking-wide motion-safe:transition-colors motion-safe:duration-300",
+                    "gallery-stamp flex size-9 items-center justify-center border font-display text-[0.65rem] font-semibold tracking-[0.12em] motion-safe:transition-colors motion-safe:duration-300",
                     isActive
                       ? "border-brand-teal bg-brand-teal text-white shadow-[0_0_0_4px_color-mix(in_srgb,var(--color-brand-teal)_18%,transparent)]"
                       : trackActive && isFeatured
-                        ? "border-brand-teal bg-paper text-brand-teal"
+                        ? "border-brand-orange/70 bg-wash-orange text-brand-orange"
                         : trackActive && isExecutive
-                          ? "border-brand-navy bg-paper text-brand-navy"
+                          ? "border-brand-navy bg-brand-navy text-white"
                           : isFeatured
-                            ? "border-brand-teal bg-brand-teal text-white"
+                            ? "border-brand-orange/70 bg-wash-orange text-brand-orange"
                             : isExecutive
                               ? "border-brand-navy bg-brand-navy text-white"
-                              : "border-brand-navy/20 bg-paper text-brand-navy group-hover:border-brand-teal group-hover:text-brand-teal",
+                              : "border-brand-navy/25 bg-paper text-brand-navy group-hover:border-brand-teal group-hover:text-brand-teal",
                   )}
                 >
                   {String(item.step).padStart(2, "0")}
@@ -110,12 +110,19 @@ export function PackagePathway({
               </Link>
               {index < items.length - 1 ? (
                 <span
-                  className={cn(
-                    "h-px w-6 shrink-0 bg-brand-navy/20 motion-safe:transition-colors sm:w-8",
-                    isActive && "bg-brand-teal/45",
-                  )}
+                  className="relative flex w-6 shrink-0 items-center sm:w-8"
                   aria-hidden="true"
-                />
+                >
+                  <span
+                    className={cn(
+                      "h-px w-full border-t border-dashed motion-safe:transition-colors",
+                      isActive
+                        ? "border-brand-teal/55"
+                        : "border-brand-orange/45",
+                    )}
+                  />
+                  <span className="absolute right-0 size-1.5 rotate-45 bg-brand-orange/70" />
+                </span>
               ) : null}
             </li>
           );

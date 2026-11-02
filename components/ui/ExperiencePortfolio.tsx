@@ -101,7 +101,7 @@ function ExperiencesHero({
         <span className="absolute top-[22%] left-[5%] hidden size-9 -rotate-12 border border-white/20 sm:block" />
       </div>
 
-      <Container className="relative z-10 pt-12 pb-5 sm:pt-14 sm:pb-6 lg:pt-16 lg:pb-7">
+      <Container className="relative z-40 pt-12 pb-5 sm:pt-14 sm:pb-6 lg:pt-16 lg:pb-7">
         <div className="flex flex-col gap-8 sm:grid sm:grid-cols-[minmax(0,1.1fr)_minmax(12rem,0.9fr)] sm:items-center sm:gap-4 lg:gap-8">
           <header className="home-rise relative order-1 min-w-0 sm:pt-2 lg:pt-3">
             <div className="flex flex-wrap items-center gap-2 sm:gap-3">
@@ -146,7 +146,7 @@ function ExperiencesHero({
           {photo ? (
             <div
               aria-hidden="true"
-              className="gallery-rise relative order-2 z-30 mx-auto mb-[-3rem] w-[13.5rem] sm:mb-[-5.5rem] sm:w-[16rem] sm:justify-self-center lg:mb-[-7rem] lg:w-[17.5rem]"
+              className="gallery-rise relative order-2 mx-auto mb-[-3rem] w-[13.5rem] sm:mb-[-5.5rem] sm:w-[16rem] sm:justify-self-center lg:mb-[-7rem] lg:w-[17.5rem]"
             >
               <div className="relative -rotate-2 sm:translate-y-2 lg:translate-y-3">
                 <div className="absolute -inset-4 rounded-[2rem] bg-[radial-gradient(circle_at_50%_40%,color-mix(in_srgb,var(--color-brand-teal)_40%,transparent),transparent_70%)] opacity-90" />
@@ -177,7 +177,8 @@ function ExperiencesHero({
         </div>
       </Container>
 
-      <div className="relative z-30 -mb-px" aria-hidden="true">
+      {/* Tear sits under the main polaroid; crest + second photo sit above the tear */}
+      <div className="relative z-20 -mb-px" aria-hidden="true">
         <div className="absolute inset-x-0 bottom-0 h-2 bg-brand-orange" />
 
         <svg
@@ -191,8 +192,7 @@ function ExperiencesHero({
           />
         </svg>
 
-        {/* Crest badge on the seam */}
-        <div className="pointer-events-none absolute bottom-0 left-[12%] z-40 -translate-y-[-35%] sm:left-[18%] lg:left-1/2 lg:-translate-x-1/2 lg:translate-y-[42%]">
+        <div className="pointer-events-none absolute bottom-0 left-[12%] z-30 translate-y-[35%] sm:left-[18%] lg:left-[42%] lg:translate-y-[42%]">
           <div className="relative -rotate-2">
             <span className="gallery-tape absolute -top-1 left-1/2 z-10 h-2.5 w-10 -translate-x-1/2 rotate-[-4deg]" />
             <div className="relative border-2 border-brand-navy bg-paper px-3.5 py-2 shadow-[0_12px_28px_rgb(49_65_114/0.2)] sm:px-4 sm:py-2.5">
@@ -204,24 +204,26 @@ function ExperiencesHero({
             <span className="absolute -right-1.5 -bottom-1.5 size-2 rotate-12 bg-brand-orange" />
           </div>
         </div>
+      </div>
 
-        {/* Second photo sits on the tear margin */}
-        {support ? (
-          <div className="pointer-events-none absolute right-[6%] bottom-0 z-40 w-[6.5rem] translate-y-[45%] sm:right-[10%] sm:w-[7.75rem] lg:right-[12%] lg:w-[8.5rem] lg:translate-y-[48%]">
-            <div className="gallery-polaroid relative rotate-3 border border-brand-navy/10 bg-paper p-1.5 pb-4 shadow-[0_16px_32px_rgb(0_0_0/0.28)] sm:p-2 sm:pb-5">
-              <span className="gallery-tape absolute -top-1 left-2 z-10 -rotate-6 scale-90" />
-              <span className="gallery-tape absolute -top-0.5 right-2 z-10 rotate-6 scale-75 opacity-90" />
-              <div className="overflow-hidden bg-mist ring-1 ring-brand-navy/10">
-                <GalleryImage
-                  image={support}
-                  sizes="(min-width: 1024px) 10vw, 22vw"
-                  className="aspect-[4/5] h-auto w-full object-cover"
-                />
-              </div>
+      {support ? (
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute right-[6%] bottom-0 z-50 w-[6.5rem] translate-y-[45%] sm:right-[10%] sm:w-[7.75rem] lg:right-[12%] lg:w-[8.5rem] lg:translate-y-[48%]"
+        >
+          <div className="gallery-polaroid relative rotate-3 border border-brand-navy/10 bg-paper p-1.5 pb-4 shadow-[0_16px_32px_rgb(0_0_0/0.28)] sm:p-2 sm:pb-5">
+            <span className="gallery-tape absolute -top-1 left-2 z-10 -rotate-6 scale-90" />
+            <span className="gallery-tape absolute -top-0.5 right-2 z-10 rotate-6 scale-75 opacity-90" />
+            <div className="overflow-hidden bg-mist ring-1 ring-brand-navy/10">
+              <GalleryImage
+                image={support}
+                sizes="(min-width: 1024px) 10vw, 22vw"
+                className="aspect-[4/5] h-auto w-full object-cover"
+              />
             </div>
           </div>
-        ) : null}
-      </div>
+        </div>
+      ) : null}
     </section>
   );
 }

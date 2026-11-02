@@ -86,3 +86,11 @@ export const homepageServiceGroups = serviceGroups;
 export const servicesHeroPhoto: GalleryItem | undefined = galleryItems.find(
   (photo) => photo.src === "/photos/IMG_2536.jpg",
 );
+
+export const servicesSupportPhoto: GalleryItem | undefined = galleryItems.find(
+  (photo) => photo.src === "/photos/IMG_2553.jpg",
+);
+
+export const servicesClosingPhoto: GalleryItem | undefined =
+  galleryItems.find((photo) => photo.src === "/photos/IMG_9769.jpg") ??
+  servicesHeroPhoto;

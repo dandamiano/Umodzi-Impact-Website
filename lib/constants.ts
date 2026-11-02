@@ -71,6 +71,35 @@ export const experiencesPage = {
   closingPhotoStamp: "Next up: your crew",
 } as const;
 
+export const servicesPage = {
+  brandLabel: "Umodzi Impact",
+  stamp: "What we deliver",
+  photoStamp: "Built for real teams",
+  title: "Services",
+  headlineLead: "Assemble the day.",
+  headlinePunch: "Your way.",
+  lede: "Facilitation, logistics, and capture—mix the modules your programme needs.",
+  heroPrimary: { href: "#pathways", label: "Browse pathways →" },
+  heroSecondary: { href: "/contact", label: "Or start a brief" },
+  pathwayStamp: "The toolkit",
+  pathwayTitle: "Three pathways. Plenty of pieces.",
+  pathwayLede:
+    "Jump into design & facilitation, logistics, or brand & capture—or pull from all three.",
+  bridgeStamp: "Ready-made?",
+  bridgeTitle: "Prefer a clear sequence?",
+  bridgeLede:
+    "Packages combine these services into a pathway—from a short session to a leadership retreat.",
+  bridgeAction: "Explore packages →",
+  closingStamp: "Let's build it",
+  closingTitleLead: "Tell us which pieces",
+  closingTitlePunch: "you need.",
+  closingLede:
+    "We'll shape a clear next step—full retreat or just the modules that matter.",
+  closingPhotoStamp: "Your programme starts here",
+  closingPrimary: { href: "/contact", label: "Start a brief →" },
+  closingSecondary: { href: "/packages", label: "Or view packages" },
+} as const;
+
 export const packagesPage = {
   brandLabel: "Umodzi Impact",
   stamp: "Pick your depth",

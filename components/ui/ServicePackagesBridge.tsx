@@ -3,6 +3,7 @@
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
+import { servicesPage } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 
 type ServicePackagesBridgeProps = {
@@ -68,30 +69,40 @@ export function ServicePackagesBridge({
     <div
       ref={bridgeRef}
       className={cn(
-        "service-packages-bridge mt-16 border-t border-brand-navy/15 pt-10 sm:mt-20",
+        "service-packages-bridge relative mt-14 overflow-hidden bg-wash-orange/80 p-6 sm:mt-16 sm:p-8",
         enhanced && "is-enhanced",
         visible && "is-visible",
       )}
     >
-      <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between sm:gap-8">
-        <div className="service-packages-bridge-copy">
+      <span
+        className="gallery-tape absolute -top-1 left-[20%] z-10 h-2.5 w-12 -rotate-6"
+        aria-hidden="true"
+      />
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0">
+        <div className="home-dots absolute inset-0 opacity-[0.18]" />
+        <span className="absolute top-5 right-[12%] size-2 rotate-12 bg-brand-navy/20" />
+      </div>
+
+      <div className="relative flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between sm:gap-8">
+        <div className="service-packages-bridge-copy max-w-xl">
           <span
-            className="service-packages-bridge-draw mb-3 block h-1 w-10 bg-brand-orange"
+            className="gallery-stamp mb-3 inline-block rotate-[-5deg] border border-brand-navy/25 bg-paper px-2.5 py-1 font-display text-[0.65rem] font-semibold tracking-[0.16em] text-brand-navy uppercase"
             aria-hidden="true"
-          />
-          <p className="font-display text-lg font-medium tracking-tight sm:text-xl">
-            Prefer a ready-made pathway?
+          >
+            {servicesPage.bridgeStamp}
+          </span>
+          <p className="font-display text-lg font-medium tracking-tight text-brand-navy sm:text-xl">
+            {servicesPage.bridgeTitle}
           </p>
           <p className="mt-2 max-w-md text-sm leading-relaxed text-brand-navy/70">
-            Packages combine these services into a clear sequence—from a short
-            session to a leadership retreat.
+            {servicesPage.bridgeLede}
           </p>
         </div>
         <Link
           href={href}
-          className="service-packages-bridge-action group inline-flex min-h-11 shrink-0 items-center gap-2 font-display text-sm font-medium text-brand-navy motion-safe:transition-colors hover:text-brand-teal"
+          className="service-packages-bridge-action group inline-flex min-h-11 shrink-0 items-center gap-2 font-display text-sm font-medium text-brand-navy underline decoration-brand-orange/70 underline-offset-4 motion-safe:transition-colors hover:text-brand-teal"
         >
-          View packages
+          {servicesPage.bridgeAction}
           <ArrowRight
             aria-hidden="true"
             className="size-4 motion-safe:transition-transform motion-safe:duration-300 group-hover:translate-x-1"

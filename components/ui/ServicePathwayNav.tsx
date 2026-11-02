@@ -54,51 +54,61 @@ export function ServicePathwayNav({ groups }: ServicePathwayNavProps) {
   return (
     <nav
       aria-label="Service pathways"
-      className="home-rise mt-12 lg:mt-14"
-      style={{ animationDelay: "160ms" }}
+      className="home-rise mt-8"
+      style={{ animationDelay: "80ms" }}
     >
-      <ul className="flex flex-wrap gap-x-6 gap-y-3 border-t border-brand-navy/15 pt-6">
+      <ol className="flex items-center gap-x-2 gap-y-3 overflow-x-auto pb-1 [-ms-overflow-style:none] [scrollbar-width:none] sm:flex-wrap sm:overflow-visible sm:pb-0 [&::-webkit-scrollbar]:hidden">
         {groups.map((group, index) => {
           const isActive = activeId === group.id;
 
           return (
-            <li key={group.id}>
+            <li
+              key={group.id}
+              className="flex shrink-0 snap-start items-center gap-2 sm:gap-3"
+            >
               <a
                 href={`#${group.id}`}
                 aria-current={isActive ? "true" : undefined}
                 className={cn(
-                  "group relative inline-flex items-baseline gap-2 pb-1 font-display text-sm font-medium tracking-tight motion-safe:transition-colors motion-safe:duration-300",
-                  isActive
-                    ? "text-brand-teal"
-                    : "text-brand-navy hover:text-brand-teal",
+                  "group inline-flex items-center gap-2 outline-offset-4 motion-safe:transition-colors",
+                  "focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand-teal",
+                  isActive ? "text-brand-teal" : "text-brand-navy",
                 )}
               >
                 <span
-                  aria-hidden="true"
                   className={cn(
-                    "tabular-nums motion-safe:transition-colors motion-safe:duration-300",
+                    "gallery-stamp flex size-9 items-center justify-center border font-display text-[0.65rem] font-semibold tracking-[0.12em] motion-safe:transition-colors motion-safe:duration-300",
                     isActive
-                      ? "text-brand-orange"
-                      : "text-brand-orange/80 group-hover:text-brand-orange",
+                      ? "border-brand-teal bg-brand-teal text-white shadow-[0_0_0_4px_color-mix(in_srgb,var(--color-brand-teal)_18%,transparent)]"
+                      : "border-brand-navy/25 bg-paper text-brand-navy group-hover:border-brand-teal group-hover:text-brand-teal",
                   )}
                 >
                   {String(index + 1).padStart(2, "0")}
                 </span>
-                <span className="relative">
+                <span className="font-display text-sm font-medium tracking-tight group-hover:text-brand-teal">
                   {group.label}
-                  <span
-                    aria-hidden="true"
-                    className={cn(
-                      "pointer-events-none absolute inset-x-0 -bottom-0.5 h-px origin-left bg-brand-teal motion-safe:transition-transform motion-safe:duration-300 motion-safe:ease-[cubic-bezier(0.22,1,0.36,1)]",
-                      isActive ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100",
-                    )}
-                  />
                 </span>
               </a>
+              {index < groups.length - 1 ? (
+                <span
+                  className="relative flex w-6 shrink-0 items-center sm:w-8"
+                  aria-hidden="true"
+                >
+                  <span
+                    className={cn(
+                      "h-px w-full border-t border-dashed motion-safe:transition-colors",
+                      isActive
+                        ? "border-brand-teal/55"
+                        : "border-brand-orange/45",
+                    )}
+                  />
+                  <span className="absolute right-0 size-1.5 rotate-45 bg-brand-orange/70" />
+                </span>
+              ) : null}
             </li>
           );
         })}
-      </ul>
+      </ol>
     </nav>
   );
 }

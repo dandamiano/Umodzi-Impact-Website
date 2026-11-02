@@ -46,6 +46,31 @@ export const galleryPage = {
     "Tell us your group size and vibe—we will shape a day that feels this alive.",
 } as const;
 
+export const experiencesPage = {
+  brandLabel: "Umodzi Impact",
+  stamp: "Field stories",
+  photoStamp: "Approved to share",
+  title: "Experiences",
+  headlineLead: "Real teams.",
+  headlinePunch: "Real days.",
+  lede: "Programmes we can share—starting with Lessons in Conservation in Liwonde.",
+  caseStamp: "Case notes",
+  emptyStamp: "Coming soon",
+  emptyTitle: "More stories are on the way.",
+  emptyLede:
+    "We only publish client experiences with permission. Until then, peek the gallery or packages.",
+  themesLabel: "What we design around",
+  bridgeGallery: "Browse the gallery",
+  bridgePackages: "Explore packages",
+  closingStamp: "Your turn",
+  closingTitleLead: "Ready for a day",
+  closingTitlePunch: "like this?",
+  closingLede: "Tell us your group size and vibe—we'll shape the next chapter.",
+  closingPrimary: { href: "/contact", label: "Start a brief →" },
+  closingSecondary: { href: "/packages", label: "Or explore packages" },
+  closingPhotoStamp: "Next up: your crew",
+} as const;
+
 export const contactPage = {
   title: "Contact",
   brandLabel: "Umodzi Impact",

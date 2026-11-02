@@ -1,35 +1,36 @@
 import type { Metadata } from "next";
-import { CallToAction } from "@/components/ui/CallToAction";
 import { ExperiencePortfolio } from "@/components/ui/ExperiencePortfolio";
 import {
   experiencePortfolioThemes,
   experiencesBackgroundPhoto,
   publishedCaseStudies,
 } from "@/data/experiences";
-import { enquiryLink } from "@/lib/enquiry";
+import { galleryHeroCollage } from "@/data/gallery";
+import { experiencesPage } from "@/lib/constants";
 
 export const metadata: Metadata = {
-  title: "Experiences",
-  description: "Client experiences published with permission.",
+  title: experiencesPage.title,
+  description:
+    "Real team experiences from Umodzi Impact—starting with Lessons in Conservation in Liwonde National Park.",
 };
 
 export default function ExperiencesPage() {
+  const heroPhotos = [
+    publishedCaseStudies[0]?.photos?.lead,
+    galleryHeroCollage[0],
+  ].filter((photo): photo is NonNullable<typeof photo> => Boolean(photo));
+
+  const closingPhoto =
+    publishedCaseStudies[0]?.photos?.supports?.[0] ??
+    experiencesBackgroundPhoto ??
+    galleryHeroCollage[1];
+
   return (
-    <>
-      <ExperiencePortfolio
-        title="Experiences"
-        lede="Client programmes we can share—beginning with Lessons in Conservation in Liwonde."
-        studies={publishedCaseStudies}
-        themes={experiencePortfolioThemes}
-        backgroundPhoto={experiencesBackgroundPhoto}
-      />
-      <CallToAction
-        decorated
-        eyebrow="Plan with us"
-        title="Plan your own experience"
-        description="Enquire about a programme shaped around your group’s goals and size."
-        action={{ href: enquiryLink.href, label: "Start an enquiry" }}
-      />
-    </>
+    <ExperiencePortfolio
+      studies={publishedCaseStudies}
+      themes={experiencePortfolioThemes}
+      heroPhotos={heroPhotos}
+      closingPhoto={closingPhoto}
+    />
   );
 }

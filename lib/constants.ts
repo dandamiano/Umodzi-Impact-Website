@@ -12,6 +12,17 @@ export const site = {
   locale: "en",
 } as const;
 
+export const footer = {
+  punch: "Team days with laughs attached.",
+  cta: { href: "/contact", label: "Plan our day →" },
+  exploreStamp: "Map",
+  valuesStamp: "We stand for",
+  valuesAction: { href: "/about#values", label: "What guides us →" },
+  valueHighlights: ["Good Vibes", "Integrity", "Intentionality"] as const,
+  wink: "Blindfolds optional. Fun isn't.",
+  location: "Based in Malawi",
+} as const;
+
 export const homePage = {
   brandLabel: "Umodzi Impact",
   stamp: "Squad season",

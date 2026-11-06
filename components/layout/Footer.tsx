@@ -1,67 +1,48 @@
-import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { SiteLogo } from "@/components/layout/SiteLogo";
 import { Container } from "@/components/ui/Container";
 import { contactDetails, contactLinks, publishedSocialChannels } from "@/data/contact";
 import { availableNavigation } from "@/data/navigation";
-import { values } from "@/data/values";
-import { site } from "@/lib/constants";
-import { enquiryLink } from "@/lib/enquiry";
+import { footer, site } from "@/lib/constants";
 
 export function Footer() {
   const year = new Date().getFullYear();
   const contacts = contactLinks(contactDetails);
+  const exploreLinks = availableNavigation.filter((item) => item.href !== "/");
 
   return (
     <footer className="relative mt-auto overflow-hidden border-t border-brand-navy/10 bg-paper">
       <div className="h-1 bg-brand-orange" aria-hidden="true" />
 
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute -left-20 top-16 h-56 w-56 rounded-full border border-brand-teal/15"
-      />
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute -right-16 bottom-24 h-48 w-48 rounded-full bg-mist"
-      />
-      <div
-        aria-hidden="true"
-        className="home-dots pointer-events-none absolute top-12 right-8 hidden h-24 w-28 opacity-40 lg:block"
-      />
-
-      <Container className="relative grid gap-12 py-14 sm:py-16 lg:grid-cols-[minmax(0,1.35fr)_minmax(0,0.7fr)_minmax(0,1fr)] lg:gap-14">
-        <div className="max-w-md">
+      <Container className="relative grid gap-10 py-12 sm:gap-12 sm:py-14 lg:grid-cols-[minmax(0,1.4fr)_minmax(0,0.7fr)_minmax(0,0.9fr)] lg:gap-14">
+        <div className="max-w-sm">
           <SiteLogo size="footer" />
-          <p className="mt-2 font-display text-lg font-medium tracking-tight text-brand-navy">
+          <p className="mt-3 font-display text-base font-medium tracking-tight text-brand-navy">
             {site.wordmark}
           </p>
-          <span
-            className="mt-3 block h-1 w-10 bg-brand-orange"
-            aria-hidden="true"
-          />
-          <p className="mt-4 text-sm leading-relaxed text-brand-teal">
-            Malawi-based team building and experiential learning for
-            organisations, schools, and community groups.
+          <p className="mt-2 font-serif text-lg leading-snug text-brand-navy/75">
+            {footer.punch}
           </p>
 
           <Link
-            href={enquiryLink.href}
-            className="group mt-6 inline-flex min-h-11 items-center gap-2 font-display text-sm font-medium text-brand-navy hover:text-brand-teal"
+            href={footer.cta.href}
+            className="mt-5 inline-flex min-h-11 items-center font-display text-sm font-medium text-brand-navy underline decoration-brand-orange/80 underline-offset-4 motion-safe:transition-colors hover:text-brand-teal"
           >
-            Start an enquiry
-            <ArrowRight
-              aria-hidden="true"
-              className="size-4 motion-safe:transition-transform motion-safe:duration-300 group-hover:translate-x-1"
-            />
+            {footer.cta.label}
           </Link>
 
           {contacts.length > 0 ? (
-            <ul className="mt-6 space-y-2 border-t border-brand-navy/10 pt-5">
-              {contacts.map((item) => (
-                <li key={item.href}>
+            <ul className="mt-4 flex flex-wrap items-center gap-x-3 gap-y-1 border-t border-brand-navy/10 pt-3">
+              {contacts.map((item, index) => (
+                <li key={item.href} className="flex items-center gap-x-3">
+                  {index > 0 ? (
+                    <span aria-hidden="true" className="text-brand-orange/70">
+                      ·
+                    </span>
+                  ) : null}
                   <a
                     href={item.href}
-                    className="text-sm text-brand-navy underline-offset-4 hover:text-brand-teal hover:underline"
+                    className="text-sm text-brand-navy/70 underline-offset-4 hover:text-brand-teal hover:underline"
                   >
                     {item.label}
                   </a>
@@ -71,42 +52,23 @@ export function Footer() {
           ) : null}
 
           {contactDetails.address ? (
-            <p className="mt-4 text-sm leading-relaxed text-brand-teal">
+            <p className="mt-2 text-sm leading-relaxed text-brand-navy/60">
               {contactDetails.address}
             </p>
-          ) : null}
-
-          {publishedSocialChannels.length > 0 ? (
-            <ul className="mt-5 flex flex-wrap gap-x-5 gap-y-2">
-              {publishedSocialChannels.map((channel) => (
-                <li key={channel.id}>
-                  <a
-                    href={channel.href}
-                    className="text-sm font-medium text-brand-navy underline-offset-4 hover:text-brand-teal hover:underline"
-                  >
-                    {channel.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
           ) : null}
         </div>
 
         <nav aria-label="Footer">
-          <h2 className="font-display text-xs font-medium tracking-[0.16em] text-brand-teal uppercase">
-            Explore
+          <h2 className="font-display text-[0.65rem] font-semibold tracking-[0.16em] text-brand-orange uppercase">
+            {footer.exploreStamp}
           </h2>
-          <ul className="mt-4 space-y-2.5">
-            {availableNavigation.map((item) => (
+          <ul className="mt-3 space-y-2">
+            {exploreLinks.map((item) => (
               <li key={item.href}>
                 <Link
                   href={item.href}
-                  className="group inline-flex items-center gap-2 text-sm text-brand-navy hover:text-brand-teal"
+                  className="text-sm text-brand-navy motion-safe:transition-colors hover:text-brand-teal"
                 >
-                  <span
-                    aria-hidden="true"
-                    className="h-px w-0 bg-brand-orange motion-safe:transition-all motion-safe:duration-300 group-hover:w-3"
-                  />
                   {item.label}
                 </Link>
               </li>
@@ -115,32 +77,53 @@ export function Footer() {
         </nav>
 
         <div>
-          <h2 className="font-display text-xs font-medium tracking-[0.16em] text-brand-green uppercase">
-            Values
+          <h2 className="font-display text-[0.65rem] font-semibold tracking-[0.16em] text-brand-orange uppercase">
+            {footer.valuesStamp}
           </h2>
-          <ul className="mt-4 grid grid-cols-1 gap-x-6 gap-y-2.5 sm:grid-cols-2">
-            {values.map((value) => (
+          <ul className="mt-3 flex flex-wrap gap-2">
+            {footer.valueHighlights.map((name) => (
               <li
-                key={value.name}
-                className="flex items-start gap-2 text-sm text-brand-navy"
+                key={name}
+                className="border border-brand-navy/12 bg-wash-green/70 px-2.5 py-1 font-display text-xs font-medium text-brand-navy"
               >
-                <span
-                  aria-hidden="true"
-                  className="mt-1.5 size-1.5 shrink-0 rounded-full bg-brand-green"
-                />
-                {value.name}
+                {name}
               </li>
             ))}
           </ul>
+          <Link
+            href={footer.valuesAction.href}
+            className="mt-4 inline-flex text-sm font-medium text-brand-navy/65 underline-offset-4 hover:text-brand-teal hover:underline"
+          >
+            {footer.valuesAction.label}
+          </Link>
+
+          {publishedSocialChannels.length > 0 ? (
+            <ul className="mt-4 flex flex-wrap items-center gap-x-3 gap-y-1 border-t border-brand-navy/10 pt-3">
+              {publishedSocialChannels.map((channel) => (
+                <li key={channel.id}>
+                  <a
+                    href={channel.href}
+                    className="text-sm font-medium text-brand-navy/70 underline-offset-4 hover:text-brand-teal hover:underline"
+                  >
+                    {channel.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          ) : null}
         </div>
       </Container>
 
-      <div className="relative border-t border-brand-navy/10 bg-mist">
-        <Container className="flex flex-col gap-2 py-4 sm:flex-row sm:items-center sm:justify-between">
-          <p className="text-sm text-brand-teal">
-            © {year} {site.name}
+      <div className="border-t border-brand-navy/10 bg-mist">
+        <Container className="flex flex-col gap-1.5 py-3.5 sm:flex-row sm:items-center sm:justify-between">
+          <p className="text-sm text-brand-navy/65">
+            © {year} {site.wordmark}
+            <span aria-hidden="true" className="mx-2 text-brand-orange/80">
+              ·
+            </span>
+            <span className="text-brand-navy/55">{footer.location}</span>
           </p>
-          <p className="text-sm text-brand-teal/80">Based in Malawi</p>
+          <p className="font-serif text-sm text-brand-teal/80">{footer.wink}</p>
         </Container>
       </div>
     </footer>

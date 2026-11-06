@@ -9,6 +9,8 @@ type GalleryImageProps = {
   sizes: string;
   priority?: boolean;
   className?: string;
+  /** Hide descriptive alt when the image is purely decorative. */
+  decorative?: boolean;
 };
 
 export function GalleryImage({
@@ -16,6 +18,7 @@ export function GalleryImage({
   sizes,
   priority = false,
   className = "h-auto w-full",
+  decorative = false,
 }: GalleryImageProps) {
   const [missing, setMissing] = useState(false);
 
@@ -30,7 +33,7 @@ export function GalleryImage({
   return (
     <Image
       src={image.src}
-      alt={image.alt}
+      alt={decorative ? "" : image.alt}
       width={image.width}
       height={image.height}
       sizes={sizes}

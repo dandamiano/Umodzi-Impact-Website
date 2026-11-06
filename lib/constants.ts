@@ -13,18 +13,50 @@ export const site = {
 } as const;
 
 export const homePage = {
-  headline: "More than a day of games.",
-  lede: "Umodzi Impact is a Malawi-based professional team-building service provider.",
-  audienceTitle: "Who the work is for",
-  audienceLede: "Built for teams of many kinds.",
-  packagesLede:
-    "A clear pathway from a short session to a leadership retreat—choose the depth your team needs.",
-  servicesLede:
-    "Assemble a full retreat, or take only the modules your programme needs.",
-  approach:
-    "Meaningful team building goes beyond games. We combine connection, collaboration, fun, reflection, and purposeful learning to create experiences that teams can carry beyond the event.",
+  brandLabel: "Umodzi Impact",
+  stamp: "Squad season",
+  photoStamp: "Caught mid-laugh",
+  floatStampA: "Trust mode",
+  floatStampB: "Bring the chaos",
+  headlineLead: "Gather your crew.",
+  headlinePunch: "We'll spark the day.",
+  lede: "Circles, challenges, and loud laughter—team experiences for schools, orgs, NGOs, faith groups, and anyone ready to connect for real.",
+  heroPrimary: { href: "/contact", label: "Plan our day →" },
+  heroSecondary: { href: "/gallery", label: "Peek the chaos" },
+  audienceStamp: "The guest list",
+  audienceTitleLead: "Whoever you bring.",
+  audienceTitlePunch: "We run with it.",
+  audienceLede:
+    "Organisations, schools, youth crews, faith communities, families—if you've got people, we've got a day.",
+  audienceTitle: "Whoever you bring.",
+  packagesStamp: "Pick your depth",
+  packagesTitleLead: "Short spark.",
+  packagesTitlePunch: "Or full retreat.",
+  packagesLede: "Pick how deep the day goes—from a quick connect to a leadership reset.",
+  packagesAction: "Compare the trail →",
+  photographsStamp: "Field notes",
+  photographsTitleLead: "Proof we",
+  photographsTitlePunch: "had fun.",
   photographsLede:
-    "Moments of connection, collaboration, and outdoor learning from experiences across Malawi.",
+    "Circles, challenges, and quiet pauses—from experiences across Malawi.",
+  photographsAction: "Keep flipping →",
+  servicesStamp: "Toolkit",
+  servicesTitle: "Mix the pieces.",
+  servicesLede: "Facilitation, logistics, and capture—we'll run the day.",
+  servicesAction: "Open the toolkit →",
+  approachStamp: "How we work",
+  approachTitle: "Beyond games. On purpose.",
+  approachLede:
+    "Connection, collaboration, fun, reflection, and purposeful learning—woven into every experience.",
+  approachAction: { href: "/about", label: "Who we are →" },
+  closingStamp: "Your turn",
+  closingTitleLead: "Bring this energy",
+  closingTitlePunch: "to your team.",
+  closingLede:
+    "Tell us your group size and vibe—we'll shape a day that feels this alive.",
+  closingPhotoStamp: "Next up: you",
+  closingPrimary: { href: "/contact", label: "Start a brief →" },
+  closingSecondary: { href: "/packages", label: "Or peek packages" },
 } as const;
 
 export const galleryPage = {

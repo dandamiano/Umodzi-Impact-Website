@@ -589,9 +589,27 @@ export const galleryItems: readonly GalleryItem[] = [
   },
 ];
 
+/** Smiling trust-circle energy for the homepage hero. */
 export const heroPhoto = galleryItems.find(
-  (item) => item.src === "/photos/IMG_9447.jpg",
+  (item) => item.src === "/photos/IMG_2510.jpg",
 );
+
+/** Peace-sign portrait on the hero seam. */
+export const heroSupportPhoto = galleryItems.find(
+  (item) => item.src === "/photos/IMG_9749.jpg",
+);
+
+/** Extra scrapbook polaroid tucked behind the hero stack. */
+export const heroAccentPhoto = galleryItems.find(
+  (item) => item.src === "/photos/IMG_9745.jpg",
+);
+
+export const homeAudiencePhoto = galleryItems.find(
+  (item) => item.src === "/photos/IMG_9765.jpg",
+);
+
+export const homeClosingPhoto =
+  galleryItems.find((item) => item.src === "/photos/IMG_2519.jpg") ?? heroPhoto;
 
 function featuredFrom(
   src: string,

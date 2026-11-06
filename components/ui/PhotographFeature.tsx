@@ -1,19 +1,17 @@
 "use client";
 
-import { ArrowRight } from "lucide-react";
 import { useEffect, useId, useState } from "react";
 import { ButtonLink } from "@/components/ui/Button";
+import { Container } from "@/components/ui/Container";
 import { GalleryImage } from "@/components/ui/GalleryImage";
-import { PageSection } from "@/components/ui/PageSection";
+import { homePage } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 import type { FeaturedPhoto } from "@/types/content";
 
 const AUTO_ADVANCE_MS = 4500;
 
 type PhotographFeatureProps = {
-  title: string;
   titleId: string;
-  lede: string;
   lead?: FeaturedPhoto;
   supports: readonly FeaturedPhoto[];
   cta: {
@@ -23,16 +21,13 @@ type PhotographFeatureProps = {
 };
 
 export function PhotographFeature({
-  title,
   titleId,
-  lede,
   lead,
   supports,
   cta,
 }: PhotographFeatureProps) {
   const photos = [...(lead ? [lead] : []), ...supports];
   const [activeIndex, setActiveIndex] = useState(0);
-  const [swapKey, setSwapKey] = useState(0);
   const [paused, setPaused] = useState(false);
   const labelId = useId();
 
@@ -54,7 +49,6 @@ export function PhotographFeature({
 
     const timer = window.setInterval(() => {
       setActiveIndex((current) => (current + 1) % photos.length);
-      setSwapKey((key) => key + 1);
     }, AUTO_ADVANCE_MS);
 
     return () => window.clearInterval(timer);
@@ -65,166 +59,147 @@ export function PhotographFeature({
   }
 
   const active = photos[Math.min(activeIndex, photos.length - 1)]!;
-
-  const selectPhoto = (index: number) => {
-    if (index === activeIndex) {
-      return;
-    }
-    setActiveIndex(index);
-    setSwapKey((key) => key + 1);
-  };
+  const sideA = photos[(activeIndex + 1) % photos.length];
+  const sideB = photos[(activeIndex + 2) % photos.length];
 
   return (
-    <PageSection labelledBy={titleId}>
-      <div className="grid items-start gap-10 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.45fr)] lg:gap-12 xl:gap-16">
-        <div className="home-rise relative lg:sticky lg:top-28">
-          <div
-            aria-hidden="true"
-            className="home-dots pointer-events-none absolute -top-2 left-0 h-20 w-24 opacity-45"
-          />
-          <div
-            aria-hidden="true"
-            className="pointer-events-none absolute -left-3 top-16 hidden h-28 w-28 rounded-full border border-brand-teal/25 lg:block"
-          />
-          <div
-            aria-hidden="true"
-            className="pointer-events-none absolute top-28 left-10 hidden size-3 bg-brand-orange lg:block"
-          />
+    <section
+      aria-labelledby={titleId}
+      className="relative isolate overflow-x-clip bg-paper py-14 sm:py-16 lg:py-20"
+    >
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0">
+        <div className="home-dots absolute inset-0 opacity-[0.12]" />
+        <span className="absolute top-16 right-[10%] size-2.5 rotate-12 bg-brand-orange/50" />
+      </div>
 
-          <div className="relative">
+      <Container className="relative">
+        <div className="grid items-center gap-10 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.2fr)] lg:gap-12 xl:gap-16">
+          <header className="home-rise max-w-xl">
             <span
-              className="home-draw mb-4 block h-1 w-12 bg-brand-orange"
+              className="gallery-stamp mb-4 inline-block rotate-[-6deg] border border-brand-orange/70 px-2.5 py-1 font-display text-[0.65rem] font-semibold tracking-[0.16em] text-brand-orange uppercase"
               aria-hidden="true"
-            />
-            <p className="font-display text-xs font-medium tracking-[0.18em] text-brand-teal uppercase">
-              From the field
-            </p>
+            >
+              {homePage.photographsStamp}
+            </span>
             <h2
               id={titleId}
-              className="mt-3 max-w-md text-3xl font-medium tracking-tight sm:text-4xl lg:text-[2.75rem] lg:leading-[1.1]"
+              className="font-display text-3xl font-medium tracking-tight text-brand-navy sm:text-4xl lg:text-[2.75rem] lg:leading-[1.08]"
             >
-              {title}
+              <span className="block">{homePage.photographsTitleLead}</span>
+              <span className="gallery-punch relative mt-1 inline-block -rotate-1">
+                {homePage.photographsTitlePunch}
+                <svg
+                  className="gallery-scribble pointer-events-none absolute -bottom-1 left-0 h-2.5 w-full text-brand-orange sm:h-3.5"
+                  viewBox="0 0 120 10"
+                  fill="none"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M1 6c10-4 20 3 32-1 14-5 24 4 38 0 12-3 22-1 34 2"
+                    stroke="currentColor"
+                    strokeWidth="2.25"
+                    strokeLinecap="round"
+                  />
+                </svg>
+              </span>
             </h2>
-            <p className="mt-4 max-w-md font-serif text-xl leading-relaxed text-brand-teal sm:text-2xl">
-              {lede}
+            <p className="mt-4 max-w-md font-serif text-xl leading-snug text-brand-navy/75 sm:text-2xl">
+              {homePage.photographsLede}
             </p>
-
-            <div className="mt-8 flex flex-wrap items-center gap-4">
+            <div className="mt-7">
               <ButtonLink href={cta.href} variant="primary" size="large">
                 {cta.label}
-                <ArrowRight aria-hidden="true" className="ml-2 size-4" />
               </ButtonLink>
-              <span
-                aria-hidden="true"
-                className="hidden h-px w-10 bg-brand-navy/20 sm:block"
-              />
-              <p className="text-sm text-brand-teal/80">
-                Real moments from the work
-              </p>
             </div>
-          </div>
-        </div>
+          </header>
 
-        <div
-          className="home-rise relative min-w-0"
-          style={{ animationDelay: "80ms" }}
-        >
           <div
-            aria-hidden="true"
-            className="pointer-events-none absolute -top-3 -right-3 hidden h-[calc(100%-0.75rem)] w-[calc(100%-0.75rem)] rounded-[1.75rem] border border-brand-teal/35 lg:block"
-          />
-          <span
-            aria-hidden="true"
-            className="absolute -right-1 -bottom-1 z-20 hidden size-3 bg-brand-orange sm:block"
-          />
-
-          <figure
-            className="relative overflow-hidden rounded-3xl bg-brand-navy shadow-soft ring-1 ring-brand-navy/10"
+            className="home-rise relative mx-auto w-full max-w-md lg:mx-0 lg:max-w-none"
+            style={{ animationDelay: "80ms" }}
             onMouseEnter={() => setPaused(true)}
             onMouseLeave={() => setPaused(false)}
-            onFocusCapture={() => setPaused(true)}
-            onBlurCapture={(event) => {
-              if (!event.currentTarget.contains(event.relatedTarget as Node | null)) {
-                setPaused(false);
-              }
-            }}
           >
-            <div className="relative aspect-[16/10] sm:aspect-[16/9]">
-              <div
-                key={`${active.src}-${swapKey}`}
-                className="photo-feature-stage absolute inset-0"
-              >
-                <GalleryImage
-                  image={active}
-                  priority={activeIndex === 0}
-                  sizes="(min-width: 1024px) 58vw, 100vw"
-                  className="h-full w-full object-cover"
-                />
-              </div>
+            <div className="relative mx-auto aspect-[5/4] w-full max-w-[22rem] sm:max-w-[26rem] lg:ml-auto lg:max-w-[28rem]">
+              {sideB ? (
+                <div
+                  aria-hidden="true"
+                  className="gallery-polaroid absolute top-2 left-0 w-[42%] -rotate-6 border border-brand-navy/10 bg-paper p-1.5 pb-4 shadow-[0_12px_24px_rgb(49_65_114/0.14)] sm:p-2 sm:pb-5"
+                >
+                  <div className="overflow-hidden bg-mist">
+                    <GalleryImage
+                      image={sideB}
+                      sizes="140px"
+                      className="aspect-[4/5] h-auto w-full object-cover"
+                    />
+                  </div>
+                </div>
+              ) : null}
 
-              <div
-                aria-hidden="true"
-                className="pointer-events-none absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-brand-navy/90 via-brand-navy/45 to-transparent"
-              />
+              {sideA ? (
+                <div
+                  aria-hidden="true"
+                  className="gallery-polaroid absolute top-6 right-0 w-[42%] rotate-[5deg] border border-brand-navy/10 bg-paper p-1.5 pb-4 shadow-[0_12px_24px_rgb(49_65_114/0.14)] sm:p-2 sm:pb-5"
+                >
+                  <div className="overflow-hidden bg-mist">
+                    <GalleryImage
+                      image={sideA}
+                      sizes="140px"
+                      className="aspect-[4/5] h-auto w-full object-cover"
+                    />
+                  </div>
+                </div>
+              ) : null}
 
-              <figcaption className="absolute inset-x-0 bottom-0 z-10 p-4 sm:p-5 lg:p-6">
-                <p
-                  key={`caption-${active.src}-${swapKey}`}
+              <figure className="gallery-polaroid absolute top-1/2 left-1/2 z-10 w-[58%] -translate-x-1/2 -translate-y-[42%] -rotate-2 border border-brand-navy/10 bg-paper p-2.5 pb-7 shadow-[0_18px_36px_rgb(49_65_114/0.2)] sm:p-3 sm:pb-8">
+                <span className="gallery-tape absolute -top-1.5 left-[18%] z-10 -rotate-6" />
+                <span className="gallery-tape absolute -top-1 right-[16%] z-10 rotate-[8deg] scale-90" />
+                <div className="overflow-hidden bg-mist ring-1 ring-brand-navy/10">
+                  <GalleryImage
+                    image={active}
+                    priority={activeIndex === 0}
+                    sizes="(min-width: 1024px) 22vw, 50vw"
+                    className="aspect-[4/5] h-auto w-full object-cover"
+                  />
+                </div>
+                <figcaption
                   id={labelId}
-                  className="photo-feature-caption max-w-xl font-display text-2xl font-medium tracking-tight text-paper sm:text-3xl lg:text-[2.125rem] lg:leading-tight"
+                  className="mt-2 text-center font-display text-xs font-medium tracking-wide text-brand-navy/70 sm:text-sm"
                 >
                   {active.caption}
-                </p>
-
-                <ul
-                  className="mt-3 flex gap-2 sm:mt-4"
-                  aria-label="Featured photographs"
-                >
-                  {photos.map((photo, index) => {
-                    const selected = index === activeIndex;
-
-                    return (
-                      <li key={photo.src} className="shrink-0">
-                        <button
-                          type="button"
-                          aria-label={`Show ${photo.caption}`}
-                          aria-pressed={selected}
-                          aria-describedby={selected ? labelId : undefined}
-                          onClick={() => selectPhoto(index)}
-                          className={cn(
-                            "group relative block w-12 overflow-hidden rounded-md bg-mist/20 outline-none sm:w-14",
-                            "ring-2 ring-offset-1 ring-offset-brand-navy/80 motion-safe:transition motion-safe:duration-300",
-                            selected
-                              ? "ring-brand-orange"
-                              : "ring-transparent hover:ring-paper/50 focus-visible:ring-paper",
-                          )}
-                        >
-                          <GalleryImage
-                            image={photo}
-                            sizes="56px"
-                            className={cn(
-                              "aspect-[3/2] h-auto w-full object-cover motion-safe:transition motion-safe:duration-500",
-                              selected
-                                ? "opacity-100"
-                                : "opacity-70 group-hover:opacity-100 group-hover:scale-105",
-                            )}
-                          />
-                          {selected ? (
-                            <span
-                              aria-hidden="true"
-                              className="absolute inset-x-0 bottom-0 h-0.5 bg-brand-orange"
-                            />
-                          ) : null}
-                        </button>
-                      </li>
-                    );
-                  })}
-                </ul>
-              </figcaption>
+                </figcaption>
+              </figure>
             </div>
-          </figure>
+
+            {photos.length > 1 ? (
+              <ul
+                className="mt-6 flex justify-center gap-2"
+                aria-label="Featured photographs"
+              >
+                {photos.map((photo, index) => {
+                  const selected = index === activeIndex;
+                  return (
+                    <li key={photo.src}>
+                      <button
+                        type="button"
+                        aria-label={`Show ${photo.caption}`}
+                        aria-pressed={selected}
+                        aria-describedby={selected ? labelId : undefined}
+                        onClick={() => setActiveIndex(index)}
+                        className={cn(
+                          "size-2.5 rotate-45 outline-offset-4 motion-safe:transition-colors",
+                          selected
+                            ? "bg-brand-orange"
+                            : "bg-brand-navy/25 hover:bg-brand-teal",
+                        )}
+                      />
+                    </li>
+                  );
+                })}
+              </ul>
+            ) : null}
+          </div>
         </div>
-      </div>
-    </PageSection>
+      </Container>
+    </section>
   );
 }

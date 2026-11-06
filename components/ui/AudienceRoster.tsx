@@ -1,197 +1,159 @@
-"use client";
-
-import Image from "next/image";
-import {
-  Building2,
-  GraduationCap,
-  HeartHandshake,
-  Home,
-  Landmark,
-  Users,
-  type LucideIcon,
-} from "lucide-react";
-import { useEffect, useRef } from "react";
 import { Container } from "@/components/ui/Container";
-import { SectionHeading } from "@/components/ui/SectionHeading";
-import type { AudienceIconId, AudienceItem } from "@/data/audiences";
+import { GalleryImage } from "@/components/ui/GalleryImage";
+import { homePage } from "@/lib/constants";
+import { cn } from "@/lib/utils";
+import type { AudienceItem } from "@/data/audiences";
 import type { GalleryItem } from "@/types/content";
 
-const audienceIcons: Record<AudienceIconId, LucideIcon> = {
-  organisations: Building2,
-  institutions: Landmark,
-  youth: GraduationCap,
-  faith: HeartHandshake,
-  families: Home,
-  other: Users,
-};
-
 type AudienceRosterProps = {
-  title: string;
   titleId: string;
-  lede: string;
   items: readonly AudienceItem[];
-  backgroundPhoto?: GalleryItem;
+  photo?: GalleryItem;
 };
 
-function Accent() {
-  return (
-    <span
-      className="home-draw mb-3 block h-1 w-12 bg-brand-orange"
-      aria-hidden="true"
-    />
-  );
-}
+const stampTilt = [
+  "-rotate-3",
+  "rotate-2",
+  "-rotate-1",
+  "rotate-3",
+  "-rotate-2",
+  "rotate-1",
+] as const;
 
-export function AudienceRoster({
-  title,
-  titleId,
-  lede,
-  items,
-  backgroundPhoto,
-}: AudienceRosterProps) {
-  const sectionRef = useRef<HTMLElement>(null);
-  const layerRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const section = sectionRef.current;
-    const layer = layerRef.current;
-    if (!section || !layer || !backgroundPhoto) {
-      return;
-    }
-
-    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (reduced) {
-      layer.style.transform = "translate3d(0, 0, 0) scale(1.1)";
-      return;
-    }
-
-    let frame = 0;
-
-    const update = () => {
-      const rect = section.getBoundingClientRect();
-      const view = window.innerHeight || 1;
-      const progress = (view - rect.top) / (view + rect.height);
-      const clamped = Math.min(1, Math.max(0, progress));
-      const y = (clamped - 0.5) * 180;
-      layer.style.transform = `translate3d(0, ${y}px, 0) scale(1.2)`;
-    };
-
-    const onScroll = () => {
-      cancelAnimationFrame(frame);
-      frame = requestAnimationFrame(update);
-    };
-
-    update();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", onScroll);
-
-    return () => {
-      cancelAnimationFrame(frame);
-      window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("resize", onScroll);
-    };
-  }, [backgroundPhoto]);
-
+export function AudienceRoster({ titleId, items, photo }: AudienceRosterProps) {
   if (items.length === 0) {
     return null;
   }
 
   return (
     <section
-      ref={sectionRef}
       aria-labelledby={titleId}
-      className="audience-section relative isolate overflow-hidden pb-16 pt-10 sm:pb-20 sm:pt-12"
+      className="relative z-0 -mt-px isolate overflow-x-clip bg-wash-green pt-20 pb-16 sm:pt-24 sm:pb-20"
     >
-      {backgroundPhoto ? (
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute inset-0 -z-10 overflow-hidden"
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0">
+        <div className="home-dots absolute inset-0 opacity-[0.2]" />
+        <span className="absolute top-16 right-[8%] size-3 rotate-12 bg-brand-orange/60" />
+        <span className="absolute top-[42%] left-[4%] size-10 -rotate-12 rounded-full border-2 border-dashed border-brand-green/35" />
+        <span className="absolute right-[18%] bottom-28 size-2 rotate-45 bg-brand-navy/25" />
+        <span className="absolute bottom-16 left-[22%] hidden size-2.5 rounded-full border border-brand-orange/50 sm:block" />
+        <svg
+          className="absolute top-24 left-[12%] hidden h-8 w-28 -rotate-6 text-brand-orange/50 sm:block"
+          viewBox="0 0 120 20"
+          fill="none"
         >
-          <div
-            ref={layerRef}
-            className="audience-parallax absolute inset-x-0 -top-[22%] h-[145%] w-full will-change-transform"
-          >
-            <Image
-              src={backgroundPhoto.src}
-              alt=""
-              width={backgroundPhoto.width}
-              height={backgroundPhoto.height}
-              sizes="100vw"
-              className="h-full w-full object-cover object-[center_30%]"
-            />
-          </div>
-          {/* Soft brand wash — keeps photo visible */}
-          <div className="absolute inset-0 bg-brand-teal/20" />
-          {/* Readable left rail; open photo on the right */}
-          <div className="absolute inset-0 bg-gradient-to-r from-mist/85 via-mist/35 to-transparent sm:from-mist/80 sm:via-mist/25" />
-        </div>
-      ) : (
-        <div aria-hidden="true" className="absolute inset-0 -z-10 bg-mist" />
-      )}
-
-      <div
-        aria-hidden="true"
-        className="audience-orb pointer-events-none absolute -right-10 top-8 size-40 rounded-full border border-brand-orange/40 sm:-right-14 sm:size-52"
-      />
-      <div
-        aria-hidden="true"
-        className="audience-orb-delay pointer-events-none absolute right-6 top-24 size-24 rounded-full border border-paper/50 sm:right-16 sm:size-32"
-      />
+          <path
+            d="M2 14c18-8 36 6 54-2 16-7 30 4 46 0"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+          />
+        </svg>
+      </div>
 
       <Container className="relative">
-        <div className="home-rise relative max-w-3xl overflow-hidden rounded-[1.5rem] border border-paper/60 bg-mist/80 p-5 shadow-soft backdrop-blur-md sm:p-6">
-          <div
-            aria-hidden="true"
-            className="pointer-events-none absolute -right-8 -top-8 size-28 rounded-full bg-brand-orange/10"
-          />
-          <Accent />
-          <SectionHeading id={titleId} title={title} lede={lede} />
+        <div className="grid items-start gap-10 lg:grid-cols-[minmax(0,1.15fr)_minmax(10rem,0.75fr)] lg:gap-12">
+          <div>
+            <header className="home-rise max-w-2xl">
+              <div className="mb-4 flex flex-wrap items-center gap-2">
+                <span
+                  className="gallery-stamp rotate-[-8deg] border border-brand-orange/70 bg-paper px-2.5 py-1 font-display text-[0.65rem] font-semibold tracking-[0.16em] text-brand-orange uppercase"
+                  aria-hidden="true"
+                >
+                  {homePage.audienceStamp}
+                </span>
+                <span
+                  className="gallery-stamp rotate-[6deg] border border-brand-navy/20 bg-wash-orange px-2 py-0.5 font-display text-[0.55rem] font-semibold tracking-[0.14em] text-brand-navy uppercase"
+                  aria-hidden="true"
+                >
+                  All welcome
+                </span>
+              </div>
 
-          <ul className="mt-5 grid grid-cols-1 gap-x-8 gap-y-3 border-t border-brand-navy/10 pt-5 sm:grid-cols-2">
-            {items.map((item, index) => {
-              const Icon = audienceIcons[item.icon];
+              <h2
+                id={titleId}
+                className="font-display text-3xl font-medium tracking-tight text-brand-navy sm:text-4xl lg:text-[2.75rem] lg:leading-[1.08]"
+              >
+                <span className="block">{homePage.audienceTitleLead}</span>
+                <span className="gallery-punch relative mt-1 inline-block -rotate-2 text-brand-teal">
+                  {homePage.audienceTitlePunch}
+                  <svg
+                    className="gallery-scribble pointer-events-none absolute -bottom-1 left-0 h-2.5 w-full text-brand-orange sm:h-3"
+                    viewBox="0 0 140 10"
+                    fill="none"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M1 6c12-4 24 3 38-1 16-5 28 4 42 0 12-3 22-1 34 2"
+                      stroke="currentColor"
+                      strokeWidth="2.25"
+                      strokeLinecap="round"
+                    />
+                  </svg>
+                </span>
+              </h2>
+              <p className="mt-4 max-w-lg font-serif text-xl leading-snug text-brand-navy/75 sm:text-2xl">
+                {homePage.audienceLede}
+              </p>
+            </header>
 
-              return (
+            <ul className="mt-9 flex flex-wrap gap-3 sm:gap-3.5">
+              {items.map((item, index) => (
                 <li
                   key={item.label}
-                  className="audience-item home-rise group flex items-center gap-3"
-                  style={{ animationDelay: `${90 + index * 70}ms` }}
+                  className="home-rise"
+                  style={{ animationDelay: `${70 + index * 55}ms` }}
                 >
-                  <span className="audience-icon inline-flex size-10 shrink-0 items-center justify-center rounded-full bg-brand-orange text-paper shadow-[0_8px_18px_rgb(241_139_5_/_0.28)] motion-safe:transition-transform motion-safe:duration-300 group-hover:scale-110">
-                    <Icon aria-hidden="true" className="size-5" strokeWidth={2.25} />
-                  </span>
-                  <span className="relative min-w-0 font-display text-base font-medium leading-snug text-brand-navy sm:text-lg">
-                    {item.label}
+                  <span
+                    className={cn(
+                      "gallery-stamp relative inline-block border-2 border-brand-navy/15 bg-paper px-3.5 py-2.5 font-display text-sm font-medium text-brand-navy shadow-[0_8px_18px_rgb(49_65_114/0.08)] sm:text-base",
+                      "motion-safe:transition-transform motion-safe:duration-300 motion-safe:hover:rotate-0 motion-safe:hover:-translate-y-0.5",
+                      stampTilt[index % stampTilt.length],
+                    )}
+                  >
                     <span
+                      className={cn(
+                        "gallery-tape absolute -top-1 z-10 h-2 w-8",
+                        index % 2 === 0
+                          ? "left-3 -rotate-6"
+                          : "right-3 rotate-6",
+                      )}
                       aria-hidden="true"
-                      className="absolute inset-x-0 -bottom-0.5 h-px origin-left scale-x-0 bg-brand-orange motion-safe:transition-transform motion-safe:duration-300 group-hover:scale-x-100"
                     />
+                    {item.label}
                   </span>
                 </li>
-              );
-            })}
-          </ul>
+              ))}
+            </ul>
+          </div>
+
+          {photo ? (
+            <div
+              aria-hidden="true"
+              className="gallery-rise relative mx-auto w-[11.5rem] sm:w-[13rem] lg:mx-0 lg:mt-6 lg:w-[14.5rem] lg:justify-self-end"
+              style={{ animationDelay: "120ms" }}
+            >
+              <div className="relative rotate-[4deg]">
+                <div className="absolute inset-3 -translate-x-2.5 translate-y-2.5 -rotate-3 bg-wash-orange/80" />
+                <span className="gallery-stamp absolute -top-3 -left-2 z-20 rotate-[-12deg] border border-brand-orange/80 bg-paper px-2 py-0.5 font-display text-[0.55rem] font-semibold tracking-[0.12em] text-brand-orange uppercase">
+                  Field crew
+                </span>
+                <div className="gallery-polaroid relative border border-brand-navy/10 bg-paper p-2 pb-6 shadow-[0_16px_34px_rgb(49_65_114/0.16)] sm:p-2.5 sm:pb-7">
+                  <span className="gallery-tape absolute -top-1.5 left-[22%] z-10 -rotate-7" />
+                  <div className="overflow-hidden bg-mist ring-1 ring-brand-navy/10">
+                    <GalleryImage
+                      image={photo}
+                      decorative
+                      sizes="(min-width: 1024px) 16vw, 40vw"
+                      className="aspect-[4/5] h-auto w-full object-cover"
+                    />
+                  </div>
+                </div>
+                <span className="absolute -right-2 top-[40%] size-2.5 rotate-12 bg-brand-orange" />
+              </div>
+            </div>
+          ) : null}
         </div>
       </Container>
-
-      {/* <svg
-        aria-hidden="true"
-        viewBox="0 0 1440 88"
-        preserveAspectRatio="none"
-        className="absolute inset-x-0 bottom-0 z-[1] block h-12 w-full sm:h-16"
-      >
-        <path
-          d="M0 40C220 72 460 8 740 36C1020 64 1240 12 1440 44V88H0Z"
-          className="fill-mist"
-        />
-        <path
-          d="M0 48C240 78 480 18 760 42C1040 66 1260 22 1440 50"
-          fill="none"
-          strokeWidth="2"
-          vectorEffect="non-scaling-stroke"
-          className="stroke-brand-orange/70"
-        />
-      </svg> */}
     </section>
   );
 }

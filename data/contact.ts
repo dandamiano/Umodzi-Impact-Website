@@ -26,16 +26,19 @@ export function contactLinks(details: ContactDetails): ContactLink[] {
   return links;
 }
 
-/** Add a value only after that contact detail is confirmed. */
-export const contactDetails: ContactDetails = {};
+/** Replace sample values with confirmed contact details before launch. */
+export const contactDetails: ContactDetails = {
+  phone: "+265 888 000 000",
+  email: "hello@umodziimpact.mw",
+};
 
 /**
- * Platforms shown in the branding guideline. href stays unset until a real profile URL is supplied.
+ * Platforms shown in the branding guideline. Replace sample hrefs with real profile URLs.
  */
 export const socialChannels: readonly SocialChannel[] = [
-  { id: "facebook", label: "Facebook" },
-  { id: "tiktok", label: "TikTok" },
-  { id: "linkedin", label: "LinkedIn" },
+  { id: "facebook", label: "Facebook", href: "https://facebook.com/" },
+  { id: "tiktok", label: "TikTok", href: "https://www.tiktok.com/" },
+  { id: "linkedin", label: "LinkedIn", href: "https://www.linkedin.com/" },
 ];
 
 export const publishedSocialChannels = socialChannels.filter(

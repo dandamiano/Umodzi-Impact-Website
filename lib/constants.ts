@@ -31,7 +31,7 @@ export const homePage = {
   floatStampB: "Bring the chaos",
   headlineLead: "Gather your crew.",
   headlinePunch: "We'll spark the day.",
-  lede: "Circles, challenges, and loud laughter—team experiences for schools, orgs, NGOs, faith groups, and anyone ready to connect for real.",
+  lede: "Team experiences for schools, orgs, NGOs, faith groups, and anyone ready to connect for real.",
   heroPrimary: { href: "/contact", label: "Plan our day →" },
   heroSecondary: { href: "/gallery", label: "Peek the chaos" },
   audienceStamp: "The guest list",

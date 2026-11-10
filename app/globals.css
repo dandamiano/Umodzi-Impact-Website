@@ -126,6 +126,16 @@
   }
 }
 
+@keyframes audience-marquee {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
 @keyframes audience-icon-pop {
   from {
     transform: scale(0.7);
@@ -311,6 +321,47 @@
 
   .audience-parallax {
     transform: translate3d(0, 0, 0) scale(1.18);
+  }
+
+  .audience-marquee {
+    overflow: hidden;
+    mask-image: linear-gradient(
+      to right,
+      transparent,
+      #000 6%,
+      #000 94%,
+      transparent
+    );
+  }
+
+  .audience-marquee-track {
+    display: flex;
+    width: max-content;
+    align-items: center;
+    gap: 0.65rem;
+    padding-block: 0.15rem;
+    animation: audience-marquee 32s linear infinite;
+  }
+
+  .audience-marquee:hover .audience-marquee-track {
+    animation-play-state: paused;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .audience-marquee {
+      mask-image: none;
+      overflow: visible;
+    }
+
+    .audience-marquee-track {
+      animation: none;
+      flex-wrap: wrap;
+      width: 100%;
+    }
+
+    .audience-marquee-track > :nth-child(n + 7) {
+      display: none;
+    }
   }
 
   .photo-feature-stage {

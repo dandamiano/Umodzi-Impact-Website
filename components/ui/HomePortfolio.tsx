@@ -322,19 +322,18 @@ function HomePackagesTeaser({
           </span>
           <h2
             id="packages-heading"
-            className="font-display text-3xl font-medium tracking-tight text-brand-navy sm:text-4xl lg:text-[2.75rem] lg:leading-[1.08]"
+            className="font-display text-[1.7rem] font-medium tracking-tight whitespace-nowrap text-brand-navy sm:text-4xl lg:text-[2.75rem] lg:leading-[1.08]"
           >
-            <span className="block">{homePage.packagesTitleLead}</span>
-            <span className="gallery-punch relative mt-1 inline-block -rotate-1">
-              {homePage.packagesTitlePunch}
+            <span className="gallery-punch relative inline -rotate-1">
+              {homePage.packagesTitleLead} {homePage.packagesTitlePunch}
               <svg
                 className="gallery-scribble pointer-events-none absolute -bottom-1 left-0 h-2.5 w-full text-brand-orange sm:h-3.5"
-                viewBox="0 0 160 10"
+                viewBox="0 0 220 10"
                 fill="none"
                 aria-hidden="true"
               >
                 <path
-                  d="M1 6c12-4 24 3 38-1 16-5 28 4 44 0 14-3 26-1 40 2"
+                  d="M1 6c16-4 34 3 52-1 20-5 38 4 58 0 16-3 32-1 48 2 14 3 28-2 40-1"
                   stroke="currentColor"
                   strokeWidth="2.25"
                   strokeLinecap="round"

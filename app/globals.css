@@ -136,6 +136,18 @@
   }
 }
 
+@keyframes photo-strip-nudge {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
 @keyframes audience-icon-pop {
   from {
     transform: scale(0.7);
@@ -371,6 +383,72 @@
   .photo-feature-caption {
     animation: photo-feature-caption 0.45s cubic-bezier(0.22, 1, 0.36, 1) 0.08s
       both;
+  }
+
+  .photo-strip {
+    overflow: hidden;
+  }
+
+  .photo-strip-track {
+    display: flex;
+    width: max-content;
+    align-items: flex-end;
+    padding-block: 0.75rem 0.35rem;
+    animation: audience-marquee 40s linear infinite;
+  }
+
+  .photo-strip:hover .photo-strip-track,
+  .photo-strip:focus-within .photo-strip-track {
+    animation-play-state: paused;
+  }
+
+  .photo-strip-group {
+    display: flex;
+    flex-shrink: 0;
+    align-items: flex-end;
+    gap: 0.85rem;
+    padding-right: 0.85rem;
+  }
+
+  .photo-strip-item {
+    animation: photo-strip-nudge 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  .photo-strip-item:nth-child(2) {
+    animation-delay: 60ms;
+  }
+
+  .photo-strip-item:nth-child(3) {
+    animation-delay: 120ms;
+  }
+
+  .photo-strip-item:nth-child(4) {
+    animation-delay: 180ms;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .photo-strip {
+      overflow-x: auto;
+    }
+
+    .photo-strip-track {
+      animation: none;
+      width: 100%;
+    }
+
+    .photo-strip-group[aria-hidden="true"] {
+      display: none;
+    }
+
+    .photo-strip-group {
+      padding-right: 0;
+      width: 100%;
+      justify-content: flex-start;
+    }
+
+    .photo-strip-item {
+      animation: none;
+    }
   }
 
   .mission-vision.is-enhanced:not(.is-visible) .mission-vision-lead,

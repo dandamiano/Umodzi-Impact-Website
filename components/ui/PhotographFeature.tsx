@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useId, useState } from "react";
+import { useEffect, useId, useMemo, useState } from "react";
 import { ButtonLink } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { GalleryImage } from "@/components/ui/GalleryImage";
@@ -9,6 +9,7 @@ import { cn } from "@/lib/utils";
 import type { FeaturedPhoto } from "@/types/content";
 
 const AUTO_ADVANCE_MS = 3800;
+const TILTS = ["-rotate-3", "rotate-2", "-rotate-1", "rotate-3", "-rotate-2", "rotate-1"] as const;
 
 type PhotographFeatureProps = {
   titleId: string;
@@ -31,6 +32,16 @@ export function PhotographFeature({
   const [paused, setPaused] = useState(false);
   const labelId = useId();
 
+  const unitPhotos = useMemo(() => {
+    if (photos.length === 0) {
+      return [];
+    }
+
+    // Repeat until the unit is wide enough that two units fill any desktop viewport.
+    const copies = Math.max(3, Math.ceil(8 / photos.length));
+    return Array.from({ length: copies }, () => photos).flat();
+  }, [photos]);
+
   useEffect(() => {
     if (activeIndex >= photos.length) {
       setActiveIndex(0);
@@ -52,7 +63,7 @@ export function PhotographFeature({
     }, AUTO_ADVANCE_MS);
 
     return () => window.clearInterval(timer);
-  }, [photos.length, paused, activeIndex]);
+  }, [photos.length, paused]);
 
   if (photos.length === 0) {
     return null;
@@ -67,31 +78,31 @@ export function PhotographFeature({
       aria-hidden={decorative || undefined}
       aria-label={decorative ? undefined : "Featured photographs"}
     >
-      {photos.map((photo, index) => {
-        const selected = index === activeIndex;
-        const tilt =
-          index % 3 === 0 ? "-rotate-2" : index % 3 === 1 ? "rotate-1" : "rotate-2";
+      {unitPhotos.map((photo, index) => {
+        const photoIndex = index % photos.length;
+        const selected = photoIndex === activeIndex;
+        const tilt = TILTS[index % TILTS.length];
 
         return (
-          <li key={`${keyPrefix}-${photo.src}`} className="photo-strip-item">
+          <li key={`${keyPrefix}-${photo.src}-${index}`} className="photo-strip-item">
             <button
               type="button"
               tabIndex={decorative ? -1 : undefined}
               aria-pressed={decorative ? undefined : selected}
               aria-label={`Show ${photo.caption}`}
               aria-describedby={!decorative && selected ? labelId : undefined}
-              onClick={() => setActiveIndex(index)}
+              onClick={() => setActiveIndex(photoIndex)}
               className={cn(
-                "gallery-polaroid group relative w-[9.5rem] border border-brand-navy/10 bg-paper p-2 pb-5 text-left shadow-[0_12px_28px_rgb(49_65_114/0.14)] outline-offset-4 motion-safe:transition-transform motion-safe:duration-500 sm:w-[11.5rem] sm:p-2.5 sm:pb-6 lg:w-[13rem]",
+                "gallery-polaroid group relative w-[10.5rem] border border-brand-navy/10 bg-paper p-2 pb-5 text-left shadow-[0_14px_32px_rgb(49_65_114/0.16)] outline-offset-4 motion-safe:transition-[transform,box-shadow,opacity] motion-safe:duration-500 sm:w-[12.5rem] sm:p-2.5 sm:pb-6 lg:w-[14rem]",
                 tilt,
                 selected
-                  ? "z-10 -translate-y-3 scale-105 rotate-0 shadow-[0_20px_40px_rgb(49_65_114/0.22)]"
-                  : "opacity-85 hover:-translate-y-1 hover:opacity-100",
+                  ? "z-10 -translate-y-4 scale-105 rotate-0 shadow-[0_22px_44px_rgb(49_65_114/0.24)]"
+                  : "opacity-90 hover:-translate-y-2 hover:opacity-100",
               )}
             >
               <span
                 className={cn(
-                  "gallery-tape absolute -top-1 z-10 h-2 w-8",
+                  "gallery-tape absolute -top-1 z-10 h-2.5 w-9",
                   index % 2 === 0 ? "left-3 -rotate-6" : "right-3 rotate-6",
                 )}
                 aria-hidden="true"
@@ -99,9 +110,9 @@ export function PhotographFeature({
               <div className="overflow-hidden bg-mist ring-1 ring-brand-navy/10">
                 <GalleryImage
                   image={photo}
-                  priority={!decorative && index === 0}
-                  sizes="(min-width: 1024px) 14vw, 40vw"
-                  className="aspect-[4/5] h-auto w-full object-cover motion-safe:transition-transform motion-safe:duration-700 group-hover:scale-[1.03]"
+                  priority={!decorative && index < photos.length}
+                  sizes="(min-width: 1024px) 14vw, 42vw"
+                  className="aspect-[4/5] h-auto w-full object-cover motion-safe:transition-transform motion-safe:duration-700 group-hover:scale-[1.04]"
                 />
               </div>
               <span
@@ -122,18 +133,19 @@ export function PhotographFeature({
   return (
     <section
       aria-labelledby={titleId}
-      className="relative isolate overflow-x-clip bg-paper pt-10 pb-12 sm:pt-12 sm:pb-14 lg:pt-12 lg:pb-16"
+      className="relative isolate overflow-x-clip bg-mist pt-10 pb-12 sm:pt-12 sm:pb-14 lg:pt-14 lg:pb-16"
     >
       <div aria-hidden="true" className="pointer-events-none absolute inset-0">
-        <div className="home-dots absolute inset-0 opacity-[0.12]" />
-        <span className="absolute top-12 right-[10%] size-2.5 rotate-12 bg-brand-orange/50" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_12%_0%,color-mix(in_srgb,var(--color-brand-orange)_14%,transparent),transparent_42%),radial-gradient(ellipse_at_88%_100%,color-mix(in_srgb,var(--color-brand-teal)_12%,transparent),transparent_48%)]" />
+        <span className="absolute top-12 right-[10%] size-2.5 rotate-12 bg-brand-orange/55" />
+        <span className="absolute bottom-16 left-[8%] hidden size-8 rotate-6 rounded-full border border-dashed border-brand-navy/15 sm:block" />
       </div>
 
       <Container className="relative">
         <div className="home-rise flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between sm:gap-6">
           <header className="max-w-2xl">
             <span
-              className="gallery-stamp mb-2 inline-block -rotate-2 border border-brand-orange/70 px-2.5 py-1 font-display text-[0.65rem] font-semibold tracking-[0.16em] text-brand-orange uppercase"
+              className="gallery-stamp mb-2 inline-block -rotate-2 border border-brand-orange/70 bg-paper px-2.5 py-1 font-display text-[0.65rem] font-semibold tracking-[0.16em] text-brand-orange uppercase"
               aria-hidden="true"
             >
               {homePage.photographsStamp}
@@ -186,7 +198,9 @@ export function PhotographFeature({
           id={labelId}
           className="mt-5 text-center font-serif text-lg text-brand-navy/70 sm:mt-6 sm:text-xl"
         >
-          {active.caption}
+          <span className="gallery-stamp inline-block rotate-[-2deg] border border-brand-navy/15 bg-paper px-3 py-1.5">
+            {active.caption}
+          </span>
         </p>
       </Container>
     </section>

@@ -30,17 +30,41 @@ export function AudienceRoster({ titleId, items, photo }: AudienceRosterProps) {
   return (
     <section
       aria-labelledby={titleId}
-      className="relative z-0 -mt-px isolate overflow-x-clip bg-wash-green pt-10 pb-0 sm:pt-12 lg:pt-8 lg:pb-6"
+      className="relative z-0 -mt-px isolate overflow-x-clip bg-wash-green pt-10 pb-0 sm:pt-12 lg:pt-10 lg:pb-0"
     >
       <div aria-hidden="true" className="pointer-events-none absolute inset-0">
-        <div className="home-dots absolute inset-0 opacity-[0.18]" />
-        <span className="absolute top-10 right-[10%] size-2.5 rotate-12 bg-brand-orange/55" />
-        <span className="absolute top-[36%] left-[5%] hidden size-9 -rotate-12 rounded-full border border-dashed border-brand-green/30 lg:block" />
+        <div className="topo-map absolute inset-0" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_8%_18%,color-mix(in_srgb,var(--color-brand-orange)_16%,transparent),transparent_40%),radial-gradient(ellipse_at_92%_12%,color-mix(in_srgb,var(--color-brand-teal)_14%,transparent),transparent_44%),radial-gradient(ellipse_at_70%_78%,color-mix(in_srgb,var(--color-brand-green)_18%,transparent),transparent_48%)]" />
+
+        <span className="absolute top-14 right-[8%] size-3 rotate-12 bg-brand-orange/60" />
+        <span className="absolute top-24 right-[18%] size-2 rounded-full bg-brand-navy/25" />
+        <span className="absolute top-[42%] left-[4%] size-2.5 rotate-45 bg-brand-orange/50" />
+        <span className="absolute top-[28%] left-[9%] hidden size-12 -rotate-[14deg] border-2 border-dashed border-brand-green/30 sm:block" />
+        <span className="absolute right-[12%] bottom-[30%] hidden size-9 rotate-6 rounded-full border border-dashed border-brand-navy/20 lg:block" />
+        <span className="absolute bottom-28 left-[16%] hidden size-2 rotate-12 bg-brand-green/40 sm:block" />
+
+        <svg
+          className="absolute top-[22%] right-[22%] hidden h-9 w-28 -rotate-6 text-brand-orange/45 lg:block"
+          viewBox="0 0 140 24"
+          fill="none"
+        >
+          <path
+            d="M2 16c20-10 40 8 60-2 18-9 34 6 52 1 10-3 18-1 24 2"
+            stroke="currentColor"
+            strokeWidth="2.25"
+            strokeLinecap="round"
+          />
+        </svg>
+
+        <span className="gallery-stamp absolute top-[48%] right-[6%] hidden rotate-[8deg] border border-brand-navy/20 bg-paper/80 px-2 py-0.5 font-display text-[0.55rem] font-semibold tracking-[0.14em] text-brand-navy/55 uppercase xl:inline-block">
+          Bring a friend
+        </span>
+        <span className="gallery-tape absolute top-[18%] left-[22%] hidden h-2.5 w-10 -rotate-12 opacity-70 sm:block" />
       </div>
 
       <Container className="relative">
         <div className="grid items-start gap-5 lg:grid-cols-[minmax(0,1.15fr)_minmax(14rem,0.85fr)] lg:items-center lg:gap-4 xl:gap-5">
-          <div className="min-w-0 pb-2 lg:pb-0">
+          <div className="min-w-0 pb-8 lg:pb-10">
             <header className="home-rise max-w-2xl">
               <div className="mb-2 flex flex-wrap items-center gap-2 lg:mb-1.5">
                 <span
@@ -125,8 +149,7 @@ export function AudienceRoster({ titleId, items, photo }: AudienceRosterProps) {
             >
               {/* Mobile / tablet: landscape band at bottom */}
               <div className="relative lg:hidden">
-                <div className="absolute inset-x-3 top-3 h-[calc(100%-0.75rem)] translate-y-2 bg-wash-orange/75" />
-                <span className="gallery-stamp absolute top-5 left-6 z-20 rotate-[-8deg] border border-brand-orange/80 bg-paper px-2 py-0.5 font-display text-[0.55rem] font-semibold tracking-[0.12em] text-brand-orange uppercase">
+                <span className="gallery-stamp absolute top-3 left-6 z-20 rotate-[-8deg] border border-brand-orange/80 bg-paper px-2 py-0.5 font-display text-[0.55rem] font-semibold tracking-[0.12em] text-brand-orange uppercase">
                   Field crew
                 </span>
                 <div className="gallery-polaroid relative border-y border-brand-navy/10 bg-paper p-2 pb-4 shadow-[0_12px_28px_rgb(49_65_114/0.14)] sm:p-2.5 sm:pb-5">
@@ -145,7 +168,7 @@ export function AudienceRoster({ titleId, items, photo }: AudienceRosterProps) {
 
               {/* Desktop: larger portrait polaroid on the right */}
               <div className="relative mx-auto hidden w-full max-w-[17.5rem] rotate-[2deg] lg:block xl:max-w-[19rem]">
-                <div className="absolute inset-3 -translate-x-2 translate-y-2 -rotate-2 bg-wash-orange/80" />
+                <div className="absolute inset-3 -translate-x-2 translate-y-2 -rotate-2 bg-brand-green/20" />
                 <span className="gallery-stamp absolute -top-2 -left-1 z-20 rotate-[-8deg] border border-brand-orange/80 bg-paper px-2.5 py-0.5 font-display text-[0.6rem] font-semibold tracking-[0.12em] text-brand-orange uppercase">
                   Field crew
                 </span>
@@ -167,6 +190,7 @@ export function AudienceRoster({ titleId, items, photo }: AudienceRosterProps) {
           ) : null}
         </div>
       </Container>
+
     </section>
   );
 }

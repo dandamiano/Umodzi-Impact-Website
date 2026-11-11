@@ -103,6 +103,84 @@
   background-size: 15px 15px;
 }
 
+.field-grain {
+  background-image:
+    radial-gradient(
+      ellipse at 18% 22%,
+      color-mix(in srgb, var(--color-brand-green) 22%, transparent),
+      transparent 42%
+    ),
+    radial-gradient(
+      ellipse at 88% 8%,
+      color-mix(in srgb, var(--color-brand-teal) 18%, transparent),
+      transparent 46%
+    ),
+    radial-gradient(
+      ellipse at 70% 88%,
+      color-mix(in srgb, var(--color-brand-green) 14%, transparent),
+      transparent 50%
+    ),
+    repeating-linear-gradient(
+      -18deg,
+      transparent 0,
+      transparent 11px,
+      color-mix(in srgb, var(--color-brand-green) 7%, transparent) 11px,
+      color-mix(in srgb, var(--color-brand-green) 7%, transparent) 12px
+    );
+  background-size:
+    auto,
+    auto,
+    auto,
+    24px 24px;
+  background-attachment: fixed, fixed, fixed, fixed;
+}
+
+/* Soft topographic contours — outdoor / field-day map energy. */
+.topo-map {
+  background-color: transparent;
+  background-image:
+    radial-gradient(
+      ellipse at 16% 20%,
+      color-mix(in srgb, var(--color-brand-green) 18%, transparent),
+      transparent 46%
+    ),
+    radial-gradient(
+      ellipse at 84% 10%,
+      color-mix(in srgb, var(--color-brand-teal) 12%, transparent),
+      transparent 44%
+    ),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='180' viewBox='0 0 220 180'%3E%3Cg fill='none' stroke='%23396831' stroke-opacity='0.14' stroke-width='1.1'%3E%3Cellipse cx='70' cy='78' rx='28' ry='18'/%3E%3Cellipse cx='70' cy='78' rx='44' ry='30'/%3E%3Cellipse cx='70' cy='78' rx='62' ry='44'/%3E%3Cellipse cx='70' cy='78' rx='82' ry='60'/%3E%3Cellipse cx='158' cy='118' rx='22' ry='14'/%3E%3Cellipse cx='158' cy='118' rx='38' ry='26'/%3E%3Cellipse cx='158' cy='118' rx='56' ry='40'/%3E%3Cellipse cx='158' cy='118' rx='74' ry='54'/%3E%3Cpath d='M-10 36c28 8 48-10 78-4s52 18 86 8 54-16 78-6'/%3E%3Cpath d='M-10 132c32-10 58 12 92 6s60-18 94-6 50 16 74 4'/%3E%3C/g%3E%3C/svg%3E");
+  background-size:
+    auto,
+    auto,
+    220px 180px;
+  background-attachment: fixed, fixed, fixed;
+}
+
+@supports not (background-attachment: fixed) {
+  .field-grain,
+  .topo-map {
+    background-attachment: scroll;
+  }
+}
+
+/* Tear shape filled with the same wash + texture as the audiences section. */
+.hero-tear-fill {
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 56' preserveAspectRatio='none'%3E%3Cpath fill='white' d='M0 26c40 18 80-14 120 2s80 20 120 4 80-18 120-4 80 16 120 4 80-14 120-2 80 14 120 2 80-12 120 0 80 16 120 4 80-18 120-4 80 10 120 0v24H0z'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 56' preserveAspectRatio='none'%3E%3Cpath fill='white' d='M0 26c40 18 80-14 120 2s80 20 120 4 80-18 120-4 80 16 120 4 80-14 120-2 80 14 120 2 80-12 120 0 80 16 120 4 80-18 120-4 80 10 120 0v24H0z'/%3E%3C/svg%3E");
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+}
+
+@media (max-width: 1023px) {
+  .field-grain,
+  .topo-map {
+    background-attachment: scroll;
+  }
+}
+
 .package-pathway-rail {
   scroll-snap-type: x mandatory;
   scroll-padding-inline: 0.25rem;
@@ -387,14 +465,22 @@
 
   .photo-strip {
     overflow: hidden;
+    mask-image: linear-gradient(
+      to right,
+      transparent,
+      #000 4%,
+      #000 96%,
+      transparent
+    );
   }
 
   .photo-strip-track {
     display: flex;
     width: max-content;
     align-items: flex-end;
-    padding-block: 0.75rem 0.35rem;
-    animation: audience-marquee 40s linear infinite;
+    padding-block: 1.25rem 0.75rem;
+    animation: audience-marquee 48s linear infinite;
+    will-change: transform;
   }
 
   .photo-strip:hover .photo-strip-track,
@@ -406,29 +492,39 @@
     display: flex;
     flex-shrink: 0;
     align-items: flex-end;
-    gap: 0.85rem;
-    padding-right: 0.85rem;
+    gap: 1rem;
+    padding-right: 1rem;
   }
 
   .photo-strip-item {
+    flex-shrink: 0;
     animation: photo-strip-nudge 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
   }
 
   .photo-strip-item:nth-child(2) {
-    animation-delay: 60ms;
+    animation-delay: 50ms;
   }
 
   .photo-strip-item:nth-child(3) {
-    animation-delay: 120ms;
+    animation-delay: 100ms;
   }
 
   .photo-strip-item:nth-child(4) {
-    animation-delay: 180ms;
+    animation-delay: 150ms;
+  }
+
+  .photo-strip-item:nth-child(5) {
+    animation-delay: 200ms;
+  }
+
+  .photo-strip-item:nth-child(6) {
+    animation-delay: 250ms;
   }
 
   @media (prefers-reduced-motion: reduce) {
     .photo-strip {
       overflow-x: auto;
+      mask-image: none;
     }
 
     .photo-strip-track {
@@ -442,7 +538,8 @@
 
     .photo-strip-group {
       padding-right: 0;
-      width: 100%;
+      gap: 0.85rem;
+      width: max-content;
       justify-content: flex-start;
     }
 

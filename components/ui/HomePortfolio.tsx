@@ -245,19 +245,13 @@ function HomeHero({
       </Container>
 
       <div className="relative z-20 -mb-px" aria-hidden="true">
-        <div className="absolute inset-x-0 bottom-0 h-2.5 bg-brand-orange" />
-        <svg
-          className="gallery-tear relative block h-11 w-full text-wash-green sm:h-14"
-          viewBox="0 0 1440 56"
-          preserveAspectRatio="none"
-        >
-          <path
-            fill="currentColor"
-            d="M0 26c40 18 80-14 120 2s80 20 120 4 80-18 120-4 80 16 120 4 80-14 120-2 80 14 120 2 80-12 120 0 80 16 120 4 80-18 120-4 80 10 120 0v24H0z"
-          />
-        </svg>
+        <div className="gallery-tear relative h-11 w-full sm:h-14">
+          <div className="hero-tear-fill absolute inset-0 bg-wash-green">
+            <div className="topo-map absolute inset-0" />
+          </div>
+        </div>
 
-        <div className="pointer-events-none absolute bottom-0 left-[10%] z-30 translate-y-[40%] sm:left-[16%] lg:left-[38%] lg:translate-y-[46%]">
+        <div className="pointer-events-none absolute bottom-0 left-1/2 z-30 -translate-x-1/2 translate-y-[40%] lg:translate-y-[46%]">
           <div className="relative -rotate-3">
             <span className="gallery-tape absolute -top-1 left-1/2 z-10 h-2.5 w-11 -translate-x-1/2 rotate-[-6deg]" />
             <div className="relative border-[3px] border-brand-navy bg-paper px-3.5 py-2 shadow-[0_12px_28px_rgb(49_65_114/0.22)] sm:px-4 sm:py-2.5">
@@ -304,12 +298,12 @@ function HomePackagesTeaser({
   return (
     <section
       aria-labelledby="packages-heading"
-      className="relative isolate overflow-x-clip bg-wash-orange py-14 sm:py-16 lg:py-20"
+      className="relative isolate overflow-x-clip bg-mist py-14 sm:py-16 lg:py-20"
     >
       <div aria-hidden="true" className="pointer-events-none absolute inset-0">
-        <div className="home-dots absolute inset-0 opacity-[0.18]" />
-        <span className="absolute top-14 left-[10%] size-2 rotate-12 bg-brand-navy/20" />
-        <span className="absolute right-[14%] bottom-24 size-8 rounded-full border border-dashed border-brand-navy/20" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_92%_8%,color-mix(in_srgb,var(--color-brand-orange)_16%,transparent),transparent_42%),radial-gradient(ellipse_at_8%_90%,color-mix(in_srgb,var(--color-brand-teal)_10%,transparent),transparent_48%)]" />
+        <span className="absolute top-14 left-[10%] size-2 rotate-12 bg-brand-orange/45" />
+        <span className="absolute right-[14%] bottom-24 size-8 rounded-full border border-dashed border-brand-orange/35" />
       </div>
 
       <Container className="relative">

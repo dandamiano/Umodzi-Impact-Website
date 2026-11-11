@@ -285,26 +285,26 @@ function HomePackagesTeaser({
               </span>
               <h2
                 id="packages-heading"
-                className="font-display text-[1.7rem] font-medium tracking-tight text-brand-navy sm:text-4xl lg:text-[2.75rem] lg:leading-[1.08]"
+                className="font-display text-[clamp(1.2rem,5.2vw,1.55rem)] font-medium tracking-tight text-brand-navy sm:text-4xl lg:text-[2.75rem] lg:leading-[1.08]"
               >
-                <span className="block sm:inline">
-                  {homePage.packagesTitleLead}
-                </span>{" "}
-                <span className="gallery-punch relative inline-block -rotate-1">
-                  {homePage.packagesTitlePunch}
-                  <svg
-                    className="gallery-scribble pointer-events-none absolute -bottom-1 left-0 h-2.5 w-full text-brand-orange sm:h-3.5"
-                    viewBox="0 0 220 10"
-                    fill="none"
-                    aria-hidden="true"
-                  >
-                    <path
-                      d="M1 6c16-4 34 3 52-1 20-5 38 4 58 0 16-3 32-1 48 2 14 3 28-2 40-1"
-                      stroke="currentColor"
-                      strokeWidth="2.25"
-                      strokeLinecap="round"
-                    />
-                  </svg>
+                <span className="whitespace-nowrap">
+                  {homePage.packagesTitleLead}{" "}
+                  <span className="gallery-punch relative inline-block -rotate-1">
+                    {homePage.packagesTitlePunch}
+                    <svg
+                      className="gallery-scribble pointer-events-none absolute -bottom-1 left-0 h-2.5 w-full text-brand-orange sm:h-3.5"
+                      viewBox="0 0 220 10"
+                      fill="none"
+                      aria-hidden="true"
+                    >
+                      <path
+                        d="M1 6c16-4 34 3 52-1 20-5 38 4 58 0 16-3 32-1 48 2 14 3 28-2 40-1"
+                        stroke="currentColor"
+                        strokeWidth="2.25"
+                        strokeLinecap="round"
+                      />
+                    </svg>
+                  </span>
                 </span>
               </h2>
               <p className="mt-3 max-w-lg font-serif text-xl leading-snug text-brand-navy/75 sm:text-2xl">
@@ -328,22 +328,22 @@ function HomePackagesTeaser({
           {photo ? (
             <div
               aria-hidden="true"
-              className="gallery-rise relative mx-auto w-[13rem] sm:w-[15rem] lg:mx-0 lg:w-[17rem] lg:justify-self-end"
+              className="gallery-rise relative mx-auto w-full max-w-[22rem] sm:max-w-[18rem] lg:mx-0 lg:w-[17rem] lg:max-w-none lg:justify-self-end"
             >
-              <div className="relative rotate-2">
+              <div className="relative rotate-1 sm:rotate-2">
                 <div className="absolute inset-3 -translate-x-2.5 translate-y-2.5 -rotate-3 bg-wash-teal/70" />
                 <span className="gallery-stamp absolute -top-3 left-1/2 z-20 -translate-x-1/2 rotate-[-7deg] border border-brand-navy/25 bg-paper px-2.5 py-0.5 font-display text-[0.55rem] font-semibold tracking-[0.14em] text-brand-navy uppercase sm:text-[0.65rem]">
                   {homePage.packagesPhotoStamp}
                 </span>
-                <div className="gallery-polaroid relative border border-brand-navy/10 bg-paper p-2.5 pb-7 shadow-[0_18px_40px_rgb(49_65_114/0.18)] sm:p-3 sm:pb-8">
+                <div className="gallery-polaroid relative border border-brand-navy/10 bg-paper p-2.5 pb-5 shadow-[0_18px_40px_rgb(49_65_114/0.18)] sm:p-3 sm:pb-8">
                   <span className="gallery-tape absolute -top-1.5 left-[18%] z-10 -rotate-8" />
                   <span className="gallery-tape absolute -top-1 right-[14%] z-10 rotate-[10deg] scale-90" />
                   <div className="overflow-hidden bg-mist ring-1 ring-brand-navy/10">
                     <GalleryImage
                       image={photo}
                       decorative
-                      sizes="(min-width: 1024px) 18vw, 240px"
-                      className="aspect-[4/5] h-auto w-full object-cover object-center"
+                      sizes="(min-width: 1024px) 18vw, (min-width: 640px) 40vw, 85vw"
+                      className="aspect-[3/2] h-auto w-full object-cover object-center lg:aspect-[4/5]"
                     />
                   </div>
                 </div>
@@ -584,21 +584,21 @@ function HomeClosing({ photo }: { photo?: GalleryItem }) {
           {photo ? (
             <div
               aria-hidden="true"
-              className="gallery-rise relative mx-auto w-[12.5rem] sm:w-[14rem] lg:mx-0 lg:w-[15.5rem] lg:justify-self-end"
+              className="gallery-rise relative mx-auto w-full max-w-[22rem] sm:w-[14rem] sm:max-w-none lg:mx-0 lg:w-[15.5rem] lg:justify-self-end"
               style={{ animationDelay: "90ms" }}
             >
-              <div className="relative rotate-2">
+              <div className="relative rotate-1 sm:rotate-2">
                 <div className="absolute inset-3 -translate-x-2 translate-y-2 -rotate-3 bg-wash-teal/70" />
                 <span className="gallery-stamp absolute -top-3 left-1/2 z-20 -translate-x-1/2 rotate-[-6deg] border border-brand-navy/30 bg-paper px-2 py-0.5 font-display text-[0.55rem] font-semibold tracking-[0.14em] text-brand-navy uppercase sm:text-[0.65rem]">
                   {homePage.closingPhotoStamp}
                 </span>
-                <div className="gallery-polaroid relative border border-brand-navy/10 bg-paper p-2 pb-6 shadow-[0_16px_36px_rgb(49_65_114/0.18)] sm:p-2.5 sm:pb-7">
+                <div className="gallery-polaroid relative border border-brand-navy/10 bg-paper p-2 pb-5 shadow-[0_16px_36px_rgb(49_65_114/0.18)] sm:p-2.5 sm:pb-7">
                   <span className="gallery-tape absolute -top-1.5 left-[20%] z-10 -rotate-6" />
                   <div className="overflow-hidden bg-mist ring-1 ring-brand-navy/10">
                     <GalleryImage
                       image={photo}
-                      sizes="(min-width: 1024px) 16vw, 50vw"
-                      className="aspect-[4/5] h-auto w-full object-cover"
+                      sizes="(min-width: 1024px) 16vw, (min-width: 640px) 40vw, 85vw"
+                      className="aspect-[3/2] h-auto w-full object-cover object-center sm:aspect-[4/5]"
                     />
                   </div>
                 </div>

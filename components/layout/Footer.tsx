@@ -62,7 +62,7 @@ export function Footer() {
           <h2 className="font-display text-[0.65rem] font-semibold tracking-[0.16em] text-brand-orange uppercase">
             {footer.exploreStamp}
           </h2>
-          <ul className="mt-3 space-y-2">
+          <ul className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-2 sm:flex-col sm:items-start sm:gap-2">
             {exploreLinks.map((item) => (
               <li key={item.href}>
                 <Link

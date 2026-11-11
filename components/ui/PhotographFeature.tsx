@@ -152,24 +152,26 @@ export function PhotographFeature({
             </span>
             <h2
               id={titleId}
-              className="font-display text-3xl font-medium tracking-tight text-brand-navy sm:text-4xl lg:text-[2.65rem] lg:leading-[1.08]"
+              className="font-display text-[clamp(1.35rem,5.8vw,1.7rem)] font-medium tracking-tight text-brand-navy sm:text-4xl lg:text-[2.65rem] lg:leading-[1.08]"
             >
-              <span className="block sm:inline">{homePage.photographsTitleLead}</span>{" "}
-              <span className="gallery-punch relative inline-block -rotate-1">
-                {homePage.photographsTitlePunch}
-                <svg
-                  className="gallery-scribble pointer-events-none absolute -bottom-1 left-0 h-2.5 w-full text-brand-orange sm:h-3.5"
-                  viewBox="0 0 180 10"
-                  fill="none"
-                  aria-hidden="true"
-                >
-                  <path
-                    d="M1 6c14-4 28 3 44-1 18-5 34 4 52 0 16-3 30-1 44 2 12 2 22-1 30-1"
-                    stroke="currentColor"
-                    strokeWidth="2.25"
-                    strokeLinecap="round"
-                  />
-                </svg>
+              <span className="whitespace-nowrap">
+                {homePage.photographsTitleLead}{" "}
+                <span className="gallery-punch relative inline-block -rotate-1">
+                  {homePage.photographsTitlePunch}
+                  <svg
+                    className="gallery-scribble pointer-events-none absolute -bottom-1 left-0 h-2.5 w-full text-brand-orange sm:h-3.5"
+                    viewBox="0 0 180 10"
+                    fill="none"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M1 6c14-4 28 3 44-1 18-5 34 4 52 0 16-3 30-1 44 2 12 2 22-1 30-1"
+                      stroke="currentColor"
+                      strokeWidth="2.25"
+                      strokeLinecap="round"
+                    />
+                  </svg>
+                </span>
               </span>
             </h2>
             <p className="mt-2 max-w-lg font-serif text-lg leading-snug text-brand-navy/75 sm:text-xl">

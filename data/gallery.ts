@@ -608,6 +608,11 @@ export const homeAudiencePhoto = galleryItems.find(
   (item) => item.src === "/photos/IMG_9765.jpg",
 );
 
+/** Packages teaser — crew energy for the depth pathway. */
+export const homePackagesPhoto = galleryItems.find(
+  (item) => item.src === "/photos/IMG_2522.jpg",
+);
+
 export const homeClosingPhoto =
   galleryItems.find((item) => item.src === "/photos/IMG_2519.jpg") ?? heroPhoto;
 

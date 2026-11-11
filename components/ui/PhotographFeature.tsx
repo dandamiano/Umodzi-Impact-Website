@@ -133,7 +133,7 @@ export function PhotographFeature({
   return (
     <section
       aria-labelledby={titleId}
-      className="relative isolate overflow-x-clip bg-mist pt-10 pb-12 sm:pt-12 sm:pb-14 lg:pt-14 lg:pb-16"
+      className="relative isolate overflow-x-clip bg-paper pt-10 pb-12 sm:pt-12 sm:pb-14 lg:pt-14 lg:pb-16"
     >
       <div aria-hidden="true" className="pointer-events-none absolute inset-0">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_12%_0%,color-mix(in_srgb,var(--color-brand-orange)_14%,transparent),transparent_42%),radial-gradient(ellipse_at_88%_100%,color-mix(in_srgb,var(--color-brand-teal)_12%,transparent),transparent_48%)]" />
@@ -152,10 +152,11 @@ export function PhotographFeature({
             </span>
             <h2
               id={titleId}
-              className="font-display text-3xl font-medium tracking-tight whitespace-nowrap text-brand-navy sm:text-4xl lg:text-[2.65rem] lg:leading-[1.08]"
+              className="font-display text-3xl font-medium tracking-tight text-brand-navy sm:text-4xl lg:text-[2.65rem] lg:leading-[1.08]"
             >
-              <span className="gallery-punch relative inline -rotate-1">
-                {homePage.photographsTitleLead} {homePage.photographsTitlePunch}
+              <span className="block sm:inline">{homePage.photographsTitleLead}</span>{" "}
+              <span className="gallery-punch relative inline-block -rotate-1">
+                {homePage.photographsTitlePunch}
                 <svg
                   className="gallery-scribble pointer-events-none absolute -bottom-1 left-0 h-2.5 w-full text-brand-orange sm:h-3.5"
                   viewBox="0 0 180 10"

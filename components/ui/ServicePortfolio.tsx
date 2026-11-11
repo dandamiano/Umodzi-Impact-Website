@@ -82,7 +82,7 @@ function ServicesHero({
   support?: GalleryItem;
 }) {
   return (
-    <section className="relative z-20 isolate overflow-visible bg-brand-navy text-white">
+    <section className="motion-enter relative z-20 isolate overflow-visible bg-brand-navy text-white">
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 overflow-hidden"
@@ -131,7 +131,7 @@ function ServicesHero({
               </span>
             </h1>
 
-            <p className="mt-4 max-w-md text-sm leading-relaxed text-white/78 sm:mt-5 sm:text-base">
+            <p className="mt-4 max-w-md font-serif text-lg leading-snug text-white/88 sm:mt-5 sm:text-xl">
               {servicesPage.lede}
             </p>
 

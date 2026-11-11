@@ -21,8 +21,9 @@ export function ContactChannels({
 
   return (
     <section
+      id="contact-channels"
       aria-labelledby="contact-channels-heading"
-      className="relative overflow-hidden bg-wash-orange py-12 sm:py-14"
+      className="relative scroll-mt-28 overflow-hidden bg-wash-orange py-12 sm:py-14"
     >
       <div aria-hidden="true" className="pointer-events-none absolute inset-0">
         <span className="absolute top-12 left-[12%] size-2 rotate-12 bg-brand-navy/25" />

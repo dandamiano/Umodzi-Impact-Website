@@ -23,12 +23,20 @@ export const footer = {
   location: "Based in Malawi",
 } as const;
 
+export const notFoundPage = {
+  brandLabel: "Umodzi Impact",
+  stamp: "Wrong turn",
+  headlineLead: "This page",
+  headlinePunch: "wandered off.",
+  lede: "Looks like that trail doesn't exist—or it packed up early. Let's get you back to the fun.",
+  primary: { href: "/", label: "Back to home →" },
+  secondary: { href: "/contact", label: "Or start a brief" },
+} as const;
+
 export const homePage = {
   brandLabel: "Umodzi Impact",
   stamp: "Squad season",
   photoStamp: "Caught mid-laugh",
-  floatStampA: "Trust mode",
-  floatStampB: "Bring the chaos",
   headlineLead: "Gather your crew.",
   headlinePunch: "We'll spark the day.",
   lede: "Team experiences for schools, orgs, NGOs, faith groups, and anyone ready to connect for real.",
@@ -41,6 +49,7 @@ export const homePage = {
     "Organisations, schools, youth crews, faith communities, families—if you've got people, we've got a day.",
   audienceTitle: "Whoever you bring.",
   packagesStamp: "Pick your depth",
+  packagesPhotoStamp: "Your depth",
   packagesTitleLead: "Short spark.",
   packagesTitlePunch: "Or full retreat.",
   packagesLede: "Pick how deep the day goes—from a quick connect to a leadership reset.",
@@ -76,6 +85,8 @@ export const galleryPage = {
   headlinePunch: "had fun.",
   lede: "Circles, challenges, high-fives, and quiet pauses—from experiences across Malawi.",
   stamp: "Field notes",
+  heroPrimary: { href: "/contact", label: "Plan our day →" },
+  heroSecondary: { href: "#gallery-spotlight", label: "Keep flipping" },
   spotlightTitle: "Moments worth naming",
   spotlightLede: "Two rows at a time — more photos on bigger screens. Flip for more.",
   wallTitle: "The rest of the scrapbook",
@@ -131,6 +142,8 @@ export const experiencesPage = {
   headlineLead: "Real teams.",
   headlinePunch: "Real days.",
   lede: "Programmes we can share—starting with Lessons in Conservation in Liwonde.",
+  heroPrimary: { href: "/contact", label: "Plan a day like this →" },
+  heroSecondary: { href: "/gallery", label: "Peek the gallery" },
   caseStamp: "Case notes",
   emptyStamp: "Coming soon",
   emptyTitle: "More stories are on the way.",
@@ -209,6 +222,8 @@ export const contactPage = {
   headlineLead: "Your team.",
   headlinePunch: "Our next high-five.",
   lede: "Tell us what you're planning. We'll help turn it into an experience your team won't stop talking about.",
+  heroPrimary: { href: "#mission-brief", label: "Fill the brief →" },
+  heroSecondary: { href: "#contact-channels", label: "Or reach us directly" },
   briefStamp: "Mission brief",
   briefTitle: "Tell us about your crew.",
   briefLede: "A few field notes are enough—we'll shape the rest together.",

@@ -79,7 +79,7 @@ function AboutHero({
   support?: GalleryItem;
 }) {
   return (
-    <section className="relative z-20 isolate overflow-visible bg-brand-navy text-white">
+    <section className="motion-enter relative z-20 isolate overflow-visible bg-brand-navy text-white">
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 overflow-hidden"
@@ -128,7 +128,7 @@ function AboutHero({
               </span>
             </h1>
 
-            <p className="mt-4 max-w-md text-sm leading-relaxed text-white/78 sm:mt-5 sm:text-base">
+            <p className="mt-4 max-w-md font-serif text-lg leading-snug text-white/88 sm:mt-5 sm:text-xl">
               {aboutPage.lede}
             </p>
 
@@ -246,14 +246,9 @@ function AboutApproachBridge() {
       </div>
 
       <Container className="relative">
-        <div className="home-rise relative overflow-hidden bg-wash-teal/75 p-6 sm:p-8 lg:p-10">
+        <div className="relative max-w-2xl">
           <span
-            className="gallery-tape absolute -top-1 left-[18%] z-10 h-2.5 w-12 -rotate-6"
-            aria-hidden="true"
-          />
-
-          <span
-            className="gallery-stamp mb-4 inline-block rotate-[-5deg] border border-brand-navy/25 bg-paper px-2.5 py-1 font-display text-[0.65rem] font-semibold tracking-[0.16em] text-brand-navy uppercase"
+            className="gallery-stamp mb-4 inline-block rotate-[-5deg] border border-brand-navy/25 bg-wash-teal px-2.5 py-1 font-display text-[0.65rem] font-semibold tracking-[0.16em] text-brand-navy uppercase"
             aria-hidden="true"
           >
             {aboutPage.approachStamp}

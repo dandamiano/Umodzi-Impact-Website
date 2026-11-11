@@ -1,4 +1,8 @@
+"use client";
+
+import type { CSSProperties } from "react";
 import { values } from "@/data/values";
+import { useScrollReveal } from "@/lib/use-scroll-reveal";
 import { cn } from "@/lib/utils";
 
 type ValuesListProps = {
@@ -6,6 +10,11 @@ type ValuesListProps = {
 };
 
 export function ValuesList({ namesOnly = false }: ValuesListProps) {
+  const { ref, enhanced, visible } = useScrollReveal<HTMLUListElement>({
+    threshold: 0.12,
+    rootMargin: "0px 0px -6% 0px",
+  });
+
   if (namesOnly) {
     return (
       <ul className="mt-8 flex flex-wrap gap-2">
@@ -22,7 +31,14 @@ export function ValuesList({ namesOnly = false }: ValuesListProps) {
   }
 
   return (
-    <ul className="mt-10 grid gap-4 sm:grid-cols-2 sm:gap-5 lg:gap-6">
+    <ul
+      ref={ref}
+      className={cn(
+        "values-reveal mt-10 grid gap-4 sm:grid-cols-2 sm:gap-5 lg:gap-6",
+        enhanced && "is-enhanced",
+        visible && "is-visible",
+      )}
+    >
       {values.map((value, index) => {
         const isGoodVibes = value.name === "Good Vibes";
 
@@ -30,18 +46,24 @@ export function ValuesList({ namesOnly = false }: ValuesListProps) {
           <li
             key={value.name}
             className={cn(
-              "home-rise group relative overflow-hidden bg-paper p-5 sm:p-6",
+              "values-row group relative overflow-hidden bg-paper p-5 sm:p-6",
               "motion-safe:transition-transform motion-safe:duration-300",
               index % 2 === 0
                 ? "motion-safe:hover:-rotate-1"
                 : "motion-safe:hover:rotate-1",
             )}
-            style={{ animationDelay: `${60 + index * 55}ms` }}
+            style={
+              {
+                "--values-row-delay": `${60 + index * 55}ms`,
+              } as CSSProperties
+            }
           >
             <span
               className={cn(
                 "gallery-tape absolute -top-1 z-10 h-2.5 w-10",
-                index % 2 === 0 ? "left-[20%] -rotate-6" : "right-[16%] rotate-[8deg]",
+                index % 2 === 0
+                  ? "left-[20%] -rotate-6"
+                  : "right-[16%] rotate-[8deg]",
               )}
               aria-hidden="true"
             />
@@ -71,7 +93,7 @@ export function ValuesList({ namesOnly = false }: ValuesListProps) {
                   )}
                 >
                   {isGoodVibes ? (
-                    <span className="gallery-stamp inline-block rotate-[-3deg] border border-brand-orange/70 px-2 py-0.5 text-brand-orange">
+                    <span className="values-good-vibes gallery-stamp inline-block rotate-[-3deg] border border-brand-orange/70 px-2 py-0.5 text-brand-orange">
                       {value.name}
                     </span>
                   ) : (

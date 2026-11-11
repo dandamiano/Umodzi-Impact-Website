@@ -28,7 +28,9 @@ Polaroids, tape, stamps, squiggles, torn edges, soft colour washes, slight tilts
 
 **Secondary energy:** geometric confetti (dots, squares, rings) — **no emoji**.
 
-**One composition per first viewport:** brand signal + one headline + one short line + one CTA group + one dominant visual. No hero card stacks, no floating promo badges on photos.
+**One composition per first viewport:** brand signal + one stamp + one headline + one short line + one CTA group + one dominant visual. No hero card stacks, no floating promo badges on photos.
+
+**Hero imagery (committed):** polaroid collage as the dominant visual—not a full-bleed photo plane. Keep the stack readable; one photo stamp max.
 
 ---
 
@@ -98,11 +100,11 @@ Source of truth: `lib/brand.ts` + `color-usage-guide.html`.
 
 ## 6. Motion
 
-Ship **2–3 intentional motions** per major surface, not constant noise.
+Ship **2–3 intentional motions** per page, not constant noise.
 
-- Rise / settle on enter  
-- Scribble draw on underlines  
-- Hover: straighten tilt + slight scale  
+1. Hero enter (`.motion-enter` — rise / settle / scribble)  
+2–3. Page signatures — Home: audience marquee + photo strip; Services: pathway reveal; About: mission/vision + values scroll reveals  
+Hover transitions and form feedback stay. Other below-fold rise/scribble stay static.
 
 Always respect `prefers-reduced-motion`.
 

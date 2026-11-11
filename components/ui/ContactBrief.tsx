@@ -176,7 +176,7 @@ export function ContactBrief({ enquiryEmail }: ContactBriefProps) {
     <section
       id="mission-brief"
       aria-labelledby="mission-brief-heading"
-      className="relative z-0 -mt-px overflow-hidden bg-paper pt-14 pb-10 sm:pt-16 sm:pb-12 lg:pt-20"
+      className="relative z-0 -mt-px scroll-mt-28 overflow-hidden bg-paper pt-14 pb-10 sm:pt-16 sm:pb-12 lg:pt-20"
     >
       <div aria-hidden="true" className="pointer-events-none absolute inset-0">
         <div className="home-dots absolute inset-0 opacity-[0.16]" />

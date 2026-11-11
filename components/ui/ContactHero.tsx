@@ -1,3 +1,5 @@
+import Link from "next/link";
+import { ButtonLink } from "@/components/ui/Button";
 import { GalleryImage } from "@/components/ui/GalleryImage";
 import { Container } from "@/components/ui/Container";
 import { contactPage } from "@/lib/constants";
@@ -11,7 +13,7 @@ export function ContactHero({ photos = [] }: ContactHeroProps) {
   const photo = photos[0];
 
   return (
-    <section className="relative z-20 isolate overflow-visible bg-brand-navy text-white">
+    <section className="motion-enter relative z-20 isolate overflow-visible bg-brand-navy text-white">
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 overflow-hidden"
@@ -58,9 +60,26 @@ export function ContactHero({ photos = [] }: ContactHeroProps) {
               </span>
             </h1>
 
-            <p className="mt-4 max-w-md text-sm leading-relaxed text-white/78 sm:mt-5 sm:text-base">
+            <p className="mt-4 max-w-md font-serif text-lg leading-snug text-white/88 sm:mt-5 sm:text-xl">
               {contactPage.lede}
             </p>
+
+            <div className="mt-7 flex flex-wrap items-center gap-x-5 gap-y-3 sm:mt-8">
+              <ButtonLink
+                href={contactPage.heroPrimary.href}
+                variant="inverse"
+                size="large"
+                className="-rotate-1 motion-safe:transition-transform motion-safe:duration-300 hover:-translate-y-0.5 hover:rotate-0"
+              >
+                {contactPage.heroPrimary.label}
+              </ButtonLink>
+              <Link
+                href={contactPage.heroSecondary.href}
+                className="font-display text-sm font-medium text-white/80 underline decoration-brand-orange underline-offset-4 motion-safe:transition-colors hover:text-white"
+              >
+                {contactPage.heroSecondary.label}
+              </Link>
+            </div>
           </header>
 
           {photo ? (

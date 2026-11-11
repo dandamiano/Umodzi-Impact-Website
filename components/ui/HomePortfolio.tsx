@@ -3,7 +3,6 @@ import { AudienceRoster } from "@/components/ui/AudienceRoster";
 import { ButtonLink } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { GalleryImage } from "@/components/ui/GalleryImage";
-import { PackageCard } from "@/components/ui/PackageCard";
 import { PackagePathway } from "@/components/ui/PackagePathway";
 import { PhotographFeature } from "@/components/ui/PhotographFeature";
 import { approachPillars } from "@/data/approach";
@@ -24,6 +23,7 @@ type HomePortfolioProps = {
   supportPhoto?: GalleryItem;
   accentPhoto?: GalleryItem;
   audiencePhoto?: GalleryItem;
+  packagesPhoto?: GalleryItem;
   closingPhoto?: GalleryItem;
   audiences: readonly AudienceItem[];
   packages: readonly PackageOffering[];
@@ -37,6 +37,7 @@ export function HomePortfolio({
   supportPhoto,
   accentPhoto,
   audiencePhoto,
+  packagesPhoto,
   closingPhoto,
   audiences,
   packages,
@@ -44,10 +45,6 @@ export function HomePortfolio({
   featuredSupports,
   serviceGroups,
 }: HomePortfolioProps) {
-  const packageTeasers = packages.filter(
-    (item) => item.id === "collaborate" || item.id === "transform",
-  );
-
   return (
     <>
       <HomeHero
@@ -62,7 +59,7 @@ export function HomePortfolio({
         photo={audiencePhoto}
       />
 
-      <HomePackagesTeaser items={packages} teasers={packageTeasers} />
+      <HomePackagesTeaser items={packages} photo={packagesPhoto} />
 
       <PhotographFeature
         titleId="photographs-heading"
@@ -90,7 +87,7 @@ function HomeHero({
   accent?: GalleryItem;
 }) {
   return (
-    <section className="relative z-20 isolate overflow-visible bg-brand-navy text-white">
+    <section className="motion-enter relative z-20 isolate overflow-visible bg-brand-navy text-white">
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 overflow-hidden"
@@ -128,12 +125,6 @@ function HomeHero({
                 aria-hidden="true"
               >
                 {homePage.stamp}
-              </span>
-              <span
-                className="gallery-stamp hidden rotate-[8deg] border border-white/35 px-2 py-0.5 font-display text-[0.55rem] font-semibold tracking-[0.14em] text-white/85 uppercase sm:inline-block"
-                aria-hidden="true"
-              >
-                {homePage.floatStampA}
               </span>
             </div>
 
@@ -176,18 +167,6 @@ function HomeHero({
               >
                 {homePage.heroSecondary.label}
               </Link>
-            </div>
-
-            <div
-              className="mt-6 flex flex-wrap gap-2 sm:mt-7"
-              aria-hidden="true"
-            >
-              <span className="gallery-stamp rotate-[-5deg] border border-brand-orange/70 px-2 py-0.5 font-display text-[0.55rem] font-semibold tracking-[0.14em] text-brand-orange uppercase">
-                {homePage.floatStampB}
-              </span>
-              <span className="gallery-stamp rotate-[4deg] border border-white/30 px-2 py-0.5 font-display text-[0.55rem] font-semibold tracking-[0.14em] text-white/75 uppercase">
-                High-fives welcome
-              </span>
             </div>
           </header>
 
@@ -251,18 +230,6 @@ function HomeHero({
           </div>
         </div>
 
-        <div className="pointer-events-none absolute bottom-0 left-1/2 z-30 -translate-x-1/2 translate-y-[40%] lg:translate-y-[46%]">
-          <div className="relative -rotate-3">
-            <span className="gallery-tape absolute -top-1 left-1/2 z-10 h-2.5 w-11 -translate-x-1/2 rotate-[-6deg]" />
-            <div className="relative border-[3px] border-brand-navy bg-paper px-3.5 py-2 shadow-[0_12px_28px_rgb(49_65_114/0.22)] sm:px-4 sm:py-2.5">
-              <span className="absolute inset-1 border border-dashed border-brand-orange/60" />
-              <p className="relative font-display text-[0.6rem] font-semibold tracking-[0.18em] text-brand-navy uppercase sm:text-[0.65rem]">
-                {homePage.stamp}
-              </p>
-            </div>
-            <span className="absolute -right-1.5 -bottom-1.5 size-2.5 rotate-12 bg-brand-orange" />
-          </div>
-        </div>
       </div>
 
       {support ? (
@@ -290,93 +257,101 @@ function HomeHero({
 
 function HomePackagesTeaser({
   items,
-  teasers,
+  photo,
 }: {
   items: readonly PackageOffering[];
-  teasers: readonly PackageOffering[];
+  photo?: GalleryItem;
 }) {
   return (
     <section
       aria-labelledby="packages-heading"
-      className="relative isolate overflow-x-clip bg-mist py-14 sm:py-16 lg:py-20"
+      className="relative isolate overflow-x-clip bg-wash-orange py-14 sm:py-16 lg:py-20"
     >
       <div aria-hidden="true" className="pointer-events-none absolute inset-0">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_92%_8%,color-mix(in_srgb,var(--color-brand-orange)_16%,transparent),transparent_42%),radial-gradient(ellipse_at_8%_90%,color-mix(in_srgb,var(--color-brand-teal)_10%,transparent),transparent_48%)]" />
-        <span className="absolute top-14 left-[10%] size-2 rotate-12 bg-brand-orange/45" />
-        <span className="absolute right-[14%] bottom-24 size-8 rounded-full border border-dashed border-brand-orange/35" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_92%_8%,color-mix(in_srgb,var(--color-brand-orange)_18%,transparent),transparent_42%),radial-gradient(ellipse_at_8%_90%,color-mix(in_srgb,var(--color-brand-navy)_6%,transparent),transparent_48%)]" />
+        <span className="absolute top-14 left-[10%] size-2 rotate-12 bg-brand-orange/55" />
+        <span className="absolute right-[14%] bottom-24 size-8 rounded-full border border-dashed border-brand-orange/40" />
       </div>
 
       <Container className="relative">
-        <header className="home-rise max-w-2xl">
-          <span
-            className="gallery-stamp mb-4 inline-block rotate-[-6deg] border border-brand-navy/25 bg-paper px-2.5 py-1 font-display text-[0.65rem] font-semibold tracking-[0.16em] text-brand-navy uppercase"
-            aria-hidden="true"
-          >
-            {homePage.packagesStamp}
-          </span>
-          <h2
-            id="packages-heading"
-            className="font-display text-[1.7rem] font-medium tracking-tight whitespace-nowrap text-brand-navy sm:text-4xl lg:text-[2.75rem] lg:leading-[1.08]"
-          >
-            <span className="gallery-punch relative inline -rotate-1">
-              {homePage.packagesTitleLead} {homePage.packagesTitlePunch}
-              <svg
-                className="gallery-scribble pointer-events-none absolute -bottom-1 left-0 h-2.5 w-full text-brand-orange sm:h-3.5"
-                viewBox="0 0 220 10"
-                fill="none"
+        <div className="grid items-center gap-10 lg:grid-cols-[minmax(0,1.2fr)_minmax(14rem,0.8fr)] lg:gap-12 xl:gap-16">
+          <div className="min-w-0">
+            <header className="home-rise max-w-2xl">
+              <span
+                className="gallery-stamp mb-4 inline-block rotate-[-6deg] border border-brand-navy/25 bg-paper px-2.5 py-1 font-display text-[0.65rem] font-semibold tracking-[0.16em] text-brand-navy uppercase"
                 aria-hidden="true"
               >
-                <path
-                  d="M1 6c16-4 34 3 52-1 20-5 38 4 58 0 16-3 32-1 48 2 14 3 28-2 40-1"
-                  stroke="currentColor"
-                  strokeWidth="2.25"
-                  strokeLinecap="round"
-                />
-              </svg>
-            </span>
-          </h2>
-          <p className="mt-3 max-w-lg font-serif text-xl leading-snug text-brand-navy/75 sm:text-2xl">
-            {homePage.packagesLede}
-          </p>
-        </header>
+                {homePage.packagesStamp}
+              </span>
+              <h2
+                id="packages-heading"
+                className="font-display text-[1.7rem] font-medium tracking-tight text-brand-navy sm:text-4xl lg:text-[2.75rem] lg:leading-[1.08]"
+              >
+                <span className="block sm:inline">
+                  {homePage.packagesTitleLead}
+                </span>{" "}
+                <span className="gallery-punch relative inline-block -rotate-1">
+                  {homePage.packagesTitlePunch}
+                  <svg
+                    className="gallery-scribble pointer-events-none absolute -bottom-1 left-0 h-2.5 w-full text-brand-orange sm:h-3.5"
+                    viewBox="0 0 220 10"
+                    fill="none"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M1 6c16-4 34 3 52-1 20-5 38 4 58 0 16-3 32-1 48 2 14 3 28-2 40-1"
+                      stroke="currentColor"
+                      strokeWidth="2.25"
+                      strokeLinecap="round"
+                    />
+                  </svg>
+                </span>
+              </h2>
+              <p className="mt-3 max-w-lg font-serif text-xl leading-snug text-brand-navy/75 sm:text-2xl">
+                {homePage.packagesLede}
+              </p>
+            </header>
 
-        <PackagePathway
-          items={items}
-          basePath="/packages"
-          className="home-rise"
-        />
+            <PackagePathway
+              items={items}
+              basePath="/packages"
+              className="home-rise"
+            />
 
-        <ul className="mt-10 grid items-stretch gap-6 lg:grid-cols-2">
-          {teasers.map((item, index) => (
-            <li
-              key={item.id}
-              className={cn(
-                "home-rise",
-                item.tier === "featured" && "lg:relative lg:z-10",
-              )}
-              style={{ animationDelay: `${index * 90}ms` }}
+            <div className="home-rise mt-8">
+              <ButtonLink href="/packages" variant="primary" size="large">
+                {homePage.packagesAction}
+              </ButtonLink>
+            </div>
+          </div>
+
+          {photo ? (
+            <div
+              aria-hidden="true"
+              className="gallery-rise relative mx-auto w-[13rem] sm:w-[15rem] lg:mx-0 lg:w-[17rem] lg:justify-self-end"
             >
-              <PackageCard
-                id={item.id}
-                name={item.name}
-                step={item.step}
-                duration={item.duration}
-                outcome={item.outcome}
-                summary={item.summary}
-                idealFor={item.idealFor}
-                inclusions={item.inclusions}
-                tier={item.tier}
-                badge={item.badge}
-                variant="preview"
-              />
-            </li>
-          ))}
-        </ul>
-
-        <div className="home-rise mt-8">
-          <ButtonLink href="/packages" variant="primary" size="large">
-            {homePage.packagesAction}
-          </ButtonLink>
+              <div className="relative rotate-2">
+                <div className="absolute inset-3 -translate-x-2.5 translate-y-2.5 -rotate-3 bg-wash-teal/70" />
+                <span className="gallery-stamp absolute -top-3 left-1/2 z-20 -translate-x-1/2 rotate-[-7deg] border border-brand-navy/25 bg-paper px-2.5 py-0.5 font-display text-[0.55rem] font-semibold tracking-[0.14em] text-brand-navy uppercase sm:text-[0.65rem]">
+                  {homePage.packagesPhotoStamp}
+                </span>
+                <div className="gallery-polaroid relative border border-brand-navy/10 bg-paper p-2.5 pb-7 shadow-[0_18px_40px_rgb(49_65_114/0.18)] sm:p-3 sm:pb-8">
+                  <span className="gallery-tape absolute -top-1.5 left-[18%] z-10 -rotate-8" />
+                  <span className="gallery-tape absolute -top-1 right-[14%] z-10 rotate-[10deg] scale-90" />
+                  <div className="overflow-hidden bg-mist ring-1 ring-brand-navy/10">
+                    <GalleryImage
+                      image={photo}
+                      decorative
+                      sizes="(min-width: 1024px) 18vw, 240px"
+                      className="aspect-[4/5] h-auto w-full object-cover object-center"
+                    />
+                  </div>
+                </div>
+                <span className="absolute -right-2 top-[38%] size-2.5 rotate-12 bg-brand-orange" />
+                <span className="absolute -bottom-1 left-[12%] size-2.5 rounded-full border-2 border-brand-navy/25" />
+              </div>
+            </div>
+          ) : null}
         </div>
       </Container>
     </section>

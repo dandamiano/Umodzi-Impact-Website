@@ -1,8 +1,8 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
 import { Container } from "@/components/ui/Container";
 import { aboutPage } from "@/lib/constants";
+import { useScrollReveal } from "@/lib/use-scroll-reveal";
 import { cn } from "@/lib/utils";
 
 type MissionVisionProps = {
@@ -18,53 +18,12 @@ export function MissionVision({
   mission,
   vision,
 }: MissionVisionProps) {
-  const sectionRef = useRef<HTMLElement>(null);
-  const [enhanced, setEnhanced] = useState(false);
-  const [visible, setVisible] = useState(false);
-
-  useEffect(() => {
-    const section = sectionRef.current;
-    if (!section) {
-      return;
-    }
-
-    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (reduced) {
-      setVisible(true);
-      return;
-    }
-
-    const alreadyInView =
-      section.getBoundingClientRect().top < window.innerHeight * 0.85;
-    if (alreadyInView) {
-      setEnhanced(true);
-      setVisible(true);
-      return;
-    }
-
-    setEnhanced(true);
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry?.isIntersecting) {
-          setVisible(true);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.18, rootMargin: "0px 0px -8% 0px" },
-    );
-
-    observer.observe(section);
-
-    return () => observer.disconnect();
-  }, []);
+  const { ref, enhanced, visible } = useScrollReveal<HTMLElement>();
 
   return (
     <section
-      ref={sectionRef}
+      ref={ref}
       aria-labelledby={missionId}
-      data-enhanced={enhanced ? "true" : "false"}
-      data-visible={visible ? "true" : "false"}
       className={cn(
         "mission-vision relative z-0 isolate -mt-px overflow-x-clip bg-mist pt-20 pb-14 sm:pt-24 sm:pb-16 lg:pb-20",
         enhanced && "is-enhanced",

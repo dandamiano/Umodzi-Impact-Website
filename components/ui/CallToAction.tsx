@@ -1,7 +1,6 @@
 import { ArrowRight } from "lucide-react";
 import { ButtonLink } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
-import { cn } from "@/lib/utils";
 
 type CallToActionProps = {
   title: string;
@@ -77,52 +76,40 @@ export function CallToAction({
       />
 
       <Container className="relative py-16 sm:py-20 lg:py-24">
-        <div className="grid items-end gap-10 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,0.8fr)] lg:gap-14">
-          <div className="home-rise max-w-2xl">
-            <span
-              className="home-draw mb-4 block h-1 w-12 bg-brand-orange"
-              aria-hidden="true"
-            />
-            <p className="font-display text-xs font-medium tracking-[0.18em] text-white/70 uppercase">
-              {eyebrow}
-            </p>
-            <h2 className="mt-3 text-3xl font-medium tracking-tight text-white sm:text-4xl lg:text-[2.75rem] lg:leading-[1.1]">
-              {title}
-            </h2>
-            <p className="mt-4 max-w-xl font-serif text-xl leading-relaxed text-white/85 sm:text-2xl">
-              {description}
-            </p>
-          </div>
-
-          <div
-            className="home-rise relative"
-            style={{ animationDelay: "90ms" }}
-          >
-            <div className="relative overflow-hidden rounded-3xl border border-white/15 bg-white/5 p-6 shadow-soft backdrop-blur-sm sm:p-8">
-              <div
-                aria-hidden="true"
-                className="pointer-events-none absolute -top-10 -right-8 size-28 rounded-full bg-brand-orange/15"
-              />
-              <p className="max-w-xs text-sm leading-relaxed text-white/75">
-                Organisations, schools, NGOs, and community groups — tell us what
-                your team needs.
-              </p>
-              {action ? (
-                <ButtonLink
-                  href={action.href}
-                  variant="inverse"
-                  size="large"
-                  className={cn("mt-6 w-full sm:w-auto")}
-                >
-                  {action.label}
-                  <ArrowRight aria-hidden="true" className="ml-2 size-4" />
-                </ButtonLink>
-              ) : null}
-              <p className="mt-4 text-xs tracking-wide text-white/55">
+        <div className="home-rise max-w-2xl">
+          <span
+            className="home-draw mb-4 block h-1 w-12 bg-brand-orange"
+            aria-hidden="true"
+          />
+          <p className="font-display text-xs font-medium tracking-[0.18em] text-white/70 uppercase">
+            {eyebrow}
+          </p>
+          <h2 className="mt-3 text-3xl font-medium tracking-tight text-white sm:text-4xl lg:text-[2.75rem] lg:leading-[1.1]">
+            {title}
+          </h2>
+          <p className="mt-4 max-w-xl font-serif text-xl leading-relaxed text-white/85 sm:text-2xl">
+            {description}
+          </p>
+          <p className="mt-4 max-w-md text-sm leading-relaxed text-white/65">
+            Organisations, schools, NGOs, and community groups — tell us what
+            your team needs.
+          </p>
+          {action ? (
+            <div className="mt-8 flex flex-wrap items-center gap-x-5 gap-y-3">
+              <ButtonLink
+                href={action.href}
+                variant="inverse"
+                size="large"
+                className="-rotate-1 motion-safe:transition-transform motion-safe:duration-300 hover:-translate-y-0.5 hover:rotate-0"
+              >
+                {action.label}
+                <ArrowRight aria-hidden="true" className="ml-2 size-4" />
+              </ButtonLink>
+              <p className="font-display text-xs tracking-wide text-white/55">
                 We will reply with a clear next step.
               </p>
             </div>
-          </div>
+          ) : null}
         </div>
       </Container>
     </section>

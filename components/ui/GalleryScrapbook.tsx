@@ -1,3 +1,5 @@
+import Link from "next/link";
+import { ButtonLink } from "@/components/ui/Button";
 import { GalleryImage } from "@/components/ui/GalleryImage";
 import { GalleryWall } from "@/components/ui/GalleryWall";
 import { Container } from "@/components/ui/Container";
@@ -24,7 +26,7 @@ export function GalleryScrapbook({
 
   return (
     <>
-      <section className="relative isolate overflow-hidden bg-brand-navy text-white">
+      <section className="motion-enter relative isolate overflow-hidden bg-brand-navy text-white">
         <div
           aria-hidden="true"
           className="pointer-events-none absolute inset-0"
@@ -91,9 +93,26 @@ export function GalleryScrapbook({
                 </span>
               </p>
 
-              <p className="mt-4 max-w-md text-sm leading-relaxed text-white/80 sm:mt-5 sm:text-base lg:text-lg">
+              <p className="mt-4 max-w-md font-serif text-lg leading-snug text-white/88 sm:mt-5 sm:text-xl lg:text-[1.35rem]">
                 {galleryPage.lede}
               </p>
+
+              <div className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-3 sm:mt-7">
+                <ButtonLink
+                  href={galleryPage.heroPrimary.href}
+                  variant="inverse"
+                  size="large"
+                  className="-rotate-1 motion-safe:transition-transform motion-safe:duration-300 hover:-translate-y-0.5 hover:rotate-0"
+                >
+                  {galleryPage.heroPrimary.label}
+                </ButtonLink>
+                <Link
+                  href={galleryPage.heroSecondary.href}
+                  className="font-display text-sm font-medium text-white/80 underline decoration-brand-orange underline-offset-4 motion-safe:transition-colors hover:text-white"
+                >
+                  {galleryPage.heroSecondary.label}
+                </Link>
+              </div>
             </header>
 
             {/* Fills the empty right side of the hero copy band on every breakpoint */}
@@ -302,7 +321,7 @@ export function GalleryScrapbook({
                 />
               </svg>
             </h2>
-            <p className="mt-4 max-w-lg text-base leading-relaxed text-brand-navy/75 sm:text-lg">
+            <p className="mt-4 max-w-lg font-serif text-xl leading-snug text-brand-navy/75 sm:text-2xl">
               {galleryPage.wallLede}
             </p>
           </header>

@@ -9,6 +9,7 @@ import {
   heroSupportPhoto,
   homeAudiencePhoto,
   homeClosingPhoto,
+  homePackagesPhoto,
 } from "@/data/gallery";
 import { packages } from "@/data/packages";
 import { homepageServiceGroups } from "@/data/services";
@@ -25,6 +26,7 @@ export default function HomePage() {
       supportPhoto={heroSupportPhoto}
       accentPhoto={heroAccentPhoto}
       audiencePhoto={homeAudiencePhoto}
+      packagesPhoto={homePackagesPhoto}
       closingPhoto={homeClosingPhoto}
       audiences={audienceItems}
       packages={packages}

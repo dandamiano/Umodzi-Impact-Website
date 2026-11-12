@@ -84,14 +84,22 @@ const caseStudies: readonly CaseStudy[] = [
     feedback:
       "12 respondents rated the overall experience Excellent or Good, and 11 indicated they would recommend Umodzi.",
     photos: resolvePhotos("/photos/IMG_9765.jpg", [
-      "/photos/IMG_9444.jpg",
       "/photos/IMG_9666.jpg",
-      "/photos/IMG_9289.jpg",
+      "/photos/IMG_9667.jpg",
+      "/photos/IMG_9694.jpg",
     ]),
   },
 ];
 
 export const publishedCaseStudies = caseStudies.filter((study) => study.approved);
+
+export const experiencesHeroPhoto: GalleryItem | undefined = photo(
+  "/photos/IMG_9674.jpg",
+);
+
+export const experiencesSupportPhoto: GalleryItem | undefined = photo(
+  "/photos/IMG_9460.jpg",
+);
 
 export const experiencesBackgroundPhoto: GalleryItem | undefined = photo(
   "/photos/IMG_9482.jpg",

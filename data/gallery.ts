@@ -6,6 +6,12 @@ import type { FeaturedPhoto, GalleryItem } from "@/types/content";
  */
 export const galleryItems: readonly GalleryItem[] = [
   {
+    src: "/photos/IMG_2497.jpg",
+    alt: "A participant smiles and gives two thumbs up in front of a safari vehicle.",
+    width: 1600,
+    height: 2400,
+  },
+  {
     src: "/photos/IMG_2502.jpg",
     alt: "A hand holds a dry leaf during an outdoor team activity, with a thatched building and a vehicle behind.",
     width: 1600,
@@ -312,6 +318,12 @@ export const galleryItems: readonly GalleryItem[] = [
     height: 1067,
   },
   {
+    src: "/photos/IMG_9581.jpg",
+    alt: "Three participants with red headbands gather around a wooden table outdoors.",
+    width: 1600,
+    height: 2400,
+  },
+  {
     src: "/photos/IMG_9582.jpg",
     alt: "Participants discuss papers around an outdoor table.",
     width: 1600,
@@ -594,18 +606,18 @@ export const heroPhoto = galleryItems.find(
   (item) => item.src === "/photos/IMG_2510.jpg",
 );
 
-/** Peace-sign portrait on the hero seam. */
+/** Facilitator mid-brief on the hero seam. */
 export const heroSupportPhoto = galleryItems.find(
-  (item) => item.src === "/photos/IMG_9749.jpg",
+  (item) => item.src === "/photos/IMG_9540.jpg",
 );
 
-/** Extra scrapbook polaroid tucked behind the hero stack. */
+/** Thumbs-up polaroid tucked behind the hero stack. */
 export const heroAccentPhoto = galleryItems.find(
-  (item) => item.src === "/photos/IMG_9745.jpg",
+  (item) => item.src === "/photos/IMG_2497.jpg",
 );
 
 export const homeAudiencePhoto = galleryItems.find(
-  (item) => item.src === "/photos/IMG_9765.jpg",
+  (item) => item.src === "/photos/IMG_9485.jpg",
 );
 
 /** Packages teaser — crew energy for the depth pathway. */

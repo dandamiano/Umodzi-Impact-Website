@@ -102,7 +102,7 @@ function ExperiencesHero({
       </div>
 
       <Container className="relative z-40 pt-12 pb-5 sm:pt-14 sm:pb-6 lg:pt-16 lg:pb-7">
-        <div className="flex flex-col gap-8 sm:grid sm:grid-cols-[minmax(0,1.1fr)_minmax(12rem,0.9fr)] sm:items-center sm:gap-4 lg:gap-8">
+        <div className="flex flex-col gap-8 sm:grid sm:grid-cols-[minmax(0,1.05fr)_minmax(16rem,1fr)] sm:items-center sm:gap-5 lg:gap-8">
           <header className="home-rise relative order-1 min-w-0 sm:pt-2 lg:pt-3">
             <div className="flex flex-wrap items-center gap-2 sm:gap-3">
               <p className="font-display text-[0.65rem] font-semibold tracking-[0.2em] text-brand-orange uppercase sm:text-xs sm:tracking-[0.22em]">
@@ -163,7 +163,7 @@ function ExperiencesHero({
           {photo ? (
             <div
               aria-hidden="true"
-              className="gallery-rise relative order-2 mx-auto mb-[-3rem] w-[13.5rem] sm:mb-[-5.5rem] sm:w-[16rem] sm:justify-self-center lg:mb-[-7rem] lg:w-[17.5rem]"
+              className="gallery-rise relative order-2 mx-auto mb-[-2.5rem] w-full max-w-[19rem] sm:mb-[-4.5rem] sm:max-w-[22rem] sm:justify-self-end lg:mb-[-5.5rem] lg:max-w-[26rem]"
             >
               <div className="relative -rotate-2 sm:translate-y-2 lg:translate-y-3">
                 <div className="absolute -inset-4 rounded-[2rem] bg-[radial-gradient(circle_at_50%_40%,color-mix(in_srgb,var(--color-brand-teal)_40%,transparent),transparent_70%)] opacity-90" />
@@ -173,15 +173,15 @@ function ExperiencesHero({
                   {experiencesPage.photoStamp}
                 </span>
 
-                <div className="gallery-polaroid relative border border-white/70 bg-paper p-2.5 pb-7 shadow-[0_20px_44px_rgb(0_0_0/0.45)] sm:p-3 sm:pb-8">
-                  <span className="gallery-tape absolute -top-1.5 left-[18%] z-10 -rotate-6" />
-                  <span className="gallery-tape absolute -top-1 right-[16%] z-10 rotate-[9deg] scale-90 opacity-95" />
+                <div className="gallery-polaroid relative border border-white/70 bg-paper p-2 pb-5 shadow-[0_20px_44px_rgb(0_0_0/0.45)] sm:p-2.5 sm:pb-6">
+                  <span className="gallery-tape absolute -top-1.5 left-[14%] z-10 -rotate-6" />
+                  <span className="gallery-tape absolute -top-1 right-[12%] z-10 rotate-[9deg] scale-90 opacity-95" />
                   <div className="overflow-hidden bg-mist ring-1 ring-brand-navy/10">
                     <GalleryImage
                       image={photo}
                       priority
-                      sizes="(min-width: 1024px) 18vw, (min-width: 640px) 26vw, 54vw"
-                      className="aspect-[4/5] h-auto w-full object-cover"
+                      sizes="(min-width: 1024px) 26vw, (min-width: 640px) 36vw, 80vw"
+                      className="aspect-[3/2] h-auto w-full object-cover object-[center_35%]"
                     />
                   </div>
                 </div>

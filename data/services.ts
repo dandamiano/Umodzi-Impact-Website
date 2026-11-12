@@ -88,7 +88,7 @@ export const servicesHeroPhoto: GalleryItem | undefined = galleryItems.find(
 );
 
 export const servicesSupportPhoto: GalleryItem | undefined = galleryItems.find(
-  (photo) => photo.src === "/photos/IMG_2553.jpg",
+  (photo) => photo.src === "/photos/IMG_9479.jpg",
 );
 
 export const servicesClosingPhoto: GalleryItem | undefined =

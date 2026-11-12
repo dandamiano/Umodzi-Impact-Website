@@ -113,10 +113,10 @@ export const packages: readonly PackageOffering[] = [
 ];
 
 export const packagesBackgroundPhoto: GalleryItem | undefined =
-  galleryItems.find((photo) => photo.src === "/photos/IMG_9645.jpg");
+  galleryItems.find((photo) => photo.src === "/photos/IMG_9526.jpg");
 
 export const packagesSupportPhoto: GalleryItem | undefined =
-  galleryItems.find((photo) => photo.src === "/photos/IMG_2515.jpg");
+  galleryItems.find((photo) => photo.src === "/photos/IMG_9581.jpg");
 
 export const packagesClosingPhoto: GalleryItem | undefined =
   galleryItems.find((photo) => photo.src === "/photos/IMG_2519.jpg") ??

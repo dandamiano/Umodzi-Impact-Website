@@ -3,9 +3,10 @@ import { ExperiencePortfolio } from "@/components/ui/ExperiencePortfolio";
 import {
   experiencePortfolioThemes,
   experiencesBackgroundPhoto,
+  experiencesHeroPhoto,
+  experiencesSupportPhoto,
   publishedCaseStudies,
 } from "@/data/experiences";
-import { galleryHeroCollage } from "@/data/gallery";
 import { experiencesPage } from "@/lib/constants";
 
 export const metadata: Metadata = {
@@ -15,15 +16,12 @@ export const metadata: Metadata = {
 };
 
 export default function ExperiencesPage() {
-  const heroPhotos = [
-    publishedCaseStudies[0]?.photos?.lead,
-    galleryHeroCollage[0],
-  ].filter((photo): photo is NonNullable<typeof photo> => Boolean(photo));
+  const heroPhotos = [experiencesHeroPhoto, experiencesSupportPhoto].filter(
+    (photo): photo is NonNullable<typeof photo> => Boolean(photo),
+  );
 
   const closingPhoto =
-    publishedCaseStudies[0]?.photos?.supports?.[0] ??
-    experiencesBackgroundPhoto ??
-    galleryHeroCollage[1];
+    publishedCaseStudies[0]?.photos?.supports?.[0] ?? experiencesBackgroundPhoto;
 
   return (
     <ExperiencePortfolio

@@ -166,8 +166,8 @@ export function AudienceRoster({ titleId, items, photo }: AudienceRosterProps) {
                 </div>
               </div>
 
-              {/* Desktop: larger portrait polaroid on the right */}
-              <div className="relative mx-auto hidden w-full max-w-[17.5rem] rotate-[2deg] lg:block xl:max-w-[19rem]">
+              {/* Desktop: landscape scrapbook frame on the right */}
+              <div className="relative mx-auto hidden w-full max-w-[28rem] rotate-[1.5deg] lg:block xl:max-w-[32rem]">
                 <div className="absolute inset-3 -translate-x-2 translate-y-2 -rotate-2 bg-brand-green/20" />
                 <span className="gallery-stamp absolute -top-2 -left-1 z-20 rotate-[-8deg] border border-brand-orange/80 bg-paper px-2.5 py-0.5 font-display text-[0.6rem] font-semibold tracking-[0.12em] text-brand-orange uppercase">
                   Field crew
@@ -179,8 +179,8 @@ export function AudienceRoster({ titleId, items, photo }: AudienceRosterProps) {
                     <GalleryImage
                       image={photo}
                       decorative
-                      sizes="(min-width: 1280px) 18vw, 22vw"
-                      className="aspect-[4/5] h-auto w-full object-cover"
+                      sizes="(min-width: 1280px) 32vw, 40vw"
+                      className="aspect-[3/2] h-auto w-full object-cover object-[center_35%]"
                     />
                   </div>
                 </div>

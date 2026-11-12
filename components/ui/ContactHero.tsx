@@ -11,6 +11,7 @@ type ContactHeroProps = {
 
 export function ContactHero({ photos = [] }: ContactHeroProps) {
   const photo = photos[0];
+  const support = photos[1];
 
   return (
     <section className="motion-enter relative z-20 isolate overflow-visible bg-brand-navy text-white">
@@ -26,7 +27,7 @@ export function ContactHero({ photos = [] }: ContactHeroProps) {
       </div>
 
       <Container className="relative z-10 pt-12 pb-5 sm:pt-14 sm:pb-6 lg:pt-16 lg:pb-7">
-        <div className="flex flex-col gap-8 sm:grid sm:grid-cols-[minmax(0,1.05fr)_minmax(14rem,0.95fr)] sm:items-center sm:gap-3 lg:grid-cols-[minmax(0,1fr)_minmax(16rem,1fr)] lg:gap-4 xl:gap-6">
+        <div className="flex flex-col gap-8 sm:grid sm:grid-cols-[minmax(0,1.05fr)_minmax(16rem,1fr)] sm:items-center sm:gap-5 lg:gap-8">
           <header className="home-rise relative order-1 min-w-0 pb-0 sm:pb-2 sm:pt-2 lg:pt-3">
             <div className="flex flex-wrap items-center gap-2 sm:gap-3">
               <p className="font-display text-[0.65rem] font-semibold tracking-[0.2em] text-brand-orange uppercase sm:text-xs sm:tracking-[0.22em]">
@@ -85,30 +86,27 @@ export function ContactHero({ photos = [] }: ContactHeroProps) {
           {photo ? (
             <div
               aria-hidden="true"
-              className="gallery-rise relative order-2 z-30 mx-auto mb-[-3.25rem] w-[14.5rem] sm:mb-[-6rem] sm:w-[17.5rem] sm:justify-self-center sm:-translate-x-2 lg:mb-[-7.5rem] lg:w-[19.5rem] lg:-translate-x-4 xl:w-[21rem] xl:-translate-x-6"
+              className="gallery-rise relative order-2 z-30 mx-auto mb-[-2.5rem] w-full max-w-[19rem] sm:mb-[-4.5rem] sm:max-w-[22rem] sm:justify-self-end lg:mb-[-5.5rem] lg:max-w-[26rem]"
             >
-              <div className="relative -rotate-2 sm:translate-y-3 lg:translate-y-4">
-                {/* Soft backlight so the frame reads against navy */}
+              <div className="relative -rotate-2 sm:translate-y-2 lg:translate-y-3">
                 <div className="absolute -inset-4 rounded-[2rem] bg-[radial-gradient(circle_at_50%_40%,color-mix(in_srgb,var(--color-brand-teal)_42%,transparent),transparent_70%)] opacity-90 sm:-inset-5" />
-
-                {/* Offset scrapbook mat */}
                 <div className="absolute inset-3 translate-x-2.5 translate-y-2.5 rotate-[3deg] bg-wash-teal/70 sm:inset-3.5 sm:translate-x-3 sm:translate-y-3" />
-                <div className="absolute -left-2 top-[20%] bottom-[24%] w-[calc(100%+1rem)] -z-10 rotate-[5deg] border border-dashed border-white/25" />
+                <div className="absolute -left-2 top-[20%] bottom-[24%] -z-10 w-[calc(100%+1rem)] rotate-[5deg] border border-dashed border-white/25" />
 
                 <span className="gallery-stamp absolute -top-4 left-1/2 z-20 -translate-x-1/2 -rotate-3 border border-brand-orange/80 bg-brand-navy px-2.5 py-0.5 font-display text-[0.55rem] font-semibold tracking-[0.14em] text-brand-orange uppercase sm:-top-5 sm:px-3 sm:text-[0.65rem]">
                   {contactPage.photoStamp}
                 </span>
 
-                <div className="gallery-polaroid relative border border-white/70 bg-paper p-2.5 pb-7 shadow-[0_20px_44px_rgb(0_0_0/0.45)] sm:p-3 sm:pb-8">
-                  <span className="gallery-tape absolute -top-1.5 left-[18%] z-10 -rotate-6" />
-                  <span className="gallery-tape absolute -top-1 right-[16%] z-10 rotate-[9deg] scale-90 opacity-95" />
+                <div className="gallery-polaroid relative border border-white/70 bg-paper p-2 pb-5 shadow-[0_20px_44px_rgb(0_0_0/0.45)] sm:p-2.5 sm:pb-6">
+                  <span className="gallery-tape absolute -top-1.5 left-[14%] z-10 -rotate-6" />
+                  <span className="gallery-tape absolute -top-1 right-[12%] z-10 rotate-[9deg] scale-90 opacity-95" />
 
                   <div className="overflow-hidden bg-mist ring-1 ring-brand-navy/10">
                     <GalleryImage
                       image={photo}
                       priority
-                      sizes="(min-width: 1280px) 21vw, (min-width: 1024px) 20vw, (min-width: 640px) 28vw, 58vw"
-                      className="aspect-[4/5] h-auto w-full object-cover"
+                      sizes="(min-width: 1024px) 26vw, (min-width: 640px) 36vw, 80vw"
+                      className="aspect-[3/2] h-auto w-full object-cover object-[center_35%]"
                     />
                   </div>
                 </div>
@@ -122,17 +120,37 @@ export function ContactHero({ photos = [] }: ContactHeroProps) {
         </div>
       </Container>
 
-      <svg
-        className="gallery-tear relative z-20 -mb-px block w-full text-paper"
-        viewBox="0 0 1440 40"
-        preserveAspectRatio="none"
-        aria-hidden="true"
-      >
-        <path
-          fill="currentColor"
-          d="M0 18c40 12 80-8 120 2s80 14 120 3 80-14 120-3 80 14 120 3 80-12 120-2 80 12 120 2 80-10 120 0 80 14 120 3 80-14 120-3 80 8 120 0v18H0z"
-        />
-      </svg>
+      <div className="relative z-20 -mb-px" aria-hidden="true">
+        <svg
+          className="gallery-tear relative block w-full text-paper"
+          viewBox="0 0 1440 40"
+          preserveAspectRatio="none"
+        >
+          <path
+            fill="currentColor"
+            d="M0 18c40 12 80-8 120 2s80 14 120 3 80-14 120-3 80 14 120 3 80-12 120-2 80 12 120 2 80-10 120 0 80 14 120 3 80-14 120-3 80 8 120 0v18H0z"
+          />
+        </svg>
+      </div>
+
+      {support ? (
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute right-[6%] bottom-0 z-50 w-[6.5rem] translate-y-[45%] sm:right-[10%] sm:w-[7.75rem] lg:right-[12%] lg:w-[8.5rem] lg:translate-y-[48%]"
+        >
+          <div className="gallery-polaroid relative rotate-3 border border-brand-navy/10 bg-paper p-1.5 pb-4 shadow-[0_16px_32px_rgb(0_0_0/0.28)] sm:p-2 sm:pb-5">
+            <span className="gallery-tape absolute -top-1 left-2 z-10 -rotate-6 scale-90" />
+            <span className="gallery-tape absolute -top-0.5 right-2 z-10 rotate-6 scale-75 opacity-90" />
+            <div className="overflow-hidden bg-mist ring-1 ring-brand-navy/10">
+              <GalleryImage
+                image={support}
+                sizes="(min-width: 1024px) 10vw, 22vw"
+                className="aspect-[4/5] h-auto w-full object-cover"
+              />
+            </div>
+          </div>
+        </div>
+      ) : null}
     </section>
   );
 }

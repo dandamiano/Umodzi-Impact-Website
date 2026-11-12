@@ -8,7 +8,7 @@ import {
   contactLinks,
   publishedSocialChannels,
 } from "@/data/contact";
-import { galleryHeroCollage } from "@/data/gallery";
+import { galleryItems } from "@/data/gallery";
 
 export const metadata: Metadata = {
   title: "Contact",
@@ -18,17 +18,24 @@ export const metadata: Metadata = {
 
 export default function ContactPage() {
   const links = contactLinks(contactDetails);
+  const heroPhotos = [
+    galleryItems.find((photo) => photo.src === "/photos/IMG_9558.jpg"),
+    galleryItems.find((photo) => photo.src === "/photos/IMG_9628.jpg"),
+  ].filter((photo): photo is NonNullable<typeof photo> => Boolean(photo));
+  const closingPhoto =
+    galleryItems.find((photo) => photo.src === "/photos/IMG_9289.jpg") ??
+    heroPhotos[0];
 
   return (
     <>
-      <ContactHero photos={galleryHeroCollage} />
+      <ContactHero photos={heroPhotos} />
       <ContactBrief enquiryEmail={contactDetails.email} />
       <ContactChannels
         links={links}
         social={publishedSocialChannels}
         address={contactDetails.address}
       />
-      <ContactClosing photo={galleryHeroCollage[2] ?? galleryHeroCollage[0]} />
+      <ContactClosing photo={closingPhoto} />
     </>
   );
 }

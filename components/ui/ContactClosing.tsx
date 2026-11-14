@@ -83,7 +83,7 @@ export function ContactClosing({ photo }: ContactClosingProps) {
           {photo ? (
             <div
               aria-hidden="true"
-              className="gallery-rise relative mx-auto w-[12.5rem] sm:w-[14rem] lg:mx-0 lg:w-[15.5rem] lg:justify-self-end"
+              className="gallery-rise relative mx-auto w-full max-w-[20rem] sm:max-w-[22rem] lg:mx-0 lg:max-w-[24rem] lg:justify-self-end"
               style={{ animationDelay: "90ms" }}
             >
               <div className="relative rotate-2">
@@ -99,8 +99,8 @@ export function ContactClosing({ photo }: ContactClosingProps) {
                   <div className="overflow-hidden bg-mist ring-1 ring-brand-navy/10">
                     <GalleryImage
                       image={photo}
-                      sizes="(min-width: 1024px) 16vw, (min-width: 640px) 22vw, 50vw"
-                      className="aspect-[4/5] h-auto w-full object-cover"
+                      sizes="(min-width: 1024px) 24vw, (min-width: 640px) 34vw, 80vw"
+                      className="aspect-[4/3] h-auto w-full object-cover"
                     />
                   </div>
                 </div>

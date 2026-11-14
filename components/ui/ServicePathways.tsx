@@ -151,7 +151,7 @@ function ServicePathway({ group, groupIndex }: ServicePathwayProps) {
           </h2>
 
           {group.photo ? (
-            <div className="service-pathway-image relative mt-5 hidden max-w-[14rem] lg:block">
+            <div className="service-pathway-image relative mt-5 w-full max-w-[22rem] sm:max-w-[24rem]">
               <div
                 className={cn(
                   "relative",
@@ -167,7 +167,7 @@ function ServicePathway({ group, groupIndex }: ServicePathwayProps) {
                       : "translate-x-2 translate-y-2 rotate-3",
                   )}
                 />
-                <div className="gallery-polaroid relative border border-brand-navy/10 bg-paper p-2 pb-5 shadow-[0_14px_28px_rgb(49_65_114/0.16)]">
+                <div className="gallery-polaroid relative border border-brand-navy/10 bg-paper p-2 pb-5 shadow-[0_14px_28px_rgb(49_65_114/0.16)] sm:p-2.5 sm:pb-6">
                   <span
                     className={cn(
                       "gallery-tape absolute -top-1 z-10 scale-90",
@@ -177,8 +177,8 @@ function ServicePathway({ group, groupIndex }: ServicePathwayProps) {
                   <div className="overflow-hidden bg-mist ring-1 ring-brand-navy/10">
                     <GalleryImage
                       image={group.photo}
-                      sizes="(min-width: 1024px) 16vw, 0px"
-                      className="aspect-[4/5] h-auto w-full object-cover motion-safe:transition-transform motion-safe:duration-700 motion-safe:ease-[cubic-bezier(0.22,1,0.36,1)] hover:scale-[1.03]"
+                      sizes="(min-width: 1024px) 22vw, (min-width: 640px) 40vw, 85vw"
+                      className="aspect-[3/2] h-auto w-full object-cover motion-safe:transition-transform motion-safe:duration-700 motion-safe:ease-[cubic-bezier(0.22,1,0.36,1)] hover:scale-[1.03]"
                     />
                   </div>
                 </div>

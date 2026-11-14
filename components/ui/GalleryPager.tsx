@@ -59,7 +59,7 @@ export function GalleryPager({
           disabled={page === 0}
           aria-label={prevLabel}
           className={cn(
-            "inline-flex min-h-11 min-w-11 -rotate-2 items-center justify-center border-2 border-brand-navy bg-paper font-display text-lg font-semibold text-brand-navy shadow-soft motion-safe:transition-transform motion-safe:duration-300",
+            "inline-flex min-h-11 min-w-11 -rotate-2 items-center justify-center rounded-md border-2 border-brand-orange bg-paper font-display text-lg font-semibold text-brand-navy shadow-soft motion-safe:transition-transform motion-safe:duration-300",
             "hover:-translate-y-0.5 hover:rotate-0 hover:bg-wash-orange",
             "disabled:cursor-not-allowed disabled:opacity-35 disabled:hover:translate-y-0 disabled:hover:-rotate-2 disabled:hover:bg-paper",
           )}
@@ -104,9 +104,9 @@ export function GalleryPager({
           disabled={page >= totalPages - 1}
           aria-label={nextLabel}
           className={cn(
-            "inline-flex min-h-11 min-w-11 rotate-2 items-center justify-center border-2 border-brand-navy bg-brand-navy font-display text-lg font-semibold text-white shadow-soft motion-safe:transition-transform motion-safe:duration-300",
-            "hover:-translate-y-0.5 hover:rotate-0 hover:bg-brand-teal",
-            "disabled:cursor-not-allowed disabled:opacity-35 disabled:hover:translate-y-0 disabled:hover:rotate-2 disabled:hover:bg-brand-navy",
+            "inline-flex min-h-11 min-w-11 rotate-2 items-center justify-center rounded-md border-2 border-brand-orange bg-brand-orange font-display text-lg font-semibold text-brand-navy shadow-soft motion-safe:transition-transform motion-safe:duration-300",
+            "hover:-translate-y-0.5 hover:rotate-0 hover:bg-[#e07a00]",
+            "disabled:cursor-not-allowed disabled:opacity-35 disabled:hover:translate-y-0 disabled:hover:rotate-2 disabled:hover:bg-brand-orange",
           )}
         >
           →

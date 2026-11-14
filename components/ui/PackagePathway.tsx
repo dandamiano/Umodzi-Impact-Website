@@ -94,11 +94,11 @@ export function PackagePathway({
                       : trackActive && isFeatured
                         ? "border-brand-orange/70 bg-wash-orange text-brand-orange"
                         : trackActive && isExecutive
-                          ? "border-brand-navy bg-brand-navy text-white"
+                          ? "border-brand-orange bg-brand-orange text-brand-navy"
                           : isFeatured
                             ? "border-brand-orange/70 bg-wash-orange text-brand-orange"
                             : isExecutive
-                              ? "border-brand-navy bg-brand-navy text-white"
+                              ? "border-brand-orange bg-brand-orange text-brand-navy"
                               : "border-brand-navy/25 bg-paper text-brand-navy group-hover:border-brand-teal group-hover:text-brand-teal",
                   )}
                 >

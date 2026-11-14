@@ -136,7 +136,7 @@ export function PhotographFeature({
       className="relative isolate overflow-x-clip bg-paper pt-10 pb-12 sm:pt-12 sm:pb-14 lg:pt-14 lg:pb-16"
     >
       <div aria-hidden="true" className="pointer-events-none absolute inset-0">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_12%_0%,color-mix(in_srgb,var(--color-brand-orange)_14%,transparent),transparent_42%),radial-gradient(ellipse_at_88%_100%,color-mix(in_srgb,var(--color-brand-teal)_12%,transparent),transparent_48%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_12%_0%,color-mix(in_srgb,var(--color-brand-orange)_28%,transparent),transparent_46%),radial-gradient(ellipse_at_88%_100%,color-mix(in_srgb,var(--color-brand-green)_14%,transparent),transparent_48%)]" />
         <span className="absolute top-12 right-[10%] size-2.5 rotate-12 bg-brand-orange/55" />
         <span className="absolute bottom-16 left-[8%] hidden size-8 rotate-6 rounded-full border border-dashed border-brand-navy/15 sm:block" />
       </div>

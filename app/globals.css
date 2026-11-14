@@ -3,9 +3,9 @@
 /*
   Design tokens. Roles and hex values are recorded in lib/brand.ts
   and color-usage-guide.html. Change both token files together.
-  Same brand hexes; usage is tuned for youthful, out-of-office energy.
+  Same brand hexes; orange leads mood (funny / energetic / youthful).
   Mist + wash-* are derived surfaces, not brand swatches.
-  Orange is about 2.5:1 on white — energy accents, not long body text.
+  Orange is about 2.5:1 on white — energy fills & accents, not long body text.
 */
 @theme {
   --color-brand-orange: #f18b05;
@@ -13,12 +13,12 @@
   --color-brand-navy: #314172;
   --color-brand-green: #396831;
   --color-paper: #ffffff;
-  --color-mist: #f4f7f8;
-  --color-wash-orange: #fff4e6;
+  --color-mist: #fff7ef;
+  --color-wash-orange: #ffe8cc;
   --color-wash-green: #eef5ea;
   --color-wash-teal: #e8f1f3;
   --font-sans: Arial, "Helvetica Neue", Helvetica, sans-serif;
-  --shadow-soft: 0 12px 32px rgb(49 65 114 / 0.08);
+  --shadow-soft: 0 12px 32px rgb(241 139 5 / 0.14);
 }
 
 @theme inline {
@@ -47,14 +47,70 @@
   }
 
   :focus-visible {
-    outline: 2px solid var(--color-brand-teal);
+    outline: 2px solid var(--color-brand-orange);
     outline-offset: 3px;
   }
 
   ::selection {
-    background: var(--color-brand-teal);
-    color: var(--color-paper);
+    background: color-mix(in srgb, var(--color-brand-orange) 85%, white);
+    color: var(--color-brand-navy);
   }
+}
+
+/* Full orange field — home hero + celebration CTAs only (high chroma, intentional). */
+.hero-energy-glow {
+  background-image:
+    radial-gradient(
+      ellipse at 18% 0%,
+      color-mix(in srgb, white 42%, var(--color-brand-orange)),
+      transparent 52%
+    ),
+    radial-gradient(ellipse at 92% 22%, #ffb347 0%, transparent 48%),
+    radial-gradient(ellipse at 48% 100%, #d97706 0%, transparent 58%),
+    linear-gradient(
+      165deg,
+      var(--color-brand-orange) 0%,
+      #ea8204 42%,
+      #c96a08 100%
+    );
+}
+
+.hero-energy-dots {
+  background-image: radial-gradient(
+    circle,
+    color-mix(in srgb, white 34%, transparent) 1.1px,
+    transparent 1.1px
+  );
+  background-size: 15px 15px;
+}
+
+/* Secondary heroes — warm wash + orange accents (energy without fatigue). */
+.hero-accent-glow {
+  background-image:
+    radial-gradient(
+      ellipse at 14% 0%,
+      color-mix(in srgb, var(--color-brand-orange) 32%, transparent),
+      transparent 52%
+    ),
+    radial-gradient(
+      ellipse at 92% 28%,
+      color-mix(in srgb, var(--color-brand-orange) 18%, transparent),
+      transparent 46%
+    ),
+    radial-gradient(
+      ellipse at 48% 100%,
+      color-mix(in srgb, var(--color-brand-green) 12%, transparent),
+      transparent 50%
+    );
+}
+
+.hero-accent-dots {
+  background-image: radial-gradient(
+    circle,
+    color-mix(in srgb, var(--color-brand-navy) 22%, transparent) 1.1px,
+    transparent 1.1px
+  );
+  background-size: 15px 15px;
 }
 
 @media (prefers-reduced-motion: reduce) {

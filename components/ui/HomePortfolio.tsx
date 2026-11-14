@@ -87,20 +87,20 @@ function HomeHero({
   accent?: GalleryItem;
 }) {
   return (
-    <section className="motion-enter relative z-20 isolate overflow-visible bg-brand-navy text-white">
+    <section className="motion-enter relative z-20 isolate overflow-visible bg-brand-orange text-white">
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 overflow-hidden"
       >
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_12%_0%,color-mix(in_srgb,var(--color-brand-orange)_38%,transparent),transparent_48%),radial-gradient(ellipse_at_88%_18%,color-mix(in_srgb,var(--color-brand-teal)_44%,transparent),transparent_52%),radial-gradient(ellipse_at_60%_100%,color-mix(in_srgb,var(--color-brand-green)_28%,transparent),transparent_55%)]" />
-        <div className="home-dots absolute inset-0 opacity-[0.28]" />
-        <span className="absolute top-[14%] right-[10%] size-3 rotate-12 bg-brand-orange" />
-        <span className="absolute top-[28%] right-[20%] size-2 rounded-full bg-white/60" />
-        <span className="absolute top-[48%] left-[6%] size-2 rotate-45 bg-brand-orange/80" />
-        <span className="absolute top-[18%] left-[8%] hidden size-12 -rotate-[18deg] border-2 border-dashed border-white/25 sm:block" />
-        <span className="absolute bottom-[28%] left-[14%] hidden size-8 rotate-12 rounded-full border border-white/20 lg:block" />
+        <div className="hero-energy-glow absolute inset-0" />
+        <div className="hero-energy-dots absolute inset-0 opacity-[0.22]" />
+        <span className="absolute top-[14%] right-[10%] size-3 rotate-12 bg-white/85" />
+        <span className="absolute top-[28%] right-[20%] size-2 rounded-full bg-white/55" />
+        <span className="absolute top-[48%] left-[6%] size-2 rotate-45 bg-white/70" />
+        <span className="absolute top-[18%] left-[8%] hidden size-12 -rotate-[18deg] border-2 border-dashed border-white/35 sm:block" />
+        <span className="absolute bottom-[28%] left-[14%] hidden size-8 rotate-12 rounded-full border border-white/30 lg:block" />
         <svg
-          className="absolute top-[42%] left-[4%] hidden h-10 w-32 -rotate-12 text-brand-orange/70 sm:block"
+          className="absolute top-[42%] left-[4%] hidden h-10 w-32 -rotate-12 text-white/75 sm:block"
           viewBox="0 0 140 24"
           fill="none"
         >
@@ -117,11 +117,11 @@ function HomeHero({
         <div className="flex flex-col gap-10 sm:grid sm:grid-cols-[minmax(0,1.05fr)_minmax(14rem,1fr)] sm:items-center sm:gap-6 lg:gap-10">
           <header className="home-rise relative order-1 min-w-0 sm:pt-2 lg:pt-3">
             <div className="flex flex-wrap items-center gap-2 sm:gap-3">
-              <p className="font-display text-[0.65rem] font-semibold tracking-[0.2em] text-brand-orange uppercase sm:text-xs sm:tracking-[0.22em]">
+              <p className="font-display text-[0.65rem] font-semibold tracking-[0.2em] text-white uppercase sm:text-xs sm:tracking-[0.22em]">
                 {homePage.brandLabel}
               </p>
               <span
-                className="gallery-stamp rotate-[-9deg] border border-brand-orange/90 bg-brand-navy/40 px-2.5 py-1 font-display text-[0.55rem] font-semibold tracking-[0.16em] text-brand-orange uppercase sm:text-[0.65rem]"
+                className="gallery-stamp rotate-[-9deg] border border-white/85 bg-brand-navy/55 px-2.5 py-1 font-display text-[0.55rem] font-semibold tracking-[0.16em] text-white uppercase sm:text-[0.65rem]"
                 aria-hidden="true"
               >
                 {homePage.stamp}
@@ -130,10 +130,10 @@ function HomeHero({
 
             <h1 className="mt-4 max-w-xl font-display text-4xl font-medium tracking-tight text-white sm:mt-5 sm:text-5xl lg:text-[3.6rem] lg:leading-[1.02]">
               <span className="block text-white">{homePage.headlineLead}</span>
-              <span className="gallery-punch relative mt-2 inline-block -rotate-2 font-medium text-brand-orange sm:mt-2.5">
+              <span className="gallery-punch relative mt-2 inline-block -rotate-2 font-medium text-brand-navy sm:mt-2.5">
                 {homePage.headlinePunch}
                 <svg
-                  className="gallery-scribble pointer-events-none absolute -bottom-1 left-0 h-3 w-full text-brand-orange sm:h-4"
+                  className="gallery-scribble pointer-events-none absolute -bottom-1 left-0 h-3 w-full text-brand-navy sm:h-4"
                   viewBox="0 0 220 12"
                   fill="none"
                   aria-hidden="true"
@@ -148,7 +148,7 @@ function HomeHero({
               </span>
             </h1>
 
-            <p className="mt-5 max-w-md font-serif text-lg leading-snug text-white/88 sm:mt-6 sm:text-xl">
+            <p className="mt-5 max-w-md font-serif text-lg leading-snug text-white/92 sm:mt-6 sm:text-xl">
               {homePage.lede}
             </p>
 
@@ -163,7 +163,7 @@ function HomeHero({
               </ButtonLink>
               <Link
                 href={homePage.heroSecondary.href}
-                className="font-display text-sm font-medium text-white/80 underline decoration-brand-orange underline-offset-4 motion-safe:transition-colors hover:text-white"
+                className="font-display text-sm font-medium text-white/90 underline decoration-white/80 underline-offset-4 motion-safe:transition-colors hover:text-white"
               >
                 {homePage.heroSecondary.label}
               </Link>
@@ -362,7 +362,7 @@ function HomeServicesPeek({ groups }: { groups: readonly ServiceGroup[] }) {
   return (
     <section
       aria-labelledby="services-heading"
-      className="relative isolate overflow-x-clip bg-wash-teal py-14 sm:py-16 lg:py-20"
+      className="relative isolate overflow-x-clip bg-wash-green py-14 sm:py-16 lg:py-20"
     >
       <div aria-hidden="true" className="pointer-events-none absolute inset-0">
         <div className="home-dots absolute inset-0 opacity-[0.16]" />
@@ -584,7 +584,7 @@ function HomeClosing({ photo }: { photo?: GalleryItem }) {
           {photo ? (
             <div
               aria-hidden="true"
-              className="gallery-rise relative mx-auto w-full max-w-[22rem] sm:w-[14rem] sm:max-w-none lg:mx-0 lg:w-[15.5rem] lg:justify-self-end"
+              className="gallery-rise relative mx-auto w-full max-w-[20rem] sm:max-w-[22rem] lg:mx-0 lg:max-w-[24rem] lg:justify-self-end"
               style={{ animationDelay: "90ms" }}
             >
               <div className="relative rotate-1 sm:rotate-2">
@@ -592,13 +592,13 @@ function HomeClosing({ photo }: { photo?: GalleryItem }) {
                 <span className="gallery-stamp absolute -top-3 left-1/2 z-20 -translate-x-1/2 rotate-[-6deg] border border-brand-navy/30 bg-paper px-2 py-0.5 font-display text-[0.55rem] font-semibold tracking-[0.14em] text-brand-navy uppercase sm:text-[0.65rem]">
                   {homePage.closingPhotoStamp}
                 </span>
-                <div className="gallery-polaroid relative border border-brand-navy/10 bg-paper p-2 pb-5 shadow-[0_16px_36px_rgb(49_65_114/0.18)] sm:p-2.5 sm:pb-7">
+                <div className="gallery-polaroid relative border border-brand-navy/10 bg-paper p-2 pb-5 shadow-[0_16px_36px_rgb(49_65_114/0.18)] sm:p-2.5 sm:pb-6">
                   <span className="gallery-tape absolute -top-1.5 left-[20%] z-10 -rotate-6" />
                   <div className="overflow-hidden bg-mist ring-1 ring-brand-navy/10">
                     <GalleryImage
                       image={photo}
-                      sizes="(min-width: 1024px) 16vw, (min-width: 640px) 40vw, 85vw"
-                      className="aspect-[3/2] h-auto w-full object-cover object-center sm:aspect-[4/5]"
+                      sizes="(min-width: 1024px) 24vw, (min-width: 640px) 34vw, 80vw"
+                      className="aspect-[4/3] h-auto w-full object-cover object-center"
                     />
                   </div>
                 </div>

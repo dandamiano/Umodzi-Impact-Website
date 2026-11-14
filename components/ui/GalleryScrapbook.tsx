@@ -26,18 +26,18 @@ export function GalleryScrapbook({
 
   return (
     <>
-      <section className="motion-enter relative isolate overflow-hidden bg-brand-navy text-white">
+      <section className="motion-enter relative isolate overflow-hidden bg-wash-orange text-brand-navy">
         <div
           aria-hidden="true"
           className="pointer-events-none absolute inset-0"
         >
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_15%_10%,color-mix(in_srgb,var(--color-brand-teal)_50%,transparent),transparent_50%),radial-gradient(ellipse_at_95%_30%,color-mix(in_srgb,var(--color-brand-orange)_36%,transparent),transparent_42%)]" />
-          <div className="home-dots absolute inset-0 opacity-20" />
+          <div className="hero-accent-glow absolute inset-0" />
+          <div className="hero-accent-dots absolute inset-0 opacity-[0.2]" />
           <span className="absolute top-[14%] right-[18%] size-2.5 rotate-12 bg-brand-orange/85" />
-          <span className="absolute top-[22%] right-[28%] size-1.5 rounded-full bg-white/55" />
+          <span className="absolute top-[22%] right-[28%] size-1.5 rounded-full bg-brand-navy/35" />
           <span className="absolute top-[36%] right-[10%] size-3.5 rounded-full border border-brand-orange/70" />
-          <span className="absolute top-[48%] right-[22%] size-2 rotate-45 bg-white/35" />
-          <span className="absolute top-[18%] left-[5%] hidden size-10 -rotate-12 border border-white/20 sm:block" />
+          <span className="absolute top-[48%] right-[22%] size-2 rotate-45 bg-brand-orange/55" />
+          <span className="absolute top-[18%] left-[5%] hidden size-10 -rotate-12 border border-brand-orange/40 sm:block" />
           <span className="absolute right-[8%] bottom-[38%] hidden h-16 w-16 rotate-6 rounded-full border border-dashed border-brand-orange/40 lg:block" />
         </div>
 
@@ -49,14 +49,14 @@ export function GalleryScrapbook({
                   Umodzi Impact
                 </p>
                 <span
-                  className="gallery-stamp rotate-[-8deg] border border-brand-orange/80 px-2 py-0.5 font-display text-[0.55rem] font-semibold tracking-[0.16em] text-brand-orange uppercase sm:px-2.5 sm:py-1 sm:text-[0.65rem] sm:tracking-[0.18em]"
+                  className="gallery-stamp rotate-[-8deg] border border-brand-orange/80 bg-paper px-2 py-0.5 font-display text-[0.55rem] font-semibold tracking-[0.16em] text-brand-orange uppercase sm:px-2.5 sm:py-1 sm:text-[0.65rem] sm:tracking-[0.18em]"
                   aria-hidden="true"
                 >
                   {galleryPage.stamp}
                 </span>
               </div>
 
-              <h1 className="relative mt-3 w-fit font-display text-4xl font-medium tracking-tight text-white sm:mt-4 sm:text-6xl lg:text-[4.75rem] lg:leading-[0.92]">
+              <h1 className="relative mt-3 w-fit font-display text-4xl font-medium tracking-tight text-brand-navy sm:mt-4 sm:text-6xl lg:text-[4.75rem] lg:leading-[0.92]">
                 {galleryPage.title}
                 <svg
                   className="gallery-scribble pointer-events-none absolute -right-2 -bottom-1 h-3 w-[72%] text-brand-orange sm:-right-5 sm:h-5"
@@ -73,9 +73,9 @@ export function GalleryScrapbook({
                 </svg>
               </h1>
 
-              <p className="mt-4 max-w-xl font-serif text-2xl leading-snug text-white sm:mt-6 sm:text-3xl lg:text-[2.5rem] lg:leading-tight">
-                <span className="text-white/85">{galleryPage.headlineLead} </span>
-                <span className="gallery-punch relative inline-block -rotate-2 font-medium text-white">
+              <p className="mt-4 max-w-xl font-serif text-2xl leading-snug text-brand-navy sm:mt-6 sm:text-3xl lg:text-[2.5rem] lg:leading-tight">
+                <span className="text-brand-navy/80">{galleryPage.headlineLead} </span>
+                <span className="gallery-punch relative inline-block -rotate-2 font-medium text-brand-orange">
                   {galleryPage.headlinePunch}
                   <svg
                     className="gallery-scribble pointer-events-none absolute -bottom-1 left-0 h-2.5 w-full text-brand-orange sm:h-3.5"
@@ -93,14 +93,14 @@ export function GalleryScrapbook({
                 </span>
               </p>
 
-              <p className="mt-4 max-w-md font-serif text-lg leading-snug text-white/88 sm:mt-5 sm:text-xl lg:text-[1.35rem]">
+              <p className="mt-4 max-w-md font-serif text-lg leading-snug text-brand-navy/75 sm:mt-5 sm:text-xl lg:text-[1.35rem]">
                 {galleryPage.lede}
               </p>
 
               <div className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-3 sm:mt-7">
                 <ButtonLink
                   href={galleryPage.heroPrimary.href}
-                  variant="inverse"
+                  variant="primary"
                   size="large"
                   className="-rotate-1 motion-safe:transition-transform motion-safe:duration-300 hover:-translate-y-0.5 hover:rotate-0"
                 >
@@ -108,7 +108,7 @@ export function GalleryScrapbook({
                 </ButtonLink>
                 <Link
                   href={galleryPage.heroSecondary.href}
-                  className="font-display text-sm font-medium text-white/80 underline decoration-brand-orange underline-offset-4 motion-safe:transition-colors hover:text-white"
+                  className="font-display text-sm font-medium text-brand-navy/70 underline decoration-brand-orange/80 underline-offset-4 motion-safe:transition-colors hover:text-brand-navy"
                 >
                   {galleryPage.heroSecondary.label}
                 </Link>

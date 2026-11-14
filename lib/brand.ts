@@ -1,31 +1,35 @@
 /**
- * Colour usage — energetic / youthful team-building tone.
+ * Colour usage — energetic / youthful / funny team-building tone.
  * Hex values stay brand-true (color-usage-guide.html). We change *roles and
  * volume*, not the palette. Do not invent a fifth brand swatch.
  *
- * Goal: visitors should feel out-of-office energy, not a corporate brochure.
- * Navy still anchors type; orange, green, and teal carry more play.
+ * Colour theory for this site:
+ *   Orange sits opposite cool blue-teal on the wheel. Pushing orange volume
+ *   and pairing it with teal rests creates high-energy complementary contrast
+ *   (playful, youthful) instead of analogous navy+teal (corporate, serious).
+ *   Warm washes dominate reading surfaces; cool teal is a deliberate pause,
+ *   not the default mood. Navy is ink, not atmosphere.
  *
- * Royal blue #314172 (~30–35%) — structure and readability.
- *   Headings, body text, primary buttons, occasional deep bands.
- *   Prefer smaller navy moments over large “serious” slabs.
+ * Orange #F18B05 (~28–34%) — emotional accent / humour / action.
+ *   Full orange fields only on home hero + celebration CTAs. Elsewhere:
+ *   warm wash grounds with orange stamps, tape, scribbles, and buttons.
+ *   Pair navy type on orange fills. Never long body text on white (~2.5:1).
  *
- * Orange #F18B05 (~28–32%) — energy and humour.
- *   Ribbons, stamps, tape, squiggles, sticky accents, photo offsets,
- *   celebration moments. Still weak contrast on white (~2.5:1): not for
- *   long body text or primary button labels on white.
+ * Green #396831 (~20–24%) — outdoor / alive.
+ *   Field washes, nature cues, values, “out of the office” moments.
  *
- * Green #396831 (~18–22%) — outdoor / alive.
- *   Playful section washes, nature cues, values, “field” moments — not
- *   limited to one sustainability block.
+ * Teal #26546B (~16–18%) — cool complementary rest.
+ *   Active nav, focus rings, quiet section pauses after orange heat.
+ *   Keeps orange feeling brighter by contrast — do not grow into large slabs.
  *
- * Teal #26546B (~15–18%) — secondary motion.
- *   Active nav, focus rings, labels, secondary buttons, cool accents.
+ * Royal blue #314172 (~18–22%) — structure and readability only.
+ *   Headings, body text, punch words on orange fields. Prefer zero large
+ *   navy background bands; they read as “serious brochure.”
  *
  * Surfaces (derived, not brand swatches):
  *   Paper #FFFFFF — header/footer and calm reading.
- *   Mist #F4F7F8 — cool quiet bands.
- *   Wash orange / green / teal — soft scrapbook fills from brand hues.
+ *   Mist — warm peach-tinted quiet band (not cool corporate grey).
+ *   Wash orange / green / teal — scrapbook fills; orange wash leads the rhythm.
  *
  * Logo files: teal #26546B, orange #F18A05, green #39792F.
  * Interface green follows the swatch; the green logo file is brighter.
@@ -37,8 +41,8 @@ export const brandColors = {
   green: "#396831",
   greenLogo: "#39792F",
   white: "#FFFFFF",
-  mist: "#F4F7F8",
-  washOrange: "#FFF4E6",
+  mist: "#FFF7EF",
+  washOrange: "#FFE8CC",
   washGreen: "#EEF5EA",
   washTeal: "#E8F1F3",
 } as const;

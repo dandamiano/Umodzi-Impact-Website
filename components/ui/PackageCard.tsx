@@ -31,7 +31,7 @@ const tierShell: Record<PackageTier, string> = {
   light: "bg-paper ring-1 ring-brand-navy/12",
   standard: "bg-wash-teal/55 ring-1 ring-brand-teal/20",
   featured: "bg-wash-orange/80 ring-1 ring-brand-orange/35 sm:p-8",
-  executive: "bg-brand-navy text-white ring-1 ring-brand-navy",
+  executive: "bg-brand-orange text-brand-navy ring-1 ring-brand-orange",
 };
 
 const tierTilt: Record<PackageTier, string> = {
@@ -69,8 +69,8 @@ export function PackageCard({
   const Title = as;
   const isExecutive = tier === "executive";
   const isFeatured = tier === "featured";
-  const muted = isExecutive ? "text-white/75" : "text-brand-navy/65";
-  const body = isExecutive ? "text-white/90" : "text-brand-navy";
+  const muted = isExecutive ? "text-brand-navy/75" : "text-brand-navy/65";
+  const body = "text-brand-navy";
   const resolvedDetails =
     detailsHref ?? (id && variant === "preview" ? `/packages#${id}` : undefined);
 
@@ -96,7 +96,7 @@ export function PackageCard({
       <span
         className={cn(
           "absolute inset-x-0 top-0 z-[1] h-1",
-          isExecutive ? "bg-brand-orange" : "bg-brand-orange/90",
+          isExecutive ? "bg-brand-navy" : "bg-brand-orange/90",
         )}
         aria-hidden="true"
       />
@@ -105,11 +105,11 @@ export function PackageCard({
         <>
           <div
             aria-hidden="true"
-            className="pointer-events-none absolute -right-20 -top-16 size-56 rounded-full bg-brand-teal/35"
+            className="pointer-events-none absolute -right-20 -top-16 size-56 rounded-full bg-white/25"
           />
           <div
             aria-hidden="true"
-            className="home-dots pointer-events-none absolute inset-0 opacity-[0.22]"
+            className="hero-energy-dots pointer-events-none absolute inset-0 opacity-[0.18]"
           />
         </>
       ) : null}
@@ -125,9 +125,7 @@ export function PackageCard({
         <span
           className={cn(
             "gallery-stamp inline-flex items-center border px-2 py-0.5 font-display text-[0.65rem] font-semibold tracking-[0.18em] uppercase",
-            isExecutive
-              ? "border-brand-orange/80 text-brand-orange"
-              : "border-brand-orange/70 text-brand-orange",
+            "border-brand-navy/35 text-brand-navy",
           )}
         >
           Step {String(step).padStart(2, "0")}
@@ -137,7 +135,7 @@ export function PackageCard({
             className={cn(
               "gallery-stamp rotate-[4deg] border px-2.5 py-1 text-[0.65rem] font-semibold tracking-[0.14em] uppercase",
               isExecutive
-                ? "border-white/35 bg-white/10 text-white"
+                ? "border-brand-navy/30 bg-paper/80 text-brand-navy"
                 : "border-brand-navy/20 bg-paper text-brand-navy",
             )}
           >
@@ -146,7 +144,7 @@ export function PackageCard({
         ) : null}
       </div>
 
-      <Title className="relative z-[1] mt-4 font-display text-2xl font-medium tracking-tight">
+      <Title className="relative z-[1] mt-4 font-display text-2xl font-medium tracking-tight text-brand-navy">
         {name}
       </Title>
 
@@ -154,7 +152,7 @@ export function PackageCard({
         className={cn(
           "relative z-[1] mt-3 inline-flex w-fit border border-dashed px-2.5 py-1 text-xs font-medium",
           isExecutive
-            ? "border-white/30 text-white/85"
+            ? "border-brand-navy/35 text-brand-navy"
             : "border-brand-teal/35 text-brand-teal",
         )}
       >
@@ -237,7 +235,7 @@ export function PackageCard({
           className={cn(
             "relative z-[1] mt-6 inline-flex items-center gap-1.5 text-sm font-medium motion-safe:transition-colors",
             isExecutive
-              ? "text-white hover:text-brand-orange"
+              ? "text-brand-navy hover:text-brand-navy/70"
               : "text-brand-teal hover:text-brand-navy",
           )}
         >

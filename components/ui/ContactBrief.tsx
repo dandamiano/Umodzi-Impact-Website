@@ -379,7 +379,7 @@ export function ContactBrief({ enquiryEmail }: ContactBriefProps) {
                           className={cn(
                             "cursor-pointer border-2 px-2.5 py-1.5 font-display text-xs font-semibold tracking-tight uppercase motion-safe:transition-[background-color,border-color] motion-safe:duration-200 sm:text-sm",
                             active
-                              ? "border-brand-navy bg-brand-navy text-white"
+                              ? "border-brand-orange bg-brand-orange text-brand-navy"
                               : "border-brand-navy/15 bg-mist/70 text-brand-navy hover:border-brand-teal/50",
                           )}
                         >

@@ -14,16 +14,16 @@ export function ContactHero({ photos = [] }: ContactHeroProps) {
   const support = photos[1];
 
   return (
-    <section className="motion-enter relative z-20 isolate overflow-visible bg-brand-navy text-white">
+    <section className="motion-enter relative z-20 isolate overflow-visible bg-wash-orange text-brand-navy">
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 overflow-hidden"
       >
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_12%_0%,color-mix(in_srgb,var(--color-brand-teal)_48%,transparent),transparent_52%),radial-gradient(ellipse_at_88%_35%,color-mix(in_srgb,var(--color-brand-orange)_30%,transparent),transparent_48%)]" />
-        <div className="home-dots absolute inset-0 opacity-20" />
+        <div className="hero-accent-glow absolute inset-0" />
+        <div className="hero-accent-dots absolute inset-0 opacity-[0.2]" />
         <span className="absolute top-[18%] right-[12%] size-2 rotate-12 bg-brand-orange/85" />
-        <span className="absolute top-[34%] right-[22%] size-1.5 rounded-full bg-white/55" />
-        <span className="absolute top-[22%] left-[5%] hidden size-9 -rotate-12 border border-white/20 sm:block" />
+        <span className="absolute top-[34%] right-[22%] size-1.5 rounded-full bg-brand-navy/35" />
+        <span className="absolute top-[22%] left-[5%] hidden size-9 -rotate-12 border border-brand-orange/40 sm:block" />
       </div>
 
       <Container className="relative z-10 pt-12 pb-5 sm:pt-14 sm:pb-6 lg:pt-16 lg:pb-7">
@@ -34,16 +34,16 @@ export function ContactHero({ photos = [] }: ContactHeroProps) {
                 {contactPage.brandLabel}
               </p>
               <span
-                className="gallery-stamp rotate-[-7deg] border border-brand-orange/80 px-2 py-0.5 font-display text-[0.55rem] font-semibold tracking-[0.16em] text-brand-orange uppercase sm:px-2.5 sm:py-1 sm:text-[0.65rem]"
+                className="gallery-stamp rotate-[-7deg] border border-brand-orange/80 bg-paper px-2 py-0.5 font-display text-[0.55rem] font-semibold tracking-[0.16em] text-brand-orange uppercase sm:px-2.5 sm:py-1 sm:text-[0.65rem]"
                 aria-hidden="true"
               >
                 {contactPage.stamp}
               </span>
             </div>
 
-            <h1 className="mt-3 max-w-xl font-display text-3xl font-medium tracking-tight text-white sm:mt-4 sm:text-5xl lg:text-[3.35rem] lg:leading-[1.02]">
-              <span className="block text-white/88">{contactPage.headlineLead}</span>
-              <span className="gallery-punch relative mt-1 inline-block -rotate-1 font-medium text-white sm:mt-1.5">
+            <h1 className="mt-3 max-w-xl font-display text-3xl font-medium tracking-tight text-brand-navy sm:mt-4 sm:text-5xl lg:text-[3.35rem] lg:leading-[1.02]">
+              <span className="block text-brand-navy/88">{contactPage.headlineLead}</span>
+              <span className="gallery-punch relative mt-1 inline-block -rotate-1 font-medium text-brand-orange sm:mt-1.5">
                 {contactPage.headlinePunch}
                 <svg
                   className="gallery-scribble pointer-events-none absolute -bottom-1 left-0 h-2.5 w-full text-brand-orange sm:h-3.5"
@@ -61,14 +61,14 @@ export function ContactHero({ photos = [] }: ContactHeroProps) {
               </span>
             </h1>
 
-            <p className="mt-4 max-w-md font-serif text-lg leading-snug text-white/88 sm:mt-5 sm:text-xl">
+            <p className="mt-4 max-w-md font-serif text-lg leading-snug text-brand-navy/75 sm:mt-5 sm:text-xl">
               {contactPage.lede}
             </p>
 
             <div className="mt-7 flex flex-wrap items-center gap-x-5 gap-y-3 sm:mt-8">
               <ButtonLink
                 href={contactPage.heroPrimary.href}
-                variant="inverse"
+                variant="primary"
                 size="large"
                 className="-rotate-1 motion-safe:transition-transform motion-safe:duration-300 hover:-translate-y-0.5 hover:rotate-0"
               >
@@ -76,7 +76,7 @@ export function ContactHero({ photos = [] }: ContactHeroProps) {
               </ButtonLink>
               <Link
                 href={contactPage.heroSecondary.href}
-                className="font-display text-sm font-medium text-white/80 underline decoration-brand-orange underline-offset-4 motion-safe:transition-colors hover:text-white"
+                className="font-display text-sm font-medium text-brand-navy/70 underline decoration-brand-orange/80 underline-offset-4 motion-safe:transition-colors hover:text-brand-navy"
               >
                 {contactPage.heroSecondary.label}
               </Link>
@@ -88,16 +88,19 @@ export function ContactHero({ photos = [] }: ContactHeroProps) {
               aria-hidden="true"
               className="gallery-rise relative order-2 z-30 mx-auto mb-[-2.5rem] w-full max-w-[19rem] sm:mb-[-4.5rem] sm:max-w-[22rem] sm:justify-self-end lg:mb-[-5.5rem] lg:max-w-[26rem]"
             >
-              <div className="relative -rotate-2 sm:translate-y-2 lg:translate-y-3">
-                <div className="absolute -inset-4 rounded-[2rem] bg-[radial-gradient(circle_at_50%_40%,color-mix(in_srgb,var(--color-brand-teal)_42%,transparent),transparent_70%)] opacity-90 sm:-inset-5" />
-                <div className="absolute inset-3 translate-x-2.5 translate-y-2.5 rotate-[3deg] bg-wash-teal/70 sm:inset-3.5 sm:translate-x-3 sm:translate-y-3" />
-                <div className="absolute -left-2 top-[20%] bottom-[24%] -z-10 w-[calc(100%+1rem)] rotate-[5deg] border border-dashed border-white/25" />
+              <div className="relative -rotate-2 sm:translate-y-3 lg:translate-y-4">
+                {/* Soft backlight so the frame reads against the wash */}
+                <div className="absolute -inset-4 rounded-[2rem] bg-[radial-gradient(circle_at_50%_40%,color-mix(in_srgb,var(--color-brand-orange)_42%,transparent),transparent_70%)] opacity-90 sm:-inset-5" />
 
-                <span className="gallery-stamp absolute -top-4 left-1/2 z-20 -translate-x-1/2 -rotate-3 border border-brand-orange/80 bg-brand-navy px-2.5 py-0.5 font-display text-[0.55rem] font-semibold tracking-[0.14em] text-brand-orange uppercase sm:-top-5 sm:px-3 sm:text-[0.65rem]">
+                {/* Offset scrapbook mat */}
+                <div className="absolute inset-3 translate-x-2.5 translate-y-2.5 rotate-[3deg] bg-paper/70 sm:inset-3.5 sm:translate-x-3 sm:translate-y-3" />
+                <div className="absolute -left-2 top-[20%] bottom-[24%] -z-10 w-[calc(100%+1rem)] rotate-[5deg] border border-dashed border-brand-orange/35" />
+
+                <span className="gallery-stamp absolute -top-4 left-1/2 z-20 -translate-x-1/2 -rotate-3 border border-brand-orange/80 bg-paper px-2.5 py-0.5 font-display text-[0.55rem] font-semibold tracking-[0.14em] text-brand-orange uppercase sm:-top-5 sm:px-3 sm:text-[0.65rem]">
                   {contactPage.photoStamp}
                 </span>
 
-                <div className="gallery-polaroid relative border border-white/70 bg-paper p-2 pb-5 shadow-[0_20px_44px_rgb(0_0_0/0.45)] sm:p-2.5 sm:pb-6">
+                <div className="gallery-polaroid relative border border-brand-navy/10 bg-paper p-2 pb-5 shadow-[0_18px_40px_rgb(49_65_114/0.16)] sm:p-2.5 sm:pb-6">
                   <span className="gallery-tape absolute -top-1.5 left-[14%] z-10 -rotate-6" />
                   <span className="gallery-tape absolute -top-1 right-[12%] z-10 rotate-[9deg] scale-90 opacity-95" />
 
